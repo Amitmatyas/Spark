@@ -135,6 +135,7 @@ const publicWaState = (s = wa.state) => ({ status: s.status, qr: s.qr, me: s.me 
 // ---------- App ----------
 
 const app = express();
+app.disable("x-powered-by");
 app.set("trust proxy", true);
 app.use(express.json({ limit: "200kb" }));
 app.use(cookieParser());
@@ -411,15 +412,15 @@ function cleanClientInput(body, { partial = false } = {}) {
   const out = {};
   for (const key of CLIENT_FIELDS) {
     if (body[key] === undefined) continue;
-    let v = body[key] === null ? null : String(body[key]).trim();
+    let v = String(body[key] ?? "").trim();
     if (key === "phone") {
       v = normalizePhone(v);
       if (!v) throw new HttpError(400, "מספר הטלפון לא נראה תקין.");
     }
     if (key === "name" && (!v || v.length < 2)) throw new HttpError(400, "חסר שם לקוח.");
     if (key === "notes") v = v.slice(0, 50000);
-    else if (v) v = v.slice(0, 300);
-    out[key] = key === "drive_folder_id" ? v || null : v ?? "";
+    else v = v.slice(0, 300);
+    out[key] = key === "drive_folder_id" ? v || null : v;
   }
   if (!partial && (!out.name || !out.phone)) throw new HttpError(400, "שם וטלפון הם שדות חובה.");
   return out;
@@ -798,11 +799,13 @@ app.get(["/", "/index.html"], (req, res) => {
 });
 app.get("/c/:slug", (req, res) => res.sendFile(path.join(PUBLIC_DIR, "client.html")));
 app.use(express.static(PUBLIC_DIR, { extensions: ["html"] }));
+app.use((req, res) => res.status(404).sendFile(path.join(PUBLIC_DIR, "404.html")));
 
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     return res.status(400).json({ success: false, error: err.code === "LIMIT_FILE_SIZE" ? "הקובץ גדול מדי (עד 5GB)." : err.message });
   }
+  if (err.type === "entity.parse.failed") return res.status(400).json({ success: false, error: "הבקשה לא תקינה." });
   if (!(err instanceof HttpError)) {
     if (drive.needsReconnect(err)) {
       drive.disconnect();

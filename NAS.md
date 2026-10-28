@@ -20,7 +20,7 @@
 1. ב-App Center מתקינים **Container Station**.
 2. מפעילים SSH: **Control Panel ← Network & File Services ← Telnet / SSH ← Allow SSH connection**.
 3. ב-File Station יוצרים את התיקייה `Container/spark`, ומעתיקים אליה את כל התיקייה `~/Documents/SPARK/system` מהמק. אפשר לגרור דרך Finder, תחת "התחבר לשרת" ← `smb://<IP-של-ה-NAS>`.
-   - **מעתיקים גם** את `.env`, `oauth-client.json`, `token.json` ואת התיקייה `data`, שבה נמצאים הלקוחות והפניות.
+   - **מעתיקים גם** את `.env`, `oauth-client.json` ואת התיקייה `data`, שבה נמצאים הלקוחות, הפניות והחיבור לדרייב (`data/token.json`).
    - **לא צריך** את `node_modules`.
 4. עורכים בתיקייה את הקובץ `.env`:
    ```
@@ -60,13 +60,10 @@ docker compose logs -f spark
 
 ## 5. דף הנחיתה ב-Vercel
 
-בקובץ הדף משנים את `FORM_ENDPOINT` לכתובת המלאה:
+הדף כבר שולח את הטופס לשרת ב-NAS כשהוא לא רץ עליו (`API_BASE` ב-`public/index.html`), והשרת מקבל פניות מכל דומיין. אם כתובת ה-NAS משתנה, מעדכנים אותה בשני מקומות:
 
-```js
-FORM_ENDPOINT: "https://spark.tail1234.ts.net/api/leads",
-```
-
-השרת מקבל פניות מכל דומיין, כך שהטופס עובד גם מ-Vercel.
+- `API_BASE` ב-`public/index.html`.
+- כל ה-`destination` ב-`vercel.json` (הניהול, האזור האישי וההתחברות עוברים ל-NAS).
 
 ## עדכון קוד
 

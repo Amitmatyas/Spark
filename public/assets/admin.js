@@ -524,7 +524,7 @@ async function leadsPage(view, quiet = false) {
   setLeadCount(counts.new);
   view.innerHTML = `
     <header class="head">
-      <div><p class="eyebrow">מהדף נחיתה</p><h1><span class="cap">פניות</span> <span class="neon tilt">חדשות</span></h1></div>
+      <div><p class="eyebrow">מדף הנחיתה</p><h1><span class="cap">פניות</span> <span class="neon tilt">חדשות</span></h1></div>
     </header>
     <div class="tabs" role="tablist">
       ${[["new", "חדשות"], ["contacted", "בטיפול"], ["converted", "הפכו ללקוחות"], ["closed", "סגורות"], ["all", "הכול"]]
@@ -808,7 +808,10 @@ async function renderVideos(card, c) {
         if (v) playVideo(v);
       };
       $("#videoGrid", card).onkeydown = (e) => {
-        if (e.key === "Enter" && e.target.dataset.i) playVideo(videos[e.target.dataset.i]);
+        if ((e.key === "Enter" || e.key === " ") && e.target.dataset.i) {
+          e.preventDefault();
+          playVideo(videos[e.target.dataset.i]);
+        }
       };
     } catch (err) {
       $("#videoGrid", card).innerHTML = `<div class="empty">${esc(err.message)}</div>`;
@@ -915,7 +918,7 @@ function uploadOne(file, clientId, host, note = "") {
 
 function renderTasks(tasks, c) {
   const list = $("#tasks");
-  const today = new Date().toISOString().slice(0, 10);
+  const today = new Date().toLocaleDateString("sv"); // local YYYY-MM-DD
   const draw = () => {
     const open = tasks.filter((t) => !t.done).length;
     $("#taskCount").textContent = tasks.length ? `${open} פתוחות מתוך ${tasks.length}` : "";
@@ -924,7 +927,7 @@ function renderTasks(tasks, c) {
         <li class="task ${t.done ? "done" : ""}" data-id="${t.id}">
           <input type="checkbox" ${t.done ? "checked" : ""} aria-label="סימון ${esc(t.text)}">
           <span>${esc(t.text)}</span>
-          ${t.due_date ? `<span class="due ${!t.done && t.due_date < today ? "late" : ""}">${new Date(t.due_date).toLocaleDateString("he-IL", { day: "numeric", month: "short" })}</span>` : ""}
+          ${t.due_date ? `<span class="due ${!t.done && t.due_date < today ? "late" : ""}">${new Date(t.due_date + "T00:00").toLocaleDateString("he-IL", { day: "numeric", month: "short" })}</span>` : ""}
           <button class="x" type="button" aria-label="מחיקה">${icon("trash")}</button>
         </li>`).join("")
       : '<li class="muted small">אין משימות. מה הדבר הבא שצריך לעשות בשביל הלקוח?</li>';
@@ -1055,7 +1058,13 @@ async function settingsPage(view) {
     <p class="muted" style="margin:10px 0 14px">${d.connected ? `התיקיות והסרטונים נשמרים בתיקיית Spark בדרייב של <b dir="ltr">${esc(d.email)}</b>.` : "מתחברים עם Google כדי שכל לקוח יקבל תיקייה בדרייב."}</p>
     <div class="row">${d.connected ? `<a class="btn btn-ghost btn-sm" href="${esc(d.folderUrl)}" target="_blank" rel="noopener">${icon("drive")} פתיחת התיקייה</a>` : `<a class="btn btn-primary btn-sm" href="/auth/google">חיבור Google Drive</a>`}</div>`;
 
-  const settings = await api("/api/admin/settings");
+  let settings;
+  try {
+    settings = await api("/api/admin/settings");
+  } catch (err) {
+    $("#notifyCard").innerHTML = $("#tplCard").innerHTML = `<p class="err-box">${esc(err.message)}</p>`;
+    return;
+  }
   const { templates } = settings;
   renderNotifyCard(settings);
   $("#tplCard").innerHTML = `

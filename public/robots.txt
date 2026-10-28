@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin
+Disallow: /c/
+Disallow: /api/
+Disallow: /media/v/
+Disallow: /media/t/

@@ -45,7 +45,7 @@ fi
 sed -i "s|^PUBLIC_URL=.*|PUBLIC_URL=https://$DOMAIN|" "$APP_DIR/.env"
 grep -q '^PORT=' "$APP_DIR/.env" && sed -i 's|^PORT=.*|PORT=3000|' "$APP_DIR/.env" || echo 'PORT=3000' >> "$APP_DIR/.env"
 chown -R "$APP_USER:$APP_USER" "$APP_DIR"
-chmod 600 "$APP_DIR/.env" "$APP_DIR/oauth-client.json" "$APP_DIR/token.json" "$APP_DIR/service-account.json" 2>/dev/null || true
+chmod 600 "$APP_DIR/.env" "$APP_DIR/oauth-client.json" "$APP_DIR/data/token.json" "$APP_DIR/token.json" "$APP_DIR/service-account.json" 2>/dev/null || true
 
 echo "==> npm packages"
 sudo -u "$APP_USER" -H bash -c "cd $APP_DIR && npm ci --omit=dev --no-audit --no-fund"

@@ -51,6 +51,7 @@ const shell = (inner) => `
 /* ---------- start ---------- */
 
 async function start() {
+  if (!slug) return fatal("הקישור לא שלם. פתחו את הקישור המלא שקיבלתם מאיתנו בוואטסאפ.");
   if (store.get()) {
     try {
       return showVideos(await api("/me", { auth: true }));

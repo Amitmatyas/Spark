@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SPARK · עריכת וידאו ובניית אתרים</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="SPARK · סטודיו לעריכת וידאו ובניית אתרים. רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה ואתרי תדמית שמביאים פניות.">
 <link rel="icon" type="image/png" href="media/spark-mark.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Heebo:wght@400;500;700;800&display=swap">
@@ -16,6 +16,9 @@
 <meta property="og:description" content="רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה ואתרי תדמית שמביאים פניות.">
 <meta property="og:url" content="__SITE_URL__/">
 <meta property="og:image" content="__SITE_URL__/media/spark-promo.jpg">
+<meta property="og:image:width" content="540">
+<meta property="og:image:height" content="960">
+<meta property="og:image:alt" content="SPARK · עריכת וידאו ובניית אתרים">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__SITE_URL__/">
@@ -499,8 +502,8 @@ const VIDEOS = [
   { src: "", poster: "", title: "הסרטון הבא", tag: "המקום הזה שמור לסרטון שלך" },
 ];
 
-/* טופס צור קשר: כשהאתר מתארח אצלכם, הדביקו מפתח גישה חינמי מ-web3forms.com
-   וכל פנייה תגיע ישר למייל. אפשר במקום זה לשים כתובת Formspree / שרת משלכם ב-FORM_ENDPOINT. */
+/* טופס צור קשר: נשלח לשרת של SPARK (FORM_ENDPOINT). אם ממלאים WEB3FORMS_KEY,
+   הפניות יגיעו במקום זה למייל דרך web3forms.com ולא ייכנסו למערכת. */
 /* The system's server. When this page is served by the server itself (the NAS, or localhost)
    it calls it directly; anywhere else (Vercel) it calls the NAS's public address. */
 const API_BASE = location.hostname === "localhost" || location.hostname.endsWith(".ts.net") ? "" : "https://spark.taildf6d08.ts.net";
@@ -651,9 +654,6 @@ addEventListener("resize", layout);
 
 /* ---------- contact form ---------- */
 const form = $("#leadForm"), statusEl = $("#formStatus"), btn = $("#submitBtn");
-const dbReady = window.claude && typeof window.claude.use === "function"
-  ? Promise.race([window.claude.use("db").catch(() => null), new Promise((r) => setTimeout(() => r(null), 6000))])
-  : Promise.resolve(null);
 
 function setErr(id, msg) {
   const input = $("#f-" + id), e = $("#e-" + id);
@@ -672,11 +672,6 @@ function validate(d) {
   return ok.every(Boolean);
 }
 async function sendLead(d) {
-  const db = await dbReady;
-  if (db) {
-    try { await db.collection("leads").add({ ...d, createdAt: new Date().toISOString() }); return "db"; }
-    catch (e) { /* this viewer can't write here; fall through to the email service */ }
-  }
   if (CONFIG.WEB3FORMS_KEY) {
     const r = await fetch("https://api.web3forms.com/submit", {
       method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -690,7 +685,9 @@ async function sendLead(d) {
   if (CONFIG.FORM_ENDPOINT) {
     const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
     if (r.ok) return "endpoint";
-    throw new Error("endpoint failed");
+    /* the server explains a refusal in Hebrew (too many requests, invalid phone): show it */
+    const j = await r.json().catch(() => ({}));
+    const err = new Error("endpoint failed"); err.userMsg = j.error; throw err;
   }
   console.warn("SPARK: contact form has no destination. Set CONFIG.WEB3FORMS_KEY or CONFIG.FORM_ENDPOINT.");
   const err = new Error("not configured"); err.userMsg = "הטופס עוד לא מחובר לתיבת הדואר. נסו שוב מאוחר יותר."; throw err;

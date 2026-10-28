@@ -1,4 +1,6 @@
 {
+  "buildCommand": "sed -i \"s|__SITE_URL__|https://${VERCEL_PROJECT_PRODUCTION_URL:-$VERCEL_URL}|g\" public/index.html",
+  "outputDirectory": "public",
   "redirects": [
     { "source": "/admin", "destination": "https://spark.taildf6d08.ts.net/admin", "permanent": false },
     { "source": "/admin.html", "destination": "https://spark.taildf6d08.ts.net/admin", "permanent": false },
