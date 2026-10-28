@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/admin", "destination": "https://spark.taildf6d08.ts.net/admin", "permanent": false },
+    { "source": "/admin.html", "destination": "https://spark.taildf6d08.ts.net/admin", "permanent": false },
+    { "source": "/client", "destination": "https://spark.taildf6d08.ts.net/client", "permanent": false },
+    { "source": "/c/:slug", "destination": "https://spark.taildf6d08.ts.net/c/:slug", "permanent": false },
+    { "source": "/auth/:path*", "destination": "https://spark.taildf6d08.ts.net/auth/:path*", "permanent": false },
+    { "source": "/oauth2callback", "destination": "https://spark.taildf6d08.ts.net/oauth2callback", "permanent": false },
+    { "source": "/media/:path*", "destination": "https://spark.taildf6d08.ts.net/media/:path*", "permanent": false }
+  ]
+}
