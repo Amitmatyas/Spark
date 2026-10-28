@@ -46,6 +46,7 @@ const shell = (inner) => `
   <div class="portal">
     <nav class="portal-nav"><span class="brand"><img src="/assets/spark-mark.png" alt=""><span>SPARK</span></span><span id="navEnd"></span></nav>
     ${inner}
+    <p class="hint" style="margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 16px"><a href="/privacy.html">מדיניות פרטיות</a><a href="/terms.html">תנאי שימוש</a><a href="/accessibility.html">הצהרת נגישות</a></p>
   </div>`;
 
 /* ---------- start ---------- */

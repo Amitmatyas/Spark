@@ -298,6 +298,45 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .wa-alt { margin: 4px 0 0; font-size: 14px; color: var(--muted); text-align: center; }
 .wa-alt a { color: #7dffb4; font-weight: 700; }
 
+/* ---------- reviews ---------- */
+.reviews { padding-block: 60px 20px; }
+.rev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; margin-top: 30px; }
+.rev { margin: 0; padding: 24px; border-radius: 26px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line), 0 0 26px rgba(130, 20, 230, .18); display: grid; gap: 16px; align-content: space-between; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.rev .stars { color: #ffd76a; letter-spacing: 3px; font-size: 18px; text-shadow: 0 0 12px rgba(255, 200, 80, .5); }
+.rev blockquote { margin: 0; font-size: 17px; line-height: 1.7; }
+.rev figcaption { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 14px; }
+.rev figcaption b { display: block; color: var(--ink); font-size: 16px; }
+.rev figcaption img, .rev figcaption i { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 2px var(--rim); }
+.rev figcaption i { display: grid; place-items: center; font: 900 22px/1 var(--f-cap); font-style: normal; color: #fff; background: linear-gradient(180deg, #b65cff, #7322ec); }
+
+/* ---------- still not sure + FAQ ---------- */
+.unsure { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 18px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.unsure b { display: block; font: 900 26px/1.1 var(--f-cap); color: #fff; }
+.unsure span { color: var(--muted); font-size: 14px; }
+.faq { padding-block: 50px 90px; }
+.faq-list { display: grid; gap: 12px; margin-top: 30px; max-width: 880px; }
+.faq details { border-radius: 22px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transition: box-shadow .3s; }
+.faq details[open] { box-shadow: inset 0 0 0 1.5px var(--rim), 0 0 24px rgba(130, 20, 230, .3); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; cursor: pointer; list-style: none; font-weight: 700; font-size: 18px; border-radius: 22px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; font: 900 30px/1 var(--f-lat); color: var(--lilac); transition: transform .3s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: 0; padding: 0 22px 20px; color: var(--muted); max-width: 70ch; }
+
+/* ---------- footer links ---------- */
+.legal-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+.legal-links a, .legal-links button { color: var(--muted); font: 400 14px/1.4 var(--f-body); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.legal-links a:hover, .legal-links button:hover { color: var(--ink); }
+.fine a { color: var(--lilac); text-underline-offset: 3px; white-space: nowrap; }
+
+/* ---------- accessibility: skip links, visible focus, a switch that stops all motion ---------- */
+.skip { position: fixed; top: 10px; inset-inline-start: 10px; z-index: 100; padding: 10px 16px; border: 0; border-radius: 12px; background: #fff; color: #241040; font: 700 15px/1.2 var(--f-body); text-decoration: none; cursor: pointer; transform: translateY(-160%); transition: transform .2s; }
+.skip:focus { transform: none; }
+.carousel:focus-visible { outline: 2px solid var(--lilac); outline-offset: 6px; border-radius: 28px; }
+html.still { scroll-behavior: auto; }
+html.still *, html.still *::before, html.still *::after { animation: none !important; transition-duration: .01s !important; }
+html.still .rv:not(.in) { transform: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rv, .card { transition-duration: .01s; }
@@ -308,6 +347,8 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 
 </head>
 <body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+<button class="skip" type="button" data-motion aria-pressed="false">עצירת אנימציות</button>
 <canvas id="stage" aria-hidden="true"></canvas>
 <img class="fallback-logo" src="media/spark-logo-3d.png" alt="">
 <div class="vignette" aria-hidden="true"></div>
@@ -319,13 +360,14 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
       <ul>
         <li><a href="#work">עבודות</a></li>
         <li><a href="#services">שירותים</a></li>
+        <li><a href="#faq">שאלות נפוצות</a></li>
         <li><a href="#contact">צור קשר</a></li>
       </ul>
       <a class="btn btn-primary btn-sm" href="#contact">לקבלת הצעה</a>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero" id="top">
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="hero-tag" aria-hidden="true"><i></i><b>SPARK</b> סטודיו לווידאו ואתרים</div>
@@ -339,7 +381,7 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
           </h1>
           <p class="lead">עורכים רילס, טיקטוק ופרסומות, ובונים דפי נחיתה ואתרי תדמית. עם תלת מימד ותנועה שנבנים במיוחד למותג שלכם.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#contact">לקבלת הצעה לפרויקט</a>
+            <a class="btn btn-primary" href="#contact">בואו נדבר על הפרויקט הבא שלכם</a>
             <a class="btn btn-ghost" href="#work">לעבודות שלנו</a>
           </div>
           <p class="fine hero-note">שיחת היכרות קצרה, בלי התחייבות.</p>
@@ -416,6 +458,14 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
       </div>
     </section>
 
+    <section class="reviews" id="reviews" aria-labelledby="rev-title" hidden>
+      <div class="wrap">
+        <p class="eyebrow">מה אומרים עלינו</p>
+        <h2 class="title" id="rev-title"><span class="cap">לקוחות</span> <span class="neon tilt">מספרים</span></h2>
+        <div class="rev-grid" id="revGrid"></div>
+      </div>
+    </section>
+
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-grid">
         <div class="contact-head rv">
@@ -429,12 +479,12 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
             <div class="row2">
               <div class="field">
                 <label for="f-name">שם</label>
-                <input class="input" id="f-name" name="name" autocomplete="name" placeholder="איך קוראים לך?" required>
+                <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name" placeholder="איך קוראים לך?" required>
                 <span class="err" id="e-name"></span>
               </div>
               <div class="field">
                 <label for="f-phone">טלפון</label>
-                <input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="050-0000000" dir="ltr" style="text-align:right" required>
+                <input class="input" id="f-phone" name="phone" type="tel" aria-describedby="e-phone" inputmode="tel" autocomplete="tel" placeholder="050-0000000" dir="ltr" style="text-align:right" required>
                 <span class="err" id="e-phone"></span>
               </div>
             </div>
@@ -455,7 +505,7 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
             <div class="hp" aria-hidden="true"><label for="f-web">אתר</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
             <p class="status" id="formStatus" role="alert"></p>
             <button class="btn btn-primary" id="submitBtn" type="submit">שלחו ונחזור אליכם</button>
-            <p class="fine">הפרטים משמשים רק כדי לחזור אליכם לגבי הפרויקט.</p>
+            <p class="fine">הפרטים משמשים רק כדי לחזור אליכם לגבי הפרויקט, ואישור יישלח אליכם בוואטסאפ. <a href="privacy.html">מדיניות פרטיות</a></p>
             <p class="wa-alt" id="waAlt" hidden>מעדיפים וואטסאפ? <a href="#" target="_blank" rel="noopener">כתבו לנו ישירות</a></p>
           </form>
           <div class="sent" id="sent" hidden>
@@ -463,9 +513,13 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
               <div class="notif-top"><span>הודעה חדשה</span><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i></div>
               <div class="notif-body"><em></em><span id="sentLine">היי, אני רוצה סרטון כזה!</span></div>
             </div>
-            <h3 class="cap">ההודעה התקבלה</h3>
+            <h3 class="cap" id="sentTitle" tabindex="-1">ההודעה התקבלה</h3>
             <p id="sentNote">תודה! נחזור אליכם בקרוב לשיחה קצרה על הפרויקט.</p>
             <button class="btn btn-ghost btn-sm" id="againBtn" type="button">שליחת פנייה נוספת</button>
+          </div>
+          <div class="unsure">
+            <div><b>עדיין לא בטוחים?</b><span>ריכזנו תשובות לכל מה ששואלים אותנו לפני שמתחילים.</span></div>
+            <a class="btn btn-ghost btn-sm" href="#faq">לשאלות הנפוצות</a>
           </div>
         </div>
 
@@ -476,12 +530,36 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
         </ol>
       </div>
     </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <p class="eyebrow">שאלות נפוצות</p>
+        <h2 class="title" id="faq-title"><span class="cap">כל מה ששואלים</span> <span class="neon tilt">לפני שמתחילים</span></h2>
+        <div class="faq-list">
+          <details><summary>כמה עולה סרטון או אתר?</summary><p>המחיר תלוי בהיקף: כמה סרטונים, באיזה אורך וכמה אפקטים ותלת מימד, או כמה עמודים יש באתר. אחרי שיחה קצרה תקבלו הצעה מסודרת עם מחיר סופי ולוח זמנים, לפני שמתחילים משהו.</p></details>
+          <details><summary>כמה זמן זה לוקח?</summary><p>תלוי בפרויקט. את לוח הזמנים קובעים יחד בהצעה. אם יש לכם תאריך יעד, כמו השקה, אירוע או קמפיין, ספרו לנו עליו כבר בשיחה הראשונה.</p></details>
+          <details><summary>מה אתם צריכים מאיתנו כדי להתחיל?</summary><p>לסרטונים: את החומרים שצילמתם, הלוגו וכל דוגמה שאהבתם. לאתר: מה העסק מציע ולמי, ותמונות או סרטונים אם יש. מה שחסר, נעבור עליו יחד בשיחה.</p></details>
+          <details><summary>איך מקבלים את הסרטונים?</summary><p>כל לקוח מקבל אזור אישי באתר. כל סרטון שמוכן עולה לשם, ותקבלו על זה הודעה בוואטסאפ. צופים ומורידים מכל מכשיר, בלי סיסמה: הכניסה היא עם קוד שנשלח אליכם בוואטסאפ.</p></details>
+          <details><summary>אפשר לבקש שינויים?</summary><p>כן. כותבים לנו בוואטסאפ מה לשנות, ואנחנו מעדכנים. כמה סבבי תיקונים כלולים בפרויקט כתוב בהצעה, כדי שיהיה ברור מראש.</p></details>
+          <details><summary>האתר יעבוד טוב בנייד?</summary><p>כן. כל אתר נבנה קודם כול לנייד, כי שם רוב הלקוחות שלכם נמצאים, ומתחבר לכלים שלכם, כמו טופס פניות ווואטסאפ.</p></details>
+          <details><summary>אפשר להזמין רק וידאו או רק אתר?</summary><p>בטח. כל שירות עומד בפני עצמו. כשעושים את שניהם אצלנו, הסרטונים והאתר נראים אותו דבר, והמותג מרגיש אחיד בכל מקום.</p></details>
+          <details><summary>מה קורה אחרי שמשאירים פרטים?</summary><p>מיד מגיע אליכם אישור בוואטסאפ, ואנחנו חוזרים אליכם לשיחת היכרות קצרה, בלי התחייבות. משם ממשיכים להצעה מסודרת.</p></details>
+        </div>
+        <div class="mid-cta"><a class="btn btn-primary" href="#contact">בואו נדבר על הפרויקט הבא שלכם</a></div>
+      </div>
+    </section>
   </main>
 
   <footer class="foot">
     <div class="wrap">
       <a class="brand" href="#top"><img src="media/spark-mark.png" alt=""><span>SPARK</span></a>
       <div class="socials" id="socials"></div>
+      <nav class="legal-links" aria-label="מידע משפטי ונגישות">
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <a href="terms.html">תנאי שימוש</a>
+        <a href="accessibility.html">הצהרת נגישות</a>
+        <button type="button" data-motion aria-pressed="false">עצירת אנימציות</button>
+      </nav>
       <span>© <span id="year">2026</span> SPARK · סטודיו לווידאו ואתרים</span>
     </div>
   </footer>
@@ -502,6 +580,11 @@ const VIDEOS = [
   { src: "", poster: "", title: "הסרטון הבא", tag: "המקום הזה שמור לסרטון שלך" },
 ];
 
+/* ביקורות: רק ביקורות אמיתיות של לקוחות, ובאישור שלהם להציג אותן.
+   { text: "מה הלקוח כתב", name: "שם", role: "עסק / תפקיד", photo: "media/...jpg" (לא חובה) }
+   כל עוד הרשימה ריקה, החלק לא מוצג באתר. */
+const REVIEWS = [];
+
 /* טופס צור קשר: נשלח לשרת של SPARK (FORM_ENDPOINT). אם ממלאים WEB3FORMS_KEY,
    הפניות יגיעו במקום זה למייל דרך web3forms.com ולא ייכנסו למערכת. */
 /* The system's server. When this page is served by the server itself (the NAS, or localhost)
@@ -521,6 +604,7 @@ document.documentElement.classList.add("js");
 document.documentElement.lang = "he";
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (s) => document.querySelector(s);
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 $("#year").textContent = new Date().getFullYear();
 
 /* ---------- reveal ---------- */
@@ -535,6 +619,17 @@ addEventListener("scroll", onNav, { passive: true }); onNav();
 /* ---------- socials ---------- */
 CONFIG.SOCIALS.forEach((s) => { const a = document.createElement("a"); a.className = "btn btn-ghost btn-sm"; a.href = s.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.label; $("#socials").appendChild(a); });
 
+/* ---------- reviews ---------- */
+if (REVIEWS.length) {
+  $("#revGrid").innerHTML = REVIEWS.map((r) => `<figure class="rev rv">
+      <div class="stars" role="img" aria-label="5 מתוך 5 כוכבים">★★★★★</div>
+      <blockquote>${esc(r.text)}</blockquote>
+      <figcaption>${r.photo ? `<img src="${esc(r.photo)}" alt="" loading="lazy">` : `<i aria-hidden="true">${esc(r.name.trim()[0] || "")}</i>`}<span><b>${esc(r.name)}</b>${r.role ? esc(r.role) : ""}</span></figcaption>
+    </figure>`).join("");
+  $("#reviews").hidden = false;
+  document.querySelectorAll("#revGrid .rv").forEach((el) => io.observe(el));
+}
+
 /* ---------- marquee bands (speed reacts to scroll velocity) ---------- */
 const STAR = '<svg viewBox="0 0 24 24"><path d="M12 0c.8 6.4 4.8 10.6 12 12-7.2 1.4-11.2 5.6-12 12-.8-6.4-4.8-10.6-12-12C7.2 10.6 11.2 6.4 12 0z"/></svg>';
 const words = ["עריכת וידאו", "בניית אתרים", "תלת מימד", "אפקטים", "אנימציות גלילה", "מעברים", "סאונד", "דפי נחיתה", "מילים בניאון"];
@@ -548,11 +643,12 @@ measureTracks();
 
 /* ---------- carousel ---------- */
 /* the caption face has no Latin letters: wrap them in the Latin display face */
-const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const latin = (t) => esc(t).replace(/[A-Za-z][A-Za-z0-9 .&'-]*[A-Za-z0-9]|[A-Za-z]/g, (m) => `<span class="lat">${m}</span>`);
 const car = $("#carousel"), dotsEl = $("#dots");
 let cur = 0, soundOn = false, carVisible = false;
 const ICON_SND_OFF = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>';
+const ICON_PAUSE = '<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>';
+const ICON_PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>';
 const ICON_SND_ON = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg>';
 const cards = VIDEOS.map((v, i) => {
   const c = document.createElement("div");
@@ -567,8 +663,12 @@ const cards = VIDEOS.map((v, i) => {
     vid.setAttribute("playsinline", ""); vid.setAttribute("muted", "");
     c.appendChild(vid);
     c.insertAdjacentHTML("beforeend", `<div class="shade"></div><div class="paused-badge"><span><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-      <div class="ctrl"><button class="icon-btn snd" type="button" aria-label="הפעלת סאונד">${ICON_SND_OFF}</button></div>`);
+      <div class="ctrl"><button class="icon-btn pp" type="button" aria-label="ניגון הסרטון">${ICON_PLAY}</button><button class="icon-btn snd" type="button" aria-label="הפעלת סאונד">${ICON_SND_OFF}</button></div>`);
     c._video = vid;
+    const pp = c.querySelector(".pp");
+    const syncPP = () => { pp.innerHTML = vid.paused ? ICON_PLAY : ICON_PAUSE; pp.setAttribute("aria-label", vid.paused ? "ניגון הסרטון" : "השהיית הסרטון"); };
+    vid.addEventListener("play", syncPP); vid.addEventListener("pause", syncPP);
+    pp.addEventListener("click", (e) => { e.stopPropagation(); vid.paused ? play(c) : (vid.pause(), c.classList.add("is-paused")); });
     c.querySelector(".snd").addEventListener("click", (e) => { e.stopPropagation(); soundOn = !soundOn; syncSound(); if (vid.paused) play(c); });
   } else {
     c.innerHTML = `<div class="slot"><img src="media/spark-logo-3d.png" alt=""><b>${latin(v.title)}</b><small>${esc(v.tag)}</small><a class="btn btn-primary btn-sm" href="#contact">בואו נבנה אותו</a></div>`;
@@ -626,7 +726,7 @@ function go(i) {
   if (prev._video) { prev._video.pause(); prev._video.muted = true; }
   cur = ((i % n) + n) % n;
   layout(); syncSound();
-  if (carVisible && cards[cur]._video) play(cards[cur]);
+  if (carVisible && !still && cards[cur]._video) play(cards[cur]);
 }
 $("#nextBtn").addEventListener("click", () => go(cur + 1));
 $("#prevBtn").addEventListener("click", () => go(cur - 1));
@@ -647,10 +747,23 @@ new IntersectionObserver((es) => {
   carVisible = es[0].isIntersecting;
   const c = cards[cur];
   if (!c._video) return;
-  if (carVisible && !c.classList.contains("is-paused")) play(c); else c._video.pause();
+  if (carVisible && !still && !c.classList.contains("is-paused")) play(c); else c._video.pause();
 }, { threshold: 0.35 }).observe(car);
 layout();
 addEventListener("resize", layout);
+
+/* ---------- stop all motion (accessibility; remembered on this device) ---------- */
+let still = reduceMotion;
+try { if (localStorage.getItem("spark.still")) still = localStorage.getItem("spark.still") === "1"; } catch (e) {}
+function setStill(on, save) {
+  still = on;
+  document.documentElement.classList.toggle("still", on);
+  document.querySelectorAll("[data-motion]").forEach((b) => { b.textContent = on ? "הפעלת אנימציות" : "עצירת אנימציות"; b.setAttribute("aria-pressed", String(on)); });
+  if (on) cards.forEach((c) => { if (c._video && !c._video.paused) { c._video.pause(); c.classList.add("is-paused"); } });
+  if (save) try { localStorage.setItem("spark.still", on ? "1" : "0"); } catch (e) {}
+}
+document.querySelectorAll("[data-motion]").forEach((b) => b.addEventListener("click", () => setStill(!still, true)));
+setStill(still, false);
 
 /* ---------- contact form ---------- */
 const form = $("#leadForm"), statusEl = $("#formStatus"), btn = $("#submitBtn");
@@ -705,7 +818,7 @@ form.addEventListener("submit", async (e) => {
     const via = await sendLead(d);
     if (via === "endpoint" && CONFIG.FORM_ENDPOINT === API_BASE + "/api/leads") $("#sentNote").textContent = "תודה! אישור יגיע אליכם עכשיו בוואטסאפ, ונחזור אליכם בקרוב לשיחה קצרה.";
     $("#sentLine").textContent = `היי, זה ${d.name.split(" ")[0]}. אני רוצה ${d.type.includes("אתר") ? "אתר" : "סרטון"} כזה!`;
-    form.hidden = true; $("#sent").hidden = false; form.reset();
+    form.hidden = true; $("#sent").hidden = false; form.reset(); $("#sentTitle").focus();
   } catch (err) {
     statusEl.textContent = err.userMsg || "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב.";
   } finally { btn.disabled = false; btn.textContent = "שלחו ונחזור אליכם"; }
@@ -916,7 +1029,7 @@ function frame(now) {
 
   // marquee
   tracks.forEach((t) => {
-    const sp = reduceMotion ? 0 : t.speed * (1 + Math.min(Math.abs(vel) / 400, 5));
+    const sp = still ? 0 : t.speed * (1 + Math.min(Math.abs(vel) / 400, 5));
     t.x = (t.x + sp * dt) % t.w; if (t.x > 0) t.x -= t.w;
     t.el.style.transform = `translate3d(${t.x}px,0,0)`;
   });
@@ -932,7 +1045,7 @@ function frame(now) {
     const docH = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     const spinTarget = (sy / docH) * Math.PI * 4;
     st.spin += (spinTarget - st.spin) * k;
-    const idle = reduceMotion ? 0 : time;
+    const idle = still ? 0 : time;
     T.spin.rotation.y = -0.35 + Math.sin(idle * 0.45) * 0.35 + st.spin + mouse.x * 0.35;
     T.spin.rotation.x = 0.12 + Math.sin(idle * 0.31) * 0.08 + mouse.y * 0.22;
     T.spin.rotation.z = Math.sin(idle * 0.2) * 0.05;
@@ -941,7 +1054,7 @@ function frame(now) {
     T.ico.rotation.set(idle * 0.08, idle * 0.11, 0);
     T.ico.position.y = 1.9 - sy * 0.0012;
     T.pMat.uniforms.uTime.value = idle;
-    T.gMat.uniforms.uOff.value = (T.gMat.uniforms.uOff.value + dt * (reduceMotion ? 0 : 0.5) + Math.abs(vel) * dt * 0.004) % 1000;
+    T.gMat.uniforms.uOff.value = (T.gMat.uniforms.uOff.value + dt * (still ? 0 : 0.5) + Math.abs(vel) * dt * 0.004) % 1000;
     T.camera.position.x = mouse.x * 0.25; T.camera.position.y = -mouse.y * 0.15; T.camera.lookAt(0, 0, -2);
     T.renderer.render(T.scene, T.camera);
   }
