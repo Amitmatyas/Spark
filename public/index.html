@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SPARK · עריכת וידאו ובניית אתרים</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="SPARK · סטודיו לעריכת וידאו ובניית אתרים. רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה ואתרי תדמית שמביאים פניות.">
+<link rel="icon" type="image/png" href="media/spark-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Heebo:wght@400;500;700;800&display=swap">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SPARK">
+<meta property="og:title" content="SPARK · עריכת וידאו ובניית אתרים">
+<meta property="og:description" content="רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה ואתרי תדמית שמביאים פניות.">
+<meta property="og:url" content="__SITE_URL__/">
+<meta property="og:image" content="__SITE_URL__/media/spark-promo.jpg">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__SITE_URL__/">
+<meta name="theme-color" content="#0b0118">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"SPARK","description":"סטודיו לעריכת וידאו ובניית אתרים","url":"__SITE_URL__/","image":"__SITE_URL__/media/spark-logo-3d.png","inLanguage":"he","areaServed":"IL","serviceType":["עריכת וידאו","בניית אתרים","דפי נחיתה"]}</script>
+<style>
+/* Horev CLM Heavy (Culmus, GPL + font exception): the caption face from the reels. Hebrew + digits only. */
+@font-face { font-family: "Horev"; src: url(data:font/ttf;base64,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AGUAcgBhAGwAIABQAHUAYgBsAGkAYwAgAEwAaQBjAGUAbgBzAGUAIAB2AGUAcgBzAGkAbwBuACAAMgAoAGgAdAB0AHAAOgAvAC8AdwB3AHcALgBnAG4AdQAuAG8AcgBnAC8AbABpAGMAZQBuAHMAZQBzAC8AZwBwAGwALQAyAC4AMAAuAGgAdABtAGwAKQAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuAEgAbwByAGUAdgAgAEMATABNAEgAZQBhAHYAeQBGAG8AbgB0AEYAbwByAGcAZQAgADoAIABIAG8AcgBlAHYAIABDAEwATQAgAEgAZQBhAHYAeQAgADoAIAAyADQALQA5AC0AMgAwADEAMQBIAG8AcgBlAHYAIABDAEwATQAgAEgAZQBhAHYAeQBWAGUAcgBzAGkAbwBuACAAMQAuADAAIABIAG8AcgBlAHYAQwBMAE0ALQBIAGUAYQB2AHkAVwBlAGIAZgBvAG4AdAAgADEALgAwAFMAYQB0ACAAQQBwAHIAIAAgADYAIAAxADIAOgAyADMAOgA1ADkAIAAyADAAMQAzAAIAAAAAAAD/AABmAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAQIBAwADAAQABQAIAAoACwAMAA0ADgAPABAAEQASABMAFAAVABYAFwAYABkAGgAbABwAHQAeAB8AIAAhACIAJAA+AD8AQABDAQQBBQEGAQcBCAEJAQoBCwEMAQ0BDgEPARABEQESARMBFAEVARYBFwEYARkBGgEbARwBHQEeAR8BIAEhASIBIwEkASUBJgEnASgBKQEqASsBLAEtAS4BLwCyALMBMACrATEBMgEzBmdseXBoMQd1bmkwMDBEB3VuaTAwQTAHdW5pMDBBRAlhZmlpNTc2NDUJYWZpaTU3NjY0CWFmaWk1NzY2NQlhZmlpNTc2NjYJYWZpaTU3NjY3CWFmaWk1NzY2OAlhZmlpNTc2NjkJYWZpaTU3NjcwCWFmaWk1NzY3MQlhZmlpNTc2NzIJYWZpaTU3NjczCWFmaWk1NzY3NAlhZmlpNTc2NzUJYWZpaTU3Njc2CWFmaWk1NzY3NwlhZmlpNTc2NzgJYWZpaTU3Njc5CWFmaWk1NzY4MAlhZmlpNTc2ODEJYWZpaTU3NjgyCWFmaWk1NzY4MwlhZmlpNTc2ODQJYWZpaTU3Njg1CWFmaWk1NzY4NglhZmlpNTc2ODcJYWZpaTU3Njg4CWFmaWk1NzY4OQlhZmlpNTc2OTAHdW5pMjAwMAd1bmkyMDAxB3VuaTIwMDIHdW5pMjAwMwd1bmkyMDA0B3VuaTIwMDUHdW5pMjAwNgd1bmkyMDA3B3VuaTIwMDgHdW5pMjAwOQd1bmkyMDBBB3VuaTIwMTAHdW5pMjAxMQpmaWd1cmVkYXNoCWFmaWkwMDIwOAd1bmkyMDJGB3VuaTIwNUYHdW5pRTAwMAAAuAH/hbABjQBLsAhQWLEBAY5ZsUYGK1ghsBBZS7AUUlghsIBZHbAGK1xYALACIEWwAytEAbADIEWwAytEWbAUKwABUWBMHwAA) format("truetype"); font-weight: 400 900; font-display: swap; }
+
+/* Layout: one fixed WebGL stage (the 3D logo) behind everything; content scrolls over it in
+   glass panels framed like the reels' rounded neon phone screen. Single dark neon look by design. */
+:root {
+  --void: #0b0118;
+  --deep: #1a0638;
+  --panel: rgba(24, 6, 52, .62);
+  --rim: #aa46ff;
+  --glow: rgba(130, 20, 230, .55);
+  --lilac: #ecaaff;
+  --violet: #7e30ff;
+  --pink: #ff2e7e;
+  --ink: #f7f2ff;
+  --muted: #bfaedd;
+  --line: rgba(170, 70, 255, .34);
+  --f-cap: "Horev", "Heebo", "Arial Hebrew", system-ui, sans-serif;
+  --f-lat: "Big Shoulders Display", "Heebo", system-ui, sans-serif;
+  --f-body: "Heebo", "Arial Hebrew", system-ui, sans-serif;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  color-scheme: dark;
+}
+html { background: var(--void); scroll-behavior: smooth; overflow-x: clip; }
+body { background: var(--void); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.65; overflow-x: clip; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--void); }
+::selection { background: var(--violet); color: #fff; }
+a { color: inherit; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+.page { position: relative; z-index: 2; }
+.wrap { max-width: 1200px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.lat { font-family: var(--f-lat); letter-spacing: .02em; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--lilac); outline-offset: 3px; border-radius: 10px; }
+
+/* ---------- 3D stage ---------- */
+#stage { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+.vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(5, 0, 14, .75) 100%); }
+.fallback-logo { display: none; }
+.no-webgl #stage { display: none; }
+.no-webgl .fallback-logo { display: block; position: fixed; z-index: 0; width: min(46vw, 420px); left: 6vw; top: 22vh; filter: drop-shadow(0 0 60px rgba(150, 60, 255, .6)); opacity: .9; }
+
+/* ---------- nav ---------- */
+.nav { position: fixed; top: env(safe-area-inset-top, 0px); inset-inline: 0; z-index: 50; transition: background .3s, backdrop-filter .3s, border-color .3s; border-bottom: 1px solid transparent; }
+.nav.solid { background: rgba(11, 1, 24, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: rgba(170, 70, 255, .18); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { width: 30px; height: 30px; filter: drop-shadow(0 0 10px rgba(170, 70, 255, .7)); }
+.brand span { font-family: var(--f-lat); font-weight: 900; font-size: 26px; letter-spacing: .08em; }
+.nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; transition: color .2s; }
+.nav ul a:hover { color: var(--ink); }
+@media (max-width: 760px) { .nav ul { display: none; } }
+
+/* ---------- buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; padding: 14px 26px; font: 700 16px/1 var(--f-body); text-decoration: none; cursor: pointer; border: 0; color: #fff; transition: transform .25s var(--ease), box-shadow .25s, background .25s; }
+.btn-primary { background: linear-gradient(180deg, #b65cff, #7322ec); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2), 0 10px 34px rgba(140, 40, 255, .5); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 14px 44px rgba(160, 60, 255, .75); }
+.btn-ghost { background: rgba(255, 255, 255, .04); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn-ghost:hover { background: rgba(170, 70, 255, .14); transform: translateY(-2px); }
+.btn-sm { padding: 10px 18px; font-size: 14px; }
+.btn svg { width: 18px; height: 18px; }
+
+/* ---------- type ---------- */
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; letter-spacing: .06em; color: var(--lilac); margin: 0 0 18px; }
+.eyebrow::before { content: ""; width: 10px; height: 10px; background: var(--lilac); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); filter: drop-shadow(0 0 6px var(--lilac)); }
+.cap { font-family: var(--f-cap); font-weight: 900; color: #fff; text-shadow: 0 2px 0 rgba(20, 0, 40, .55), 0 6px 22px rgba(0, 0, 0, .45); }
+.neon { font-family: var(--f-cap); font-weight: 900; display: inline-block; color: transparent;
+  background: linear-gradient(180deg, #f6d6ff 0%, var(--lilac) 22%, #b46bff 58%, var(--violet) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  filter: drop-shadow(0 0 14px rgba(160, 60, 255, .85)) drop-shadow(0 0 40px rgba(130, 20, 230, .55)) drop-shadow(0 5px 0 rgba(20, 0, 40, .6)); }
+.neon.lat { font-family: var(--f-lat); }
+.tilt { transform: rotate(-4deg); }
+h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92px); display: flex; flex-wrap: wrap; align-items: baseline; gap: .1em .28em; text-wrap: balance; }
+.lead { color: var(--muted); font-size: clamp(17px, 1.6vw, 20px); max-width: 58ch; margin: 0; }
+
+/* ---------- reveal (visible at rest, only moves in) ---------- */
+.rv { transition: transform .9s var(--ease), filter .9s var(--ease); }
+.js .rv:not(.in) { transform: translateY(26px) scale(.985); }
+
+/* ---------- hero ---------- */
+.hero { position: relative; min-height: clamp(620px, 96svh, 940px); display: grid; align-items: center; }
+.hero-frame { position: absolute; inset: 82px max(16px, env(safe-area-inset-left, 0px)) 18px max(16px, env(safe-area-inset-right, 0px)); border-radius: 36px; pointer-events: none;
+  border: 2px solid rgba(170, 70, 255, .9);
+  box-shadow: 0 0 26px 3px var(--glow), inset 0 0 36px rgba(130, 20, 230, .32), inset 0 0 0 1px rgba(236, 170, 255, .12); }
+.hero-frame::after { content: ""; position: absolute; inset: auto 8% -3px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--lilac), transparent); filter: blur(2px); opacity: .9; }
+.hero-tag { position: absolute; top: 98px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(11, 1, 24, .55); box-shadow: inset 0 0 0 1px var(--line); font-size: 13px; color: var(--muted); white-space: nowrap; }
+.hero-tag b { color: #fff; font-family: var(--f-lat); font-weight: 900; letter-spacing: .08em; font-size: 14px; }
+.hero-tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 10px var(--pink); animation: rec 1.6s infinite; }
+@keyframes rec { 50% { opacity: .25 } }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; padding-block: 150px 90px; }
+.hero-copy { max-width: 600px; }
+.hero h1 { margin: 0 0 26px; display: flex; flex-direction: column; align-items: flex-start; line-height: .9; }
+.hero h1 .cap { font-size: clamp(50px, 6.8vw, 100px); }
+.hero h1 .neon { font-size: clamp(72px, 10.4vw, 152px); margin-top: .06em; margin-inline-start: -.04em; }
+.hero .lead { margin-bottom: 34px; }
+.hero-note { margin-top: 14px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.scroll-cue { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; letter-spacing: .1em; text-decoration: none; }
+.scroll-cue span { width: 2px; height: 46px; background: linear-gradient(var(--lilac), transparent); border-radius: 2px; transform-origin: top; animation: cue 1.8s var(--ease) infinite; }
+@keyframes cue { 0% { transform: scaleY(0) } 50% { transform: scaleY(1) } 100% { transform: scaleY(1); opacity: 0 } }
+@media (min-width: 861px) { .hero-grid { padding-left: max(56px, env(safe-area-inset-left, 0px)); padding-right: max(56px, env(safe-area-inset-right, 0px)); } }
+@media (max-width: 860px) {
+  .hero-grid { padding-left: max(34px, env(safe-area-inset-left, 0px)); padding-right: max(34px, env(safe-area-inset-right, 0px)); }
+  .hero { align-items: end; }
+  .hero-grid { grid-template-columns: 1fr; padding-block: 50svh 96px; }
+  .hero-copy { max-width: none; }
+  .scroll-cue, .hero-tag { display: none; }
+}
+
+/* ---------- services ---------- */
+.services { padding-block: 40px 40px; }
+.services .lead { margin-bottom: 40px; }
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.svc { display: grid; align-content: start; gap: 14px; padding: 22px 22px 28px; border-radius: 30px; background: var(--panel); min-width: 0;
+  border: 2px solid rgba(170, 70, 255, .7); box-shadow: 0 0 26px 2px rgba(130, 20, 230, .35), inset 0 0 40px rgba(130, 20, 230, .16);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.svc h3 { margin: 10px 0 0; font: 900 clamp(38px, 4.2vw, 58px)/1 var(--f-cap); color: #fff; }
+.svc p { margin: 0; color: var(--muted); max-width: 48ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.tags li { padding: 7px 14px; border-radius: 999px; font-size: 14px; background: rgba(8, 0, 20, .5); box-shadow: inset 0 0 0 1px var(--line); }
+.meta-note { display: inline-flex; align-items: center; gap: 8px; color: var(--lilac) !important; font-weight: 700; font-size: 15px; }
+.meta-note::before { content: ""; width: 12px; height: 12px; background: var(--lilac); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.svc-vis { position: relative; height: 230px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; align-items: center; gap: 18px;
+  background: radial-gradient(70% 70% at 50% 110%, rgba(170, 70, 255, .45), transparent 70%), #0d0220; box-shadow: inset 0 0 0 1px rgba(170, 70, 255, .25); }
+.mini-floor { position: absolute; inset: 55% -40% -10%; transform: perspective(200px) rotateX(60deg); transform-origin: top;
+  background-image: linear-gradient(rgba(236, 170, 255, .4) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 170, 255, .4) 1px, transparent 1px);
+  background-size: 26px 26px; animation: floor 2.4s linear infinite; }
+.mini-phone { position: relative; height: 190px; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #160430;
+  border: 1.5px solid var(--rim); box-shadow: 0 0 18px rgba(170, 70, 255, .6); }
+.mini-phone.side { height: 150px; opacity: .55; transform: rotateY(-18deg); }
+.mini-kw { position: absolute; top: 26%; left: 0; right: 0; text-align: center; font-size: 30px; transform: rotate(-4deg); }
+.mini-cap { position: absolute; top: 56%; left: 0; right: 0; text-align: center; font-size: 19px; }
+.mini-dot { position: absolute; top: 34%; left: 50%; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffc2f0, var(--pink) 60%, #6a0f8a); box-shadow: 0 0 22px var(--pink); }
+.mini-browser { position: relative; width: min(88%, 380px); height: 190px; border-radius: 14px; overflow: hidden; background: #140330;
+  border: 1.5px solid var(--rim); box-shadow: 0 0 18px rgba(170, 70, 255, .6); display: flex; flex-direction: column; direction: ltr; }
+.mini-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: rgba(255, 255, 255, .05); border-bottom: 1px solid rgba(170, 70, 255, .3); }
+.mini-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(236, 170, 255, .45); }
+.mini-bar span { flex: 1; height: 10px; margin-left: 10px; border-radius: 6px; background: rgba(236, 170, 255, .14); }
+.mini-page { position: relative; flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; direction: rtl; }
+.mini-page img { position: relative; width: 92px; height: 92px; filter: drop-shadow(0 0 16px rgba(170, 70, 255, .8)); animation: wobble 5s ease-in-out infinite; }
+@keyframes wobble { 50% { transform: rotate(-12deg) translateY(-6px); } }
+.mini-lines { position: relative; display: grid; gap: 8px; justify-items: start; }
+.mini-lines b { display: block; height: 12px; width: 120px; border-radius: 6px; background: rgba(255, 255, 255, .85); }
+.mini-lines b:nth-child(2) { width: 150px; height: 18px; background: linear-gradient(180deg, var(--lilac), var(--violet)); box-shadow: 0 0 12px rgba(170, 70, 255, .7); }
+.mini-lines b:nth-child(3) { width: 70px; height: 16px; border-radius: 99px; background: linear-gradient(180deg, #b65cff, #7322ec); }
+@media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .mini-lines b { width: 80px; } .mini-lines b:nth-child(2) { width: 100px; } .mini-page img { width: 70px; height: 70px; } }
+
+.pill { display: inline-flex; align-items: baseline; gap: 4px; padding: 8px 14px 6px; border-radius: 999px; background: rgba(8, 0, 20, .7); box-shadow: inset 0 0 0 1.5px var(--rim), 0 0 16px rgba(170, 70, 255, .45); direction: ltr; white-space: nowrap; }
+.pill b { font: 900 30px/1 var(--f-cap); color: #fff; }
+.pill small { font: 800 14px/1 var(--f-lat); color: var(--lilac); letter-spacing: .04em; }
+
+/* ---------- marquee bands ---------- */
+.bands { overflow: hidden; padding-block: 70px; }
+.band { width: 110%; margin-inline-start: -5%; overflow: hidden; }
+.band-a { transform: rotate(-3deg); background: linear-gradient(90deg, #5b17c9, #a33cff 45%, #ff2e7e); box-shadow: 0 0 40px rgba(170, 70, 255, .5); padding-block: 14px 8px; position: relative; z-index: 1; }
+.band-b { transform: rotate(2deg); margin-top: -10px; background: rgba(11, 1, 24, .85); box-shadow: inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line); padding-block: 12px 6px; }
+.track { display: flex; width: max-content; gap: 34px; align-items: center; will-change: transform; direction: ltr; }
+.track span { font: 900 clamp(34px, 4.4vw, 58px)/1.1 var(--f-cap); color: #fff; white-space: nowrap; direction: rtl; }
+.band-b .track span { color: transparent; -webkit-text-stroke: 1.5px var(--lilac); }
+.track svg { width: 26px; height: 26px; flex: none; fill: #fff; }
+.band-b .track svg { fill: var(--lilac); }
+
+/* ---------- work / carousel ---------- */
+.work { padding-block: 100px 30px; }
+.work-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 40px; margin-bottom: 30px; }
+.work-head .lead { max-width: 40ch; }
+.carousel { position: relative; height: clamp(480px, 70svh, 660px); perspective: 1600px; touch-action: pan-y; user-select: none; -webkit-user-select: none; outline: none; }
+.card { --w: clamp(220px, 25vw, 320px); position: absolute; top: 0; left: 50%; width: var(--w); aspect-ratio: 9 / 16; max-height: 100%; border-radius: 28px; overflow: hidden; cursor: pointer;
+  background: #12032a; border: 2px solid rgba(170, 70, 255, .85);
+  box-shadow: 0 0 24px 2px var(--glow), 0 30px 60px rgba(0, 0, 0, .5);
+  transition: transform .7s var(--ease), opacity .5s, filter .5s, box-shadow .5s; transform-style: preserve-3d; }
+.card.active { box-shadow: 0 0 34px 6px rgba(170, 70, 255, .75), 0 40px 80px rgba(0, 0, 0, .55); border-color: var(--lilac); }
+.card video, .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.card .shade { position: absolute; inset: 0; background: linear-gradient(transparent 60%, rgba(8, 0, 20, .7)); pointer-events: none; }
+.card .ctrl { position: absolute; bottom: 14px; left: 14px; display: flex; gap: 8px; opacity: 0; transition: opacity .3s; }
+.card.active .ctrl { opacity: 1; }
+.icon-btn { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; border: 0; cursor: pointer; color: #fff; background: rgba(11, 1, 24, .7); box-shadow: inset 0 0 0 1.5px var(--line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.icon-btn:hover { box-shadow: inset 0 0 0 1.5px var(--lilac), 0 0 14px rgba(170, 70, 255, .6); }
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.card .paused-badge { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; transition: opacity .25s; pointer-events: none; }
+.card.is-paused.active .paused-badge { opacity: 1; }
+.paused-badge span { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: rgba(11, 1, 24, .6); box-shadow: inset 0 0 0 2px var(--lilac), 0 0 24px rgba(170, 70, 255, .7); }
+.paused-badge svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+.slot { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; text-align: center; padding: 24px;
+  background: radial-gradient(80% 50% at 50% 100%, rgba(170, 70, 255, .45), transparent 70%), linear-gradient(180deg, #1a0638, #0b0118); }
+.slot::before { content: ""; position: absolute; inset: 55% -30% -10%; transform: perspective(240px) rotateX(60deg); transform-origin: top;
+  background-image: linear-gradient(rgba(236, 170, 255, .35) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 170, 255, .35) 1px, transparent 1px); background-size: 34px 34px; }
+.slot img { width: 92px; height: 92px; position: relative; filter: drop-shadow(0 0 22px rgba(170, 70, 255, .8)); }
+.slot b { font: 900 34px/1 var(--f-cap); position: relative; }
+.slot small { color: var(--muted); font-size: 14px; position: relative; }
+.slot .btn { position: relative; }
+@media (max-width: 640px) { .card { --w: min(64vw, 300px); } .carousel { height: calc(min(64vw, 300px) * 16 / 9 + 12px); } }
+.car-ui { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 26px; }
+.dots { display: flex; gap: 8px; }
+.dots button { width: 10px; height: 10px; padding: 0; border-radius: 99px; border: 0; background: rgba(236, 170, 255, .28); cursor: pointer; transition: width .35s var(--ease), background .35s; }
+.dots button[aria-current="true"] { width: 30px; background: var(--lilac); box-shadow: 0 0 10px var(--lilac); }
+.car-meta { text-align: center; margin-top: 16px; min-height: 52px; }
+.car-meta b { display: block; font: 900 28px/1.1 var(--f-cap); }
+.car-meta span { color: var(--muted); font-size: 14px; }
+.mid-cta { display: flex; justify-content: center; margin-top: 34px; }
+
+/* ---------- contact ---------- */
+.contact { padding-block: 90px 80px; }
+.contact-grid { display: grid; grid-template-columns: .95fr 1.05fr; grid-template-areas: "head form" "steps form"; gap: 34px 56px; align-items: start; }
+.contact-head { grid-area: head; } #formPanel { grid-area: form; } .steps { grid-area: steps; }
+.steps { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.steps li { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 20px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); }
+.steps .pill { flex: none; padding: 7px 12px 5px; } .steps .pill b { font-size: 24px; }
+.steps h3 { margin: 0 0 2px; font: 900 26px/1 var(--f-cap); color: #fff; }
+.steps p { margin: 0; color: var(--muted); font-size: 15px; }
+.contact h2.title .neon { font-size: 1.08em; }
+.notif { width: min(100%, 360px); padding: 14px 16px 16px; border-radius: 20px; background: linear-gradient(180deg, #ffffff, #efe2ff); color: #241040; box-shadow: 0 20px 50px rgba(120, 30, 230, .45), 0 0 0 1px rgba(255, 255, 255, .6) inset; animation: bob 5s ease-in-out infinite; }
+.notif-top { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 700; color: #7a2ce6; margin-bottom: 8px; }
+.notif-top i { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #b65cff, #7322ec); display: grid; place-items: center; }
+.notif-top i svg { width: 12px; height: 12px; fill: #fff; }
+.notif-body { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 17px; }
+.notif-body em { width: 34px; height: 34px; border-radius: 50%; flex: none; background: radial-gradient(circle at 35% 35%, #ff8db4, var(--pink)); box-shadow: 0 0 14px rgba(255, 46, 126, .6); }
+@keyframes bob { 50% { transform: translateY(-8px) rotate(-1deg); } }
+.panel { position: relative; padding: clamp(22px, 3vw, 36px); border-radius: 30px; background: var(--panel); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(170, 70, 255, .75); box-shadow: 0 0 30px 3px var(--glow), inset 0 0 40px rgba(130, 20, 230, .18); overflow: hidden; }
+.form { display: grid; gap: 18px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 7px; min-width: 0; }
+.field label, .field legend { font-weight: 700; font-size: 14px; color: var(--ink); padding: 0; }
+.field label small, .field legend small { color: var(--muted); font-weight: 400; }
+.input { width: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(8, 0, 20, .6); color: var(--ink); font: 400 16px/1.4 var(--f-body); transition: border-color .2s, box-shadow .2s; }
+.input::placeholder { color: rgba(191, 174, 221, .55); }
+.input:focus { outline: none; border-color: var(--rim); box-shadow: 0 0 0 3px rgba(170, 70, 255, .25), 0 0 18px rgba(170, 70, 255, .35); }
+.input[aria-invalid="true"] { border-color: var(--pink); }
+textarea.input { min-height: 110px; resize: vertical; }
+.err { color: #ff8db4; font-size: 13px; min-height: 0; }
+.err:empty { display: none; }
+fieldset.field { border: 0; margin: 0; padding: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips input { position: absolute; opacity: 0; pointer-events: none; }
+.chips label { padding: 9px 16px; border-radius: 999px; font-weight: 500; font-size: 14px; cursor: pointer; background: rgba(8, 0, 20, .5); box-shadow: inset 0 0 0 1px var(--line); transition: background .2s, box-shadow .2s; }
+.chips input:checked + label { background: linear-gradient(180deg, #a84dff, #6f1ee8); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25), 0 0 16px rgba(170, 70, 255, .55); }
+.chips input:focus-visible + label { outline: 2px solid var(--lilac); outline-offset: 2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form .btn { width: 100%; padding-block: 17px; font-size: 17px; }
+.form .btn[disabled] { opacity: .7; cursor: progress; transform: none; }
+.status { font-size: 14px; color: #ff8db4; min-height: 1em; margin: 0; }
+.status:empty { display: none; }
+.fine { color: var(--muted); font-size: 13px; margin: 0; }
+.sent { display: grid; gap: 18px; justify-items: start; padding-block: 18px; }
+.sent .notif { margin: 0; animation: pop .7s var(--ease) both, bob 5s ease-in-out .7s infinite; }
+@keyframes pop { from { transform: translateY(30px) scale(.8); opacity: 0; } }
+.sent h3 { margin: 6px 0 0; font: 900 clamp(34px, 4vw, 48px)/1 var(--f-cap); }
+.sent p { margin: 0; color: var(--muted); }
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; grid-template-areas: "head" "form" "steps"; gap: 28px; }
+}
+@media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+
+/* ---------- footer ---------- */
+.foot { padding-block: 40px 50px; border-top: 1px solid rgba(170, 70, 255, .16); background: linear-gradient(transparent, rgba(11, 1, 24, .8)); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; }
+.socials { display: flex; gap: 10px; }
+.socials:empty { display: none; }
+
+/* ---------- WhatsApp (shown only when the site runs on the SPARK server) ---------- */
+.wa-fab { position: fixed; z-index: 45; left: max(18px, env(safe-area-inset-left, 0px)); bottom: max(18px, env(safe-area-inset-bottom, 0px)); width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
+  background: linear-gradient(180deg, #2be37b, #12a957); box-shadow: 0 0 0 1px rgba(255, 255, 255, .25) inset, 0 10px 30px rgba(30, 200, 110, .45); transition: transform .25s var(--ease); }
+.wa-fab:hover { transform: translateY(-3px) scale(1.04); }
+.wa-fab svg { width: 30px; height: 30px; fill: #fff; }
+.wa-alt { margin: 4px 0 0; font-size: 14px; color: var(--muted); text-align: center; }
+.wa-alt a { color: #7dffb4; font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rv, .card { transition-duration: .01s; }
+  .js .rv:not(.in) { transform: none; }
+  .mini-floor, .mini-page img, .notif, .scroll-cue span, .hero-tag i { animation: none; }
+}
+</style>
+
+</head>
+<body>
+<canvas id="stage" aria-hidden="true"></canvas>
+<img class="fallback-logo" src="media/spark-logo-3d.png" alt="">
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="page" dir="rtl" lang="he">
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="SPARK, לראש העמוד"><img src="media/spark-mark.png" alt=""><span>SPARK</span></a>
+      <ul>
+        <li><a href="#work">עבודות</a></li>
+        <li><a href="#services">שירותים</a></li>
+        <li><a href="#contact">צור קשר</a></li>
+      </ul>
+      <a class="btn btn-primary btn-sm" href="#contact">לקבלת הצעה</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-frame" aria-hidden="true"></div>
+      <div class="hero-tag" aria-hidden="true"><i></i><b>SPARK</b> סטודיו לווידאו ואתרים</div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">סטודיו לעריכת וידאו ובניית אתרים</p>
+          <h1>
+            <span class="cap">סרטונים שעוצרים גלילה</span>
+            <span class="cap">ואתרים שמביאים</span>
+            <span class="neon tilt">לקוחות</span>
+          </h1>
+          <p class="lead">עורכים רילס, טיקטוק ופרסומות, ובונים דפי נחיתה ואתרי תדמית. עם תלת מימד ותנועה שנבנים במיוחד למותג שלכם.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">לקבלת הצעה לפרויקט</a>
+            <a class="btn btn-ghost" href="#work">לעבודות שלנו</a>
+          </div>
+          <p class="fine hero-note">שיחת היכרות קצרה, בלי התחייבות.</p>
+        </div>
+        <div aria-hidden="true"></div>
+      </div>
+      <a class="scroll-cue" href="#work" aria-label="גללו למטה"><span></span>גללו</a>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="work-head">
+          <div>
+            <p class="eyebrow">עבודות נבחרות</p>
+            <h2 class="title" id="work-title"><span class="cap">ככה זה נראה</span> <span class="neon tilt">בתנועה</span></h2>
+          </div>
+          <p class="lead">גררו או לחצו על החיצים כדי לעבור בין הסרטונים. הרמקול מפעיל סאונד.</p>
+        </div>
+        <div class="carousel" id="carousel" tabindex="0" role="region" aria-roledescription="קרוסלה" aria-label="סרטונים"></div>
+        <div class="car-meta" aria-live="polite"><b id="carTitle"></b><span id="carTag"></span></div>
+        <div class="car-ui">
+          <button class="icon-btn" id="prevBtn" type="button" aria-label="הסרטון הקודם"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          <div class="dots" id="dots"></div>
+          <button class="icon-btn" id="nextBtn" type="button" aria-label="הסרטון הבא"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        </div>
+        <div class="mid-cta"><a class="btn btn-primary" href="#contact">רוצים סרטון כזה? דברו איתנו</a></div>
+      </div>
+    </section>
+
+    <div class="bands" aria-hidden="true">
+      <div class="band band-a"><div class="track" data-speed="60"></div></div>
+      <div class="band band-b"><div class="track" data-speed="-42"></div></div>
+    </div>
+
+    <section class="services" id="services" aria-labelledby="svc-title">
+      <div class="wrap">
+        <p class="eyebrow">מה אנחנו עושים</p>
+        <h2 class="title" id="svc-title"><span class="cap">וידאו ואתרים</span> <span class="neon tilt">מאותו סטודיו</span></h2>
+        <p class="lead">כל פרויקט נבנה אצלנו מאפס, בלי תבניות מוכנות. כשהסרטון והאתר יוצאים מאותו מקום, המותג שלכם נראה אותו דבר בכל מקום שבו פוגשים אותו.</p>
+        <div class="svc-grid">
+          <article class="svc rv">
+            <div class="svc-vis" aria-hidden="true">
+              <div class="mini-phone">
+                <div class="mini-floor"></div>
+                <span class="mini-kw neon">3 שניות</span>
+                <span class="mini-cap cap">זה כל מה</span>
+              </div>
+              <div class="mini-phone side">
+                <div class="mini-floor"></div>
+                <span class="mini-dot"></span>
+              </div>
+            </div>
+            <h3>עריכת וידאו</h3>
+            <p>לסרטון יש שלוש שניות לעצור את הגלילה. אנחנו בונים את הפתיחה כדי לנצל אותן, ואת ההמשך כדי שיצפו עד הסוף: כתוביות, תלת מימד, מעברים וסאונד.</p>
+            <ul class="tags"><li>רילס וטיקטוק</li><li>פרסומות למותגים</li><li>תוכן שוטף לעסק</li></ul>
+          </article>
+          <article class="svc rv">
+            <div class="svc-vis" aria-hidden="true">
+              <div class="mini-browser">
+                <div class="mini-bar"><i></i><i></i><i></i><span></span></div>
+                <div class="mini-page">
+                  <div class="mini-floor"></div>
+                  <img src="media/spark-logo-3d.png" alt="">
+                  <div class="mini-lines"><b></b><b></b><b></b></div>
+                </div>
+              </div>
+            </div>
+            <h3>בניית אתרים</h3>
+            <p>דפי נחיתה ואתרי תדמית שבנויים להביא פניות: מסר שמובן מהשנייה הראשונה, דרך קצרה לטופס, ותנועה שגורמת להמשיך לגלול. מותאמים לנייד ומחוברים למערכות שלכם.</p>
+            <ul class="tags"><li>דפי נחיתה</li><li>אתרי תדמית</li><li>תלת מימד ואנימציה</li></ul>
+            <p class="meta-note">האתר שאתם נמצאים בו עכשיו? גם אותו בנינו.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div class="contact-head rv">
+          <p class="eyebrow">צור קשר</p>
+          <h2 class="title" id="contact-title"><span class="cap">רוצים סרטון או אתר</span> <span class="neon tilt">ברמה הזאת?</span></h2>
+          <p class="lead">השאירו שם וטלפון, ונחזור אליכם לשיחה קצרה על הפרויקט.</p>
+        </div>
+
+        <div class="panel rv" id="formPanel">
+          <form class="form" id="leadForm" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="f-name">שם</label>
+                <input class="input" id="f-name" name="name" autocomplete="name" placeholder="איך קוראים לך?" required>
+                <span class="err" id="e-name"></span>
+              </div>
+              <div class="field">
+                <label for="f-phone">טלפון</label>
+                <input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="050-0000000" dir="ltr" style="text-align:right" required>
+                <span class="err" id="e-phone"></span>
+              </div>
+            </div>
+            <fieldset class="field">
+              <legend>מה אתם צריכים?</legend>
+              <div class="chips">
+                <input type="radio" name="type" id="t1" value="רילס / טיקטוק" checked><label for="t1">רילס / טיקטוק</label>
+                <input type="radio" name="type" id="t2" value="פרסומת למותג"><label for="t2">פרסומת למותג</label>
+                <input type="radio" name="type" id="t5" value="אתר / דף נחיתה"><label for="t5">אתר / דף נחיתה</label>
+                <input type="radio" name="type" id="t3" value="תוכן שוטף לעסק"><label for="t3">תוכן שוטף לעסק</label>
+                <input type="radio" name="type" id="t4" value="משהו אחר"><label for="t4">משהו אחר</label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-msg">כמה מילים על הפרויקט <small>(לא חובה)</small></label>
+              <textarea class="input" id="f-msg" name="message" placeholder="למשל: 4 רילסים בחודש לחנות בגדים, או דף נחיתה להשקה בעוד חודש"></textarea>
+            </div>
+            <div class="hp" aria-hidden="true"><label for="f-web">אתר</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+            <p class="status" id="formStatus" role="alert"></p>
+            <button class="btn btn-primary" id="submitBtn" type="submit">שלחו ונחזור אליכם</button>
+            <p class="fine">הפרטים משמשים רק כדי לחזור אליכם לגבי הפרויקט.</p>
+            <p class="wa-alt" id="waAlt" hidden>מעדיפים וואטסאפ? <a href="#" target="_blank" rel="noopener">כתבו לנו ישירות</a></p>
+          </form>
+          <div class="sent" id="sent" hidden>
+            <div class="notif">
+              <div class="notif-top"><span>הודעה חדשה</span><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i></div>
+              <div class="notif-body"><em></em><span id="sentLine">היי, אני רוצה סרטון כזה!</span></div>
+            </div>
+            <h3 class="cap">ההודעה התקבלה</h3>
+            <p id="sentNote">תודה! נחזור אליכם בקרוב לשיחה קצרה על הפרויקט.</p>
+            <button class="btn btn-ghost btn-sm" id="againBtn" type="button">שליחת פנייה נוספת</button>
+          </div>
+        </div>
+
+        <ol class="steps rv" aria-label="איך זה עובד">
+          <li><span class="pill"><b>01</b></span><div><h3>משאירים פרטים</h3><p>שם וטלפון, פחות מדקה.</p></div></li>
+          <li><span class="pill"><b>02</b></span><div><h3>שיחה קצרה</h3><p>מה המטרה, למי זה מיועד ומתי צריך את זה.</p></div></li>
+          <li><span class="pill"><b>03</b></span><div><h3>הצעה מסודרת</h3><p>מחיר ולוח זמנים ברורים לפני שמתחילים.</p></div></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="media/spark-mark.png" alt=""><span>SPARK</span></a>
+      <div class="socials" id="socials"></div>
+      <span>© <span id="year">2026</span> SPARK · סטודיו לווידאו ואתרים</span>
+    </div>
+  </footer>
+  <a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="שלחו לנו הודעה בוואטסאפ" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* =====================================================================
+   הגדרות - כאן עורכים
+   ===================================================================== */
+
+/* קרוסלת הסרטונים: src = קישור ישיר לקובץ וידאו (mp4 / webm / mov).
+   poster = תמונת תצוגה (לא חובה). פריט עם src ריק מוצג ככרטיס "הסרטון הבא שלך". */
+const VIDEOS = [
+  { src: "media/spark-promo.mp4", poster: "media/spark-promo.jpg", title: "פרומו SPARK", tag: "רגעים נבחרים · תלת מימד · ניאון · סאונד" },
+  { src: "", poster: "", title: "הסרטון הבא", tag: "המקום הזה שמור לסרטון שלך" },
+  { src: "", poster: "", title: "הסרטון הבא", tag: "המקום הזה שמור לסרטון שלך" },
+];
+
+/* טופס צור קשר: כשהאתר מתארח אצלכם, הדביקו מפתח גישה חינמי מ-web3forms.com
+   וכל פנייה תגיע ישר למייל. אפשר במקום זה לשים כתובת Formspree / שרת משלכם ב-FORM_ENDPOINT. */
+const CONFIG = {
+  WEB3FORMS_KEY: "",
+  FORM_ENDPOINT: "/api/leads",
+  EMAIL_SUBJECT: "פנייה חדשה מהאתר של SPARK",
+  /* רשתות חברתיות לפוטר, למשל { label: "אינסטגרם", url: "https://instagram.com/..." } */
+  SOCIALS: [],
+};
+
+/* ===================================================================== */
+
+document.documentElement.classList.add("js");
+document.documentElement.lang = "he";
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s) => document.querySelector(s);
+$("#year").textContent = new Date().getFullYear();
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+
+/* ---------- nav ---------- */
+const nav = $("#nav");
+const onNav = () => nav.classList.toggle("solid", scrollY > 40);
+addEventListener("scroll", onNav, { passive: true }); onNav();
+
+/* ---------- socials ---------- */
+CONFIG.SOCIALS.forEach((s) => { const a = document.createElement("a"); a.className = "btn btn-ghost btn-sm"; a.href = s.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.label; $("#socials").appendChild(a); });
+
+/* ---------- marquee bands (speed reacts to scroll velocity) ---------- */
+const STAR = '<svg viewBox="0 0 24 24"><path d="M12 0c.8 6.4 4.8 10.6 12 12-7.2 1.4-11.2 5.6-12 12-.8-6.4-4.8-10.6-12-12C7.2 10.6 11.2 6.4 12 0z"/></svg>';
+const words = ["עריכת וידאו", "בניית אתרים", "תלת מימד", "אפקטים", "אנימציות גלילה", "מעברים", "סאונד", "דפי נחיתה", "מילים בניאון"];
+const tracks = [...document.querySelectorAll(".track")].map((t, k) => {
+  const seq = (k ? [...words].reverse() : words).map((w) => `<span>${w}</span>${STAR}`).join("");
+  t.innerHTML = seq + seq + seq;
+  return { el: t, speed: +t.dataset.speed, x: 0, w: 0 };
+});
+const measureTracks = () => tracks.forEach((t) => (t.w = t.el.scrollWidth / 3));
+measureTracks();
+
+/* ---------- carousel ---------- */
+/* the caption face has no Latin letters: wrap them in the Latin display face */
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const latin = (t) => esc(t).replace(/[A-Za-z][A-Za-z0-9 .&'-]*[A-Za-z0-9]|[A-Za-z]/g, (m) => `<span class="lat">${m}</span>`);
+const car = $("#carousel"), dotsEl = $("#dots");
+let cur = 0, soundOn = false, carVisible = false;
+const ICON_SND_OFF = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>';
+const ICON_SND_ON = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg>';
+const cards = VIDEOS.map((v, i) => {
+  const c = document.createElement("div");
+  c.className = "card";
+  c.setAttribute("role", "group");
+  c.setAttribute("aria-roledescription", "סרטון");
+  c.setAttribute("aria-label", `${i + 1} מתוך ${VIDEOS.length}: ${v.title}`);
+  if (v.src) {
+    const vid = document.createElement("video");
+    vid.src = v.src; if (v.poster) vid.poster = v.poster;
+    vid.muted = true; vid.loop = true; vid.playsInline = true; vid.preload = "none";
+    vid.setAttribute("playsinline", ""); vid.setAttribute("muted", "");
+    c.appendChild(vid);
+    c.insertAdjacentHTML("beforeend", `<div class="shade"></div><div class="paused-badge"><span><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span></div>
+      <div class="ctrl"><button class="icon-btn snd" type="button" aria-label="הפעלת סאונד">${ICON_SND_OFF}</button></div>`);
+    c._video = vid;
+    c.querySelector(".snd").addEventListener("click", (e) => { e.stopPropagation(); soundOn = !soundOn; syncSound(); if (vid.paused) play(c); });
+  } else {
+    c.innerHTML = `<div class="slot"><img src="media/spark-logo-3d.png" alt=""><b>${latin(v.title)}</b><small>${esc(v.tag)}</small><a class="btn btn-primary btn-sm" href="#contact">בואו נבנה אותו</a></div>`;
+  }
+  c.addEventListener("click", (e) => {
+    if (dragMoved) return;
+    if (i !== cur) { go(i); return; }
+    if (c._video && !e.target.closest("a")) { c._video.paused ? play(c) : (c._video.pause(), c.classList.add("is-paused")); }
+  });
+  car.appendChild(c);
+  const d = document.createElement("button");
+  d.type = "button"; d.setAttribute("aria-label", `מעבר לסרטון ${i + 1}`);
+  d.addEventListener("click", () => go(i));
+  dotsEl.appendChild(d);
+  return c;
+});
+function play(c) {
+  const v = c._video; if (!v) return;
+  if (v.preload !== "auto") v.preload = "auto";
+  v.muted = !soundOn;
+  const p = v.play(); if (p && p.catch) p.catch(() => { v.muted = true; soundOn = false; syncSound(); v.play().catch(() => {}); });
+  c.classList.remove("is-paused");
+}
+function syncSound() {
+  cards.forEach((c) => {
+    if (!c._video) return;
+    c._video.muted = !(soundOn && c === cards[cur]);
+    const b = c.querySelector(".snd");
+    b.innerHTML = soundOn ? ICON_SND_ON : ICON_SND_OFF;
+    b.setAttribute("aria-label", soundOn ? "השתקה" : "הפעלת סאונד");
+  });
+}
+function layout() {
+  const n = cards.length, w = cards[0].offsetWidth || 260;
+  const narrow = innerWidth < 640, step = w * (narrow ? 0.56 : 0.74);
+  cards.forEach((c, i) => {
+    let d = (((i - cur) % n) + n) % n; if (d > n / 2) d -= n;
+    const a = Math.abs(d), x = -d * step; // RTL: the next video sits to the left
+    const ry = Math.sign(d) * Math.min(a, 1.5) * 28;
+    const s = 1 - Math.min(a, 2) * 0.1, z = -a * 160;
+    c.style.transform = `translateX(-50%) translateX(${x}px) translateZ(${z}px) rotateY(${ry}deg) scale(${s})`;
+    c.style.zIndex = String(10 - Math.round(a));
+    c.style.opacity = a > 2.2 ? "0" : "1";
+    c.style.filter = a < 0.5 ? "none" : `brightness(${a > 1.5 ? 0.35 : 0.55}) saturate(1.1)`;
+    c.style.pointerEvents = a > 2.2 ? "none" : "auto";
+    c.classList.toggle("active", d === 0);
+  });
+  [...dotsEl.children].forEach((d, i) => d.setAttribute("aria-current", i === cur ? "true" : "false"));
+  $("#carTitle").innerHTML = latin(VIDEOS[cur].title);
+  $("#carTag").textContent = VIDEOS[cur].tag;
+}
+function go(i) {
+  const n = cards.length;
+  const prev = cards[cur];
+  if (prev._video) { prev._video.pause(); prev._video.muted = true; }
+  cur = ((i % n) + n) % n;
+  layout(); syncSound();
+  if (carVisible && cards[cur]._video) play(cards[cur]);
+}
+$("#nextBtn").addEventListener("click", () => go(cur + 1));
+$("#prevBtn").addEventListener("click", () => go(cur - 1));
+car.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") { go(cur + 1); e.preventDefault(); }
+  if (e.key === "ArrowRight") { go(cur - 1); e.preventDefault(); }
+});
+let dragX = null, dragMoved = false;
+car.addEventListener("pointerdown", (e) => { dragX = e.clientX; dragMoved = false; });
+addEventListener("pointermove", (e) => { if (dragX !== null && Math.abs(e.clientX - dragX) > 8) dragMoved = true; });
+addEventListener("pointerup", (e) => {
+  if (dragX === null) return;
+  const dx = e.clientX - dragX; dragX = null;
+  if (Math.abs(dx) > 50) go(dx > 0 ? cur + 1 : cur - 1);
+  setTimeout(() => (dragMoved = false), 0);
+});
+new IntersectionObserver((es) => {
+  carVisible = es[0].isIntersecting;
+  const c = cards[cur];
+  if (!c._video) return;
+  if (carVisible && !c.classList.contains("is-paused")) play(c); else c._video.pause();
+}, { threshold: 0.35 }).observe(car);
+layout();
+addEventListener("resize", layout);
+
+/* ---------- contact form ---------- */
+const form = $("#leadForm"), statusEl = $("#formStatus"), btn = $("#submitBtn");
+const dbReady = window.claude && typeof window.claude.use === "function"
+  ? Promise.race([window.claude.use("db").catch(() => null), new Promise((r) => setTimeout(() => r(null), 6000))])
+  : Promise.resolve(null);
+
+function setErr(id, msg) {
+  const input = $("#f-" + id), e = $("#e-" + id);
+  if (e) e.textContent = msg || "";
+  if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
+  return !msg;
+}
+function validate(d) {
+  const digits = d.phone.replace(/[^\d]/g, "");
+  const ok = [
+    setErr("name", d.name.length < 2 ? "כתבו שם, כדי שנדע איך לפנות אליכם." : ""),
+    setErr("phone", digits.length < 9 || digits.length > 13 ? "מספר הטלפון לא נראה תקין. לדוגמה: 050-1234567" : ""),
+  ];
+  const firstBad = ["name", "phone"][ok.indexOf(false)];
+  if (firstBad) $("#f-" + firstBad).focus();
+  return ok.every(Boolean);
+}
+async function sendLead(d) {
+  const db = await dbReady;
+  if (db) {
+    try { await db.collection("leads").add({ ...d, createdAt: new Date().toISOString() }); return "db"; }
+    catch (e) { /* this viewer can't write here; fall through to the email service */ }
+  }
+  if (CONFIG.WEB3FORMS_KEY) {
+    const r = await fetch("https://api.web3forms.com/submit", {
+      method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ access_key: CONFIG.WEB3FORMS_KEY, subject: CONFIG.EMAIL_SUBJECT, from_name: "SPARK · אתר",
+        "שם": d.name, "טלפון": d.phone, "סוג פרויקט": d.type, "הודעה": d.message || "-" }),
+    });
+    const j = await r.json().catch(() => ({}));
+    if (r.ok && j.success !== false) return "web3forms";
+    throw new Error("web3forms failed");
+  }
+  if (CONFIG.FORM_ENDPOINT) {
+    const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+    if (r.ok) return "endpoint";
+    throw new Error("endpoint failed");
+  }
+  console.warn("SPARK: contact form has no destination. Set CONFIG.WEB3FORMS_KEY or CONFIG.FORM_ENDPOINT.");
+  const err = new Error("not configured"); err.userMsg = "הטופס עוד לא מחובר לתיבת הדואר. נסו שוב מאוחר יותר."; throw err;
+}
+form.addEventListener("input", (e) => { if (e.target.getAttribute("aria-invalid") === "true") setErr(e.target.name, ""); });
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  statusEl.textContent = "";
+  if (form.website.value) return;
+  const fd = new FormData(form);
+  const d = { name: (fd.get("name") || "").trim(), phone: (fd.get("phone") || "").trim(), type: fd.get("type") || "", message: (fd.get("message") || "").trim() };
+  if (!validate(d)) return;
+  btn.disabled = true; btn.textContent = "שולח...";
+  try {
+    const via = await sendLead(d);
+    if (via === "endpoint" && CONFIG.FORM_ENDPOINT === "/api/leads") $("#sentNote").textContent = "תודה! אישור יגיע אליכם עכשיו בוואטסאפ, ונחזור אליכם בקרוב לשיחה קצרה.";
+    $("#sentLine").textContent = `היי, זה ${d.name.split(" ")[0]}. אני רוצה ${d.type.includes("אתר") ? "אתר" : "סרטון"} כזה!`;
+    form.hidden = true; $("#sent").hidden = false; form.reset();
+  } catch (err) {
+    statusEl.textContent = err.userMsg || "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב.";
+  } finally { btn.disabled = false; btn.textContent = "שלחו ונחזור אליכם"; }
+});
+$("#againBtn").addEventListener("click", () => { $("#sent").hidden = true; form.hidden = false; $("#f-name").focus(); });
+
+/* ---------- WhatsApp buttons: the SPARK server knows the studio's number ---------- */
+fetch("/api/public/info").then((r) => (r.ok ? r.json() : null)).then((info) => {
+  if (!info || !info.whatsapp) return;
+  const url = `https://wa.me/${info.whatsapp}?text=${encodeURIComponent("היי SPARK, אשמח לשמוע פרטים על פרויקט")}`;
+  $("#waFab").href = url; $("#waFab").hidden = false;
+  $("#waAlt a").href = url; $("#waAlt").hidden = false;
+}).catch(() => {});
+
+/* =====================================================================
+   3D: the SPARK logo, orbit rings, sparkles, synthwave floor
+   ===================================================================== */
+const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+addEventListener("pointermove", (e) => { mouse.tx = e.clientX / innerWidth * 2 - 1; mouse.ty = e.clientY / innerHeight * 2 - 1; }, { passive: true });
+
+let three = null;
+try { if (window.THREE) three = initThree(); } catch (e) { console.warn("WebGL unavailable", e); }
+if (!three) document.documentElement.classList.add("no-webgl");
+
+function initThree() {
+  const canvas = $("#stage");
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, innerWidth < 700 ? 1.6 : 1.75));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b0118).convertSRGBToLinear();
+  scene.fog = new THREE.Fog(scene.background, 10, 34);
+  const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 6);
+  const lin = (hex) => new THREE.Color(hex).convertSRGBToLinear();
+
+  /* studio reflections: a tiny scene of glowing panels baked into an environment map */
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const env = new THREE.Scene();
+  env.background = lin(0x16023a);
+  const panel = (hex, k, w, h, x, y, z) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: lin(hex).multiplyScalar(k), side: THREE.DoubleSide }));
+    m.position.set(x, y, z); m.lookAt(0, 0, 0); env.add(m);
+  };
+  panel(0xffffff, 5, 7, 3, -4, 5, 5);
+  panel(0xffffff, 3, 2, 9, 7, 0, 2);
+  panel(0xff4fd8, 2.5, 7, 7, -7, -1, -3);
+  panel(0x8a4dff, 2.5, 12, 12, 0, -7, 0);
+  panel(0xc8a6ff, 2, 5, 5, 2, 4, -7);
+  scene.environment = pmrem.fromScene(env, 0.035).texture;
+
+  scene.add(new THREE.AmbientLight(0x6b3cff, 0.25));
+  const key = new THREE.DirectionalLight(0xffffff, 1.4); key.position.set(-3, 4, 5); scene.add(key);
+  const rimL = new THREE.PointLight(0xff2e9a, 3, 12); rimL.position.set(3, -1.5, -2); scene.add(rimL);
+
+  /* --- the logo: an open ring whose gap is plugged by a four-point spark --- */
+  const D = Math.PI / 180, R = 1, rIn = 0.37;
+  const pol = (r, a) => new THREE.Vector2(Math.cos(a * D) * r, Math.sin(a * D) * r);
+  const starC = pol(0.67, 52);
+  const ring = new THREE.Shape();
+  const P2 = pol(R, 77), P1 = pol(R, 27), Q1 = pol(rIn, 38), Q2 = pol(rIn, 66);
+  const toward = (a, b, k) => new THREE.Vector2((a.x + b.x) / 2 + (starC.x - (a.x + b.x) / 2) * k, (a.y + b.y) / 2 + (starC.y - (a.y + b.y) / 2) * k);
+  ring.moveTo(P2.x, P2.y);
+  ring.absarc(0, 0, R, 77 * D, (27 + 360) * D, false);
+  const c1 = toward(P1, Q1, 0.55); ring.quadraticCurveTo(c1.x, c1.y, Q1.x, Q1.y);
+  ring.absarc(0, 0, rIn, 38 * D, (66 - 360) * D, true);
+  const c2 = toward(Q2, P2, 0.55); ring.quadraticCurveTo(c2.x, c2.y, P2.x, P2.y);
+  const ringGeo = new THREE.ExtrudeGeometry(ring, { depth: 0.26, bevelEnabled: true, bevelThickness: 0.11, bevelSize: 0.075, bevelSegments: 10, curveSegments: 96 });
+  ringGeo.translate(0, 0, -0.13);
+  const star = new THREE.Shape(), sR = 0.33, rot = -6;
+  for (let k = 0; k < 4; k++) {
+    const a = rot + k * 90, p = pol(sR, a), q = pol(sR * 0.2, a + 45), n = pol(sR, a + 90);
+    if (k === 0) star.moveTo(p.x, p.y);
+    star.quadraticCurveTo(q.x, q.y, n.x, n.y);
+  }
+  const starGeo = new THREE.ExtrudeGeometry(star, { depth: 0.2, bevelEnabled: true, bevelThickness: 0.14, bevelSize: 0.05, bevelSegments: 10, curveSegments: 32 });
+  starGeo.translate(starC.x, starC.y, -0.1);
+  const ringMat = new THREE.MeshPhysicalMaterial({ color: lin(0x6c24e4), metalness: 0.05, roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 1.2 });
+  const starMat = new THREE.MeshPhysicalMaterial({ color: lin(0xffffff), roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.1, emissive: lin(0xc9a8ff), emissiveIntensity: 0.22 });
+  const logo = new THREE.Group();
+  logo.add(new THREE.Mesh(ringGeo, ringMat), new THREE.Mesh(starGeo, starMat));
+  const spin = new THREE.Group(); spin.add(logo);
+  const rig = new THREE.Group(); rig.add(spin); scene.add(rig);
+
+  /* glow halo behind the logo */
+  const glowTex = (() => {
+    const c = document.createElement("canvas"); c.width = c.height = 256;
+    const g = c.getContext("2d"), gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+    gr.addColorStop(0, "rgba(190,110,255,0.9)"); gr.addColorStop(0.35, "rgba(140,40,240,0.35)"); gr.addColorStop(1, "rgba(80,0,160,0)");
+    g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+    const t = new THREE.CanvasTexture(c); return t;
+  })();
+  const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.55 }));
+  halo.scale.set(5.2, 5.2, 1); halo.position.z = -1.2; rig.add(halo);
+
+  /* orbit rings like the reels' orb shots */
+  const orbitMat = (o) => new THREE.MeshBasicMaterial({ color: lin(0xf0d2ff), transparent: true, opacity: o, blending: THREE.AdditiveBlending, depthWrite: false });
+  const orbits = [[1.65, 0.007, 1.25, 0.2, 0.55], [1.95, 0.005, 1.05, -0.45, 0.35], [2.3, 0.004, 1.42, 0.7, 0.22]].map(([r, t, rx, ry, o]) => {
+    const m = new THREE.Mesh(new THREE.TorusGeometry(r, t, 6, 220), orbitMat(o)); m.rotation.set(rx, ry, 0); rig.add(m); return m;
+  });
+  const moon = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), new THREE.MeshBasicMaterial({ color: lin(0xff6fb0).multiplyScalar(2) }));
+  orbits[1].add(moon); moon.position.x = 1.95;
+
+  /* wireframe polyhedron in the back, as in the reels */
+  const ico = new THREE.Group();
+  const icoGeo = new THREE.IcosahedronGeometry(1.7, 0);
+  ico.add(new THREE.LineSegments(new THREE.EdgesGeometry(icoGeo), new THREE.LineBasicMaterial({ color: lin(0xecaaff), transparent: true, opacity: 0.55 })));
+  ico.add(new THREE.Points(icoGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.09, transparent: true, opacity: 0.9 })));
+  ico.position.set(4.6, 1.9, -8); scene.add(ico);
+
+  /* four-point spark particles */
+  const N = innerWidth < 700 ? 110 : 220;
+  const pos = new Float32Array(N * 3), size = new Float32Array(N), phase = new Float32Array(N);
+  for (let i = 0; i < N; i++) {
+    pos[i * 3] = (Math.random() - 0.5) * 22; pos[i * 3 + 1] = Math.random() * 10 - 4; pos[i * 3 + 2] = -Math.random() * 18 + 3;
+    size[i] = Math.random() < 0.12 ? 9 + Math.random() * 7 : 2 + Math.random() * 4; phase[i] = Math.random();
+  }
+  const pg = new THREE.BufferGeometry();
+  pg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  pg.setAttribute("aSize", new THREE.BufferAttribute(size, 1));
+  pg.setAttribute("aPhase", new THREE.BufferAttribute(phase, 1));
+  const pMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { uTime: { value: 0 }, uPR: { value: renderer.getPixelRatio() }, uColor: { value: new THREE.Color(1.0, 0.86, 1.0) } },
+    vertexShader: `attribute float aSize; attribute float aPhase; uniform float uTime; uniform float uPR; varying float vTw;
+      void main(){ vec3 p = position; p.y = mod(p.y + 4.0 + uTime * 0.1 * (0.4 + fract(aPhase * 7.0)), 10.0) - 4.0;
+        vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
+        vTw = 0.45 + 0.55 * sin(uTime * 1.8 + aPhase * 6.2831);
+        gl_PointSize = aSize * uPR * (12.0 / -mv.z); }`,
+    fragmentShader: `uniform vec3 uColor; varying float vTw;
+      void main(){ vec2 p = gl_PointCoord * 2.0 - 1.0; float s = sqrt(abs(p.x)) + sqrt(abs(p.y));
+        float star = 1.0 - smoothstep(0.35, 1.0, s); float core = exp(-dot(p, p) * 12.0);
+        float v = (star * 1.2 + core * 0.8) * vTw; if (v < 0.01) discard; gl_FragColor = vec4(uColor * v, v); }`,
+  });
+  scene.add(new THREE.Points(pg, pMat));
+
+  /* synthwave floor */
+  const gMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, extensions: { derivatives: true },
+    uniforms: { uOff: { value: 0 }, uColor: { value: new THREE.Color(0.85, 0.5, 1.0) } },
+    vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `uniform float uOff; uniform vec3 uColor; varying vec3 vW;
+      void main(){ vec2 c = vec2(vW.x, vW.z + uOff) * 0.8; vec2 g = abs(fract(c - 0.5) - 0.5) / fwidth(c);
+        float line = 1.0 - min(min(g.x, g.y), 1.0); float d = length(vW.xz - vec2(0.0, -3.0));
+        float a = line * smoothstep(24.0, 4.0, d) * 0.6; gl_FragColor = vec4(uColor * a, a); }`,
+  });
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(90, 60), gMat);
+  floor.rotation.x = -Math.PI / 2; floor.position.set(0, -2.3, -18); scene.add(floor);
+  const horizon = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xff4fb8, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.45, fog: false }));
+  horizon.scale.set(60, 9, 1); horizon.position.set(0, -2.2, -30); scene.add(horizon);
+
+  /* scroll choreography: keyframes pinned to sections. x/y are fractions of the visible half-width/height at that depth */
+  const KF = {
+    wide: [
+      { at: "#top", edge: "center", x: -0.44, y: 0.0, z: 0, s: 1.1 },
+      { at: "#work", edge: "top", x: -0.1, y: 0.0, z: 2.7, s: 1.2 },
+      { at: "#work", edge: "center", x: 0, y: 0.05, z: -9, s: 1.7 },
+      { at: "#services", edge: "center", x: 0, y: 0.02, z: -7, s: 1.4 },
+      { at: "#contact", edge: "center", x: -0.4, y: 0.05, z: -5, s: 1.4 },
+    ],
+    narrow: [
+      { at: "#top", edge: "center", x: 0, y: 0.47, z: -0.6, s: 0.64 },
+      { at: "#work", edge: "top", x: 0, y: 0.05, z: 2.5, s: 1.0 },
+      { at: "#work", edge: "center", x: 0, y: 0.0, z: -10, s: 1.5 },
+      { at: "#services", edge: "center", x: 0, y: 0.0, z: -10, s: 1.4 },
+      { at: "#contact", edge: "center", x: 0, y: -0.1, z: -14, s: 1.3 },
+    ],
+  };
+  let keys = [], anchors = [];
+  function computeAnchors() {
+    keys = innerWidth < 860 ? KF.narrow : KF.wide;
+    anchors = keys.map((k) => {
+      const el = $(k.at), top = el.getBoundingClientRect().top + scrollY;
+      return (k.edge === "center" ? top + el.offsetHeight / 2 : top) - innerHeight / 2;
+    });
+  }
+  const ss = (t) => t * t * (3 - 2 * t);
+  function target(sy) {
+    if (sy <= anchors[0]) return keys[0];
+    for (let i = 0; i < keys.length - 1; i++) {
+      if (sy < anchors[i + 1]) {
+        const t = ss((sy - anchors[i]) / Math.max(1, anchors[i + 1] - anchors[i])), a = keys[i], b = keys[i + 1];
+        return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, s: a.s + (b.s - a.s) * t };
+      }
+    }
+    return keys[keys.length - 1];
+  }
+  const st = { x: -2, y: 0, z: -3, s: 0.6, spin: 0 };
+
+  function resize() {
+    renderer.setSize(innerWidth, innerHeight, false);
+    camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+    computeAnchors();
+  }
+  resize();
+  return { renderer, scene, camera, rig, spin, logo, orbits, ico, pMat, gMat, halo, st, target, resize, computeAnchors };
+}
+
+/* ---------- one loop for everything that moves ---------- */
+let last = performance.now(), lastY = scrollY, vel = 0;
+const fovHalf = Math.tan(20 * Math.PI / 180);
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  const sy = scrollY;
+  vel += ((sy - lastY) / Math.max(dt, 0.001) - vel) * 0.12; lastY = sy;
+
+  // marquee
+  tracks.forEach((t) => {
+    const sp = reduceMotion ? 0 : t.speed * (1 + Math.min(Math.abs(vel) / 400, 5));
+    t.x = (t.x + sp * dt) % t.w; if (t.x > 0) t.x -= t.w;
+    t.el.style.transform = `translate3d(${t.x}px,0,0)`;
+  });
+
+  if (three && !document.hidden) {
+    const T = three, k = 1 - Math.exp(-dt * 4.5), time = now / 1000;
+    const tg = T.target(sy), st = T.st;
+    st.x += (tg.x - st.x) * k; st.y += (tg.y - st.y) * k; st.z += (tg.z - st.z) * k; st.s += (tg.s - st.s) * k;
+    const dist = 6 - st.z, hh = fovHalf * dist, hw = hh * T.camera.aspect;
+    T.rig.position.set(st.x * hw, st.y * hh, st.z);
+    T.rig.scale.setScalar(st.s);
+    mouse.x += (mouse.tx - mouse.x) * k; mouse.y += (mouse.ty - mouse.y) * k;
+    const docH = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    const spinTarget = (sy / docH) * Math.PI * 4;
+    st.spin += (spinTarget - st.spin) * k;
+    const idle = reduceMotion ? 0 : time;
+    T.spin.rotation.y = -0.35 + Math.sin(idle * 0.45) * 0.35 + st.spin + mouse.x * 0.35;
+    T.spin.rotation.x = 0.12 + Math.sin(idle * 0.31) * 0.08 + mouse.y * 0.22;
+    T.spin.rotation.z = Math.sin(idle * 0.2) * 0.05;
+    T.logo.position.y = Math.sin(idle * 1.1) * 0.05;
+    T.orbits.forEach((o, i) => { o.rotation.z = idle * (0.25 + i * 0.12) * (i % 2 ? -1 : 1); });
+    T.ico.rotation.set(idle * 0.08, idle * 0.11, 0);
+    T.ico.position.y = 1.9 - sy * 0.0012;
+    T.pMat.uniforms.uTime.value = idle;
+    T.gMat.uniforms.uOff.value = (T.gMat.uniforms.uOff.value + dt * (reduceMotion ? 0 : 0.5) + Math.abs(vel) * dt * 0.004) % 1000;
+    T.camera.position.x = mouse.x * 0.25; T.camera.position.y = -mouse.y * 0.15; T.camera.lookAt(0, 0, -2);
+    T.renderer.render(T.scene, T.camera);
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+let rT;
+addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(() => { measureTracks(); if (three) three.resize(); }, 120); });
+addEventListener("load", () => { measureTracks(); if (three) three.computeAnchors(); });
+if (document.fonts) document.fonts.ready.then(() => { measureTracks(); if (three) three.computeAnchors(); });
+</script>
+</body>
+</html>

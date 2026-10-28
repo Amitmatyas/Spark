@@ -1,0 +1,23 @@
+# Caddy gets and renews the HTTPS certificate for the domain by itself.
+__DOMAIN__ {
+	encode zstd gzip
+	request_body {
+		max_size 5GB
+	}
+	reverse_proxy 127.0.0.1:3000 {
+		# Long uploads to Drive and the live admin updates (server-sent events)
+		transport http {
+			read_timeout 2h
+			write_timeout 2h
+		}
+		flush_interval -1
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+}
+
+www.__DOMAIN__ {
+	redir https://__DOMAIN__{uri} permanent
+}
