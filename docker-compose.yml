@@ -1,0 +1,27 @@
+# SPARK on a NAS: the app plus Tailscale Funnel, which gives it a fixed public HTTPS address
+# (https://spark.<your-tailnet>.ts.net) without opening ports on the router. See NAS.md.
+services:
+  tailscale:
+    image: tailscale/tailscale:stable
+    hostname: spark
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/serve.json
+      - TS_USERSPACE=true
+    volumes:
+      - ./data/tailscale:/var/lib/tailscale
+      - ./deploy/tailscale-serve.json:/config/serve.json:ro
+    ports:
+      - "3000:3000" # the admin page on the home network too: http://<NAS-IP>:3000/admin
+    restart: unless-stopped
+
+  spark:
+    build: .
+    network_mode: service:tailscale
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - tailscale
+    restart: unless-stopped

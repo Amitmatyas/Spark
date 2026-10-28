@@ -501,9 +501,12 @@ const VIDEOS = [
 
 /* טופס צור קשר: כשהאתר מתארח אצלכם, הדביקו מפתח גישה חינמי מ-web3forms.com
    וכל פנייה תגיע ישר למייל. אפשר במקום זה לשים כתובת Formspree / שרת משלכם ב-FORM_ENDPOINT. */
+/* The system's server. When this page is served by the server itself (the NAS, or localhost)
+   it calls it directly; anywhere else (Vercel) it calls the NAS's public address. */
+const API_BASE = location.hostname === "localhost" || location.hostname.endsWith(".ts.net") ? "" : "https://spark.taildf6d08.ts.net";
 const CONFIG = {
   WEB3FORMS_KEY: "",
-  FORM_ENDPOINT: "/api/leads",
+  FORM_ENDPOINT: API_BASE + "/api/leads",
   EMAIL_SUBJECT: "פנייה חדשה מהאתר של SPARK",
   /* רשתות חברתיות לפוטר, למשל { label: "אינסטגרם", url: "https://instagram.com/..." } */
   SOCIALS: [],
@@ -703,7 +706,7 @@ form.addEventListener("submit", async (e) => {
   btn.disabled = true; btn.textContent = "שולח...";
   try {
     const via = await sendLead(d);
-    if (via === "endpoint" && CONFIG.FORM_ENDPOINT === "/api/leads") $("#sentNote").textContent = "תודה! אישור יגיע אליכם עכשיו בוואטסאפ, ונחזור אליכם בקרוב לשיחה קצרה.";
+    if (via === "endpoint" && CONFIG.FORM_ENDPOINT === API_BASE + "/api/leads") $("#sentNote").textContent = "תודה! אישור יגיע אליכם עכשיו בוואטסאפ, ונחזור אליכם בקרוב לשיחה קצרה.";
     $("#sentLine").textContent = `היי, זה ${d.name.split(" ")[0]}. אני רוצה ${d.type.includes("אתר") ? "אתר" : "סרטון"} כזה!`;
     form.hidden = true; $("#sent").hidden = false; form.reset();
   } catch (err) {
@@ -713,7 +716,7 @@ form.addEventListener("submit", async (e) => {
 $("#againBtn").addEventListener("click", () => { $("#sent").hidden = true; form.hidden = false; $("#f-name").focus(); });
 
 /* ---------- WhatsApp buttons: the SPARK server knows the studio's number ---------- */
-fetch("/api/public/info").then((r) => (r.ok ? r.json() : null)).then((info) => {
+fetch(API_BASE + "/api/public/info").then((r) => (r.ok ? r.json() : null)).then((info) => {
   if (!info || !info.whatsapp) return;
   const url = `https://wa.me/${info.whatsapp}?text=${encodeURIComponent("היי SPARK, אשמח לשמוע פרטים על פרויקט")}`;
   $("#waFab").href = url; $("#waFab").hidden = false;

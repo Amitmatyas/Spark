@@ -26,5 +26,5 @@ if [[ "$WITH_DATA" == "--with-data" ]]; then
   echo "First time? On the server run:  sudo bash /opt/spark/deploy/setup-ubuntu.sh <your-domain>"
 else
   echo "Restarting:"
-  ssh "$TARGET" "cd /opt/spark && chown -R spark:spark /opt/spark && sudo -u spark -H bash -c 'PUPPETEER_SKIP_DOWNLOAD=true npm ci --omit=dev --no-audit --no-fund' && systemctl restart spark && systemctl --no-pager --lines=3 status spark"
+  ssh "$TARGET" "cd /opt/spark && chown -R spark:spark /opt/spark && sudo -u spark -H bash -c 'npm ci --omit=dev --no-audit --no-fund' && systemctl restart spark && systemctl --no-pager --lines=3 status spark"
 fi

@@ -9,11 +9,8 @@ User=spark
 Group=spark
 WorkingDirectory=/opt/spark
 Environment=NODE_ENV=production
-Environment=CHROME_PATH=/usr/bin/google-chrome
-# Chrome only opens web.whatsapp.com here, as an unprivileged user; Ubuntu blocks its sandbox.
-Environment=WA_CHROME_ARGS=--no-sandbox --disable-dev-shm-usage
 ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning server.js
-# server.js closes WhatsApp's Chrome on SIGTERM before exiting.
+# server.js closes the WhatsApp connection on SIGTERM before exiting.
 KillSignal=SIGTERM
 TimeoutStopSec=20
 KillMode=mixed

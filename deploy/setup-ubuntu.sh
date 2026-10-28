@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# One-time server setup for SPARK on a fresh Ubuntu 22.04 / 24.04 (x86_64) machine.
-# Installs Node 22, Google Chrome (for WhatsApp Web), Caddy (HTTPS), a "spark" user and a
-# systemd service. Run as root after uploading the code to /opt/spark (see deploy/upload.sh):
+# One-time server setup for SPARK on a fresh Ubuntu 22.04 / 24.04 machine (x86_64 or ARM).
+# Installs Node 22, Caddy (HTTPS), a "spark" user and a systemd service. Run as root after uploading the code to /opt/spark (see deploy/upload.sh):
 #
 #   sudo bash /opt/spark/deploy/setup-ubuntu.sh spark.example.com
 #
@@ -14,7 +13,6 @@ APP_USER=spark
 
 if [[ $EUID -ne 0 ]]; then echo "Run as root: sudo bash $0 <domain>"; exit 1; fi
 if [[ -z "$DOMAIN" ]]; then echo "Usage: sudo bash $0 <domain>   (e.g. spark.example.com)"; exit 1; fi
-if [[ "$(uname -m)" != "x86_64" ]]; then echo "Google Chrome needs an x86_64 server (not ARM)."; exit 1; fi
 if [[ ! -f "$APP_DIR/server.js" ]]; then echo "Upload the code to $APP_DIR first (deploy/upload.sh)."; exit 1; fi
 
 echo "==> System packages"
@@ -28,14 +26,6 @@ if ! command -v node >/dev/null || [[ "$(node -p 'process.versions.node.split(".
   apt-get install -y nodejs
 fi
 node -v
-
-echo "==> Google Chrome (WhatsApp Web runs in it)"
-if ! command -v google-chrome >/dev/null; then
-  curl -fsSL -o /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  apt-get install -y /tmp/chrome.deb
-  rm -f /tmp/chrome.deb
-fi
-google-chrome --version
 
 echo "==> Caddy (automatic HTTPS)"
 if ! command -v caddy >/dev/null; then
@@ -58,7 +48,7 @@ chown -R "$APP_USER:$APP_USER" "$APP_DIR"
 chmod 600 "$APP_DIR/.env" "$APP_DIR/oauth-client.json" "$APP_DIR/token.json" "$APP_DIR/service-account.json" 2>/dev/null || true
 
 echo "==> npm packages"
-sudo -u "$APP_USER" -H bash -c "cd $APP_DIR && PUPPETEER_SKIP_DOWNLOAD=true npm ci --omit=dev --no-audit --no-fund"
+sudo -u "$APP_USER" -H bash -c "cd $APP_DIR && npm ci --omit=dev --no-audit --no-fund"
 
 echo "==> Service"
 install -m 644 "$APP_DIR/deploy/spark.service" /etc/systemd/system/spark.service

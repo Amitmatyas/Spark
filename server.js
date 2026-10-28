@@ -32,7 +32,7 @@ const DEFAULT_TEMPLATES = {
   video_message: "היי {name} 🎬\n{videos} לאזור האישי שלך ב-SPARK.{notes}\n\nלצפייה: {link}",
 };
 // Where the studio is reached on WhatsApp (landing button, client area) and where new-lead
-// alerts go. Both default to the number linked to open-wa.
+// alerts go. Both default to the number linked to WhatsApp.
 const studioPhone = () => normalizePhone(setting("public_whatsapp", "")) || wa.state.me || null;
 const notifyPhone = () => normalizePhone(setting("notify_phone", "")) || wa.state.me || null;
 const template = (key) => setting(`tpl_${key}`, DEFAULT_TEMPLATES[key]);
@@ -145,6 +145,16 @@ app.use((req, res, next) => {
 });
 
 // ---------- Public: lead form ----------
+
+// The landing page may live elsewhere (e.g. Vercel) and post its form here. These two
+// endpoints take no cookies, so any origin may call them.
+app.use(["/api/leads", "/api/public"], (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
 
 app.post("/api/leads", wrap(async (req, res) => {
   const b = req.body || {};
@@ -828,7 +838,7 @@ const server = app.listen(PORT, () => {
   setInterval(backup, 6 * 3600e3).unref();
 });
 
-// Close WhatsApp's Chrome with the server, so a restart never leaves two browsers on one session.
+// Close the WhatsApp connection with the server, so a restart never leaves two sockets on one session.
 let closing = false;
 async function shutdown(signal) {
   if (closing) return;
