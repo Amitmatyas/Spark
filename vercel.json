@@ -1,14 +1,4 @@
 {
   "buildCommand": "sed -i \"s|__SITE_URL__|https://${VERCEL_PROJECT_PRODUCTION_URL:-$VERCEL_URL}|g\" public/index.html",
-  "outputDirectory": "public",
-  "redirects": [
-    { "source": "/admin", "destination": "https://spark.taildf6d08.ts.net/admin", "permanent": false },
-    { "source": "/admin.html", "destination": "https://spark.taildf6d08.ts.net/admin", "permanent": false },
-    { "source": "/client", "destination": "https://spark.taildf6d08.ts.net/client", "permanent": false },
-    { "source": "/c/:slug", "destination": "https://spark.taildf6d08.ts.net/c/:slug", "permanent": false },
-    { "source": "/auth/:path*", "destination": "https://spark.taildf6d08.ts.net/auth/:path*", "permanent": false },
-    { "source": "/oauth2callback", "destination": "https://spark.taildf6d08.ts.net/oauth2callback", "permanent": false },
-    { "source": "/media/v/:id", "destination": "https://spark.taildf6d08.ts.net/media/v/:id", "permanent": false },
-    { "source": "/media/t/:id", "destination": "https://spark.taildf6d08.ts.net/media/t/:id", "permanent": false }
-  ]
+  "outputDirectory": "public"
 }

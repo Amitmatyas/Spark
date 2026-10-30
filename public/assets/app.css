@@ -211,3 +211,76 @@ code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; background:
 .push-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
 .push-row > div:first-child { flex: 1 1 260px; }
 .push-row .err-box:empty { display: none; }
+
+/* ---------- mobile nav: seven pages fit by scrolling sideways ---------- */
+@media (max-width: 860px) {
+  .side { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+  .side::-webkit-scrollbar { display: none; }
+  .nav-link { flex: 1 0 64px; padding: 7px 6px; }
+}
+
+/* ---------- dashboard ---------- */
+.stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); gap: 14px; }
+.stat { display: grid; gap: 4px; padding: 16px 18px; text-decoration: none; color: inherit; }
+.stat b { font: 900 34px/1.05 var(--f-lat); color: #fff; font-variant-numeric: tabular-nums; }
+a.stat:hover { box-shadow: inset 0 0 0 1.5px rgba(236, 170, 255, .5), 0 0 24px rgba(140, 40, 255, .3); }
+.late, h3.late { color: #ff8db4; }
+.bars { display: flex; align-items: stretch; gap: 8px; height: 170px; }
+.bar-col { flex: 1; display: grid; grid-template-rows: 1fr auto; gap: 6px; min-width: 0; }
+.bar-col > span { font-size: 11px; color: var(--muted); text-align: center; white-space: nowrap; overflow: hidden; }
+.bar-stack { display: flex; align-items: flex-end; justify-content: center; gap: 2px; border-bottom: 1px solid rgba(170, 70, 255, .25); }
+.bar-stack i { flex: 0 1 18px; min-height: 2px; border-radius: 4px 4px 0 0; cursor: default; }
+.legend { display: flex; gap: 16px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-inline-end: 6px; vertical-align: -1px; }
+.bar-tip { position: absolute; z-index: 90; pointer-events: none; padding: 6px 10px; border-radius: 10px; background: #fff; color: #241040; font-size: 13px; font-weight: 600; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); white-space: nowrap; }
+.task-link { flex: 1; display: grid; gap: 1px; text-decoration: none; color: inherit; min-width: 0; text-align: start; }
+.task-link span { overflow-wrap: anywhere; }
+.link-plain { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
+
+/* ---------- money ---------- */
+.pays { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.pay { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 12px; border-radius: 14px; background: rgba(8, 0, 20, .4); }
+.pay.late { box-shadow: inset 0 0 0 1px rgba(255, 46, 126, .5); }
+.pay .amt { font: 800 20px/1 var(--f-lat); color: #fff; min-width: 72px; font-variant-numeric: tabular-nums; }
+.pay-main { flex: 1 1 150px; display: grid; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.pay-main a { color: var(--lilac); }
+.pay .x { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 4px; border-radius: 8px; }
+.pay .x:hover { color: #ff8db4; }
+.add-pay { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+.add-pay .input { flex: 1 1 130px; width: auto; }
+.month-nav { align-items: center; }
+.month-nav b { min-width: 120px; text-align: center; }
+
+/* ---------- chat: AI and saved answers ---------- */
+.ai-bar { margin: 0; padding: 8px 14px; font-size: 13px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--lilac); background: rgba(170, 70, 255, .1); border-bottom: 1px solid var(--line); }
+.ai-bar svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.ai-bar span { flex: 1; color: var(--ink); }
+.chat { position: relative; }
+.chat-tools { display: flex; flex-direction: column; gap: 4px; }
+.icon-btn { width: 36px; height: 36px; border-radius: 12px; border: 0; display: grid; place-items: center; cursor: pointer; color: var(--lilac); background: rgba(170, 70, 255, .14); }
+.icon-btn:hover { background: rgba(170, 70, 255, .3); color: #fff; }
+.icon-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linejoin: round; }
+.icon-btn.busy svg { animation: spin 1.2s linear infinite; }
+.qr-pop { position: absolute; inset-inline: 12px; bottom: 104px; z-index: 5; max-height: 260px; overflow: auto; display: grid; gap: 4px; padding: 6px; border-radius: 16px; background: #1d0a3d; box-shadow: 0 0 0 1px var(--rim), 0 18px 40px rgba(0, 0, 0, .5); }
+.qr-pop button { display: grid; gap: 2px; text-align: start; padding: 9px 12px; border: 0; border-radius: 12px; background: none; cursor: pointer; }
+.qr-pop button:hover { background: rgba(170, 70, 255, .2); }
+.qr-pop button span { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bubble.draft { background: rgba(170, 70, 255, .12); color: var(--ink); box-shadow: inset 0 0 0 1.5px rgba(236, 170, 255, .6); border-style: dashed; }
+.draft-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 10px; white-space: nowrap; }
+.draft-text { display: block; }
+.draft-acts .btn { background: linear-gradient(180deg, #a84dff, #6f1ee8); color: #fff; }
+
+/* ---------- AI page and settings ---------- */
+.choice { display: flex; gap: 10px; align-items: start; padding: 8px 10px; border-radius: 12px; cursor: pointer; }
+.choice:hover { background: rgba(170, 70, 255, .08); }
+.choice input { margin-top: 5px; accent-color: #a84dff; }
+.choice > span { display: grid; gap: 2px; }
+.days { display: flex; gap: 6px; margin-top: 8px; }
+.days input { position: absolute; opacity: 0; pointer-events: none; }
+.days span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; cursor: pointer; font-size: 14px; background: rgba(8, 0, 20, .5); box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
+.days input:checked + span { background: linear-gradient(180deg, #a84dff, #6f1ee8); color: #fff; }
+.days input:focus-visible + span { outline: 2px solid var(--lilac); }
+.warn-box { margin: 0; padding: 10px 14px; border-radius: 12px; font-size: 13px; color: #ffe3a3; background: rgba(255, 200, 80, .08); box-shadow: inset 0 0 0 1px rgba(255, 200, 80, .3); }
+.devices { flex-basis: 100%; display: grid; gap: 6px; }
+.device { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border-radius: 12px; background: rgba(8, 0, 20, .4); font-size: 14px; }
+.device > span { display: grid; gap: 2px; }
