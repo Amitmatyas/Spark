@@ -15,9 +15,9 @@
 <meta property="og:title" content="SPARK · עריכת וידאו ובניית אתרים">
 <meta property="og:description" content="רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה ואתרי תדמית שמביאים פניות.">
 <meta property="og:url" content="__SITE_URL__/">
-<meta property="og:image" content="__SITE_URL__/media/spark-promo.jpg">
-<meta property="og:image:width" content="540">
-<meta property="og:image:height" content="960">
+<meta property="og:image" content="__SITE_URL__/media/spark-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SPARK · עריכת וידאו ובניית אתרים">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,6 +196,9 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
 .work { padding-block: 100px 30px; }
 .work-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 40px; margin-bottom: 30px; }
 .work-head .lead { max-width: 40ch; }
+/* the 3D logo flies through right behind this heading: a soft shade keeps the text readable */
+.work-head { position: relative; isolation: isolate; }
+.work-head::before { content: ""; position: absolute; inset: -28px -20px; z-index: -1; pointer-events: none; background: radial-gradient(closest-side, rgba(11, 1, 24, .78), rgba(11, 1, 24, .5) 60%, rgba(11, 1, 24, 0)); }
 .carousel { position: relative; height: clamp(480px, 70svh, 660px); perspective: 1600px; touch-action: pan-y; user-select: none; -webkit-user-select: none; outline: none; }
 .card { --w: clamp(220px, 25vw, 320px); position: absolute; top: 0; left: 50%; width: var(--w); aspect-ratio: 9 / 16; max-height: 100%; border-radius: 28px; overflow: hidden; cursor: pointer;
   background: #12032a; border: 2px solid rgba(170, 70, 255, .85);
@@ -617,7 +620,7 @@ html.still .rv:not(.in) { transform: none; }
       <span>© <span id="year">2026</span> SPARK · סטודיו לווידאו ואתרים</span>
     </div>
   </footer>
-  <a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="שלחו לנו הודעה בוואטסאפ" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+  <aside aria-label="וואטסאפ"><a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="שלחו לנו הודעה בוואטסאפ" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a></aside>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -648,6 +651,9 @@ const CONFIG = {
   WEB3FORMS_KEY: "",
   FORM_ENDPOINT: API_BASE + "/api/leads",
   EMAIL_SUBJECT: "פנייה חדשה מהאתר של SPARK",
+  /* מספר הוואטסאפ של הסטודיו (ספרות בלבד, עם 972). הכפתורים מופיעים איתו גם כשהשרת לא זמין,
+     והשרת מחליף אותו אם המספר המחובר השתנה. */
+  WHATSAPP: "972792015879",
   /* רשתות חברתיות לפוטר, למשל { label: "אינסטגרם", url: "https://instagram.com/..." } */
   SOCIALS: [],
 };
@@ -881,17 +887,20 @@ form.addEventListener("submit", async (e) => {
     $("#sentLine").textContent = `היי, זה ${d.name.split(" ")[0]}. אני רוצה ${d.type.includes("אתר") ? "אתר" : "סרטון"} כזה!`;
     form.hidden = true; $("#sent").hidden = false; form.reset(); $("#sentTitle").focus();
   } catch (err) {
-    statusEl.textContent = err.userMsg || "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב.";
+    statusEl.textContent = err.userMsg || ($("#waAlt").hidden ? "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב." : "השליחה לא הצליחה. נסו שוב, או כתבו לנו ישירות בוואטסאפ.");
   } finally { btn.disabled = false; btn.textContent = "שלחו ונחזור אליכם"; }
 });
 $("#againBtn").addEventListener("click", () => { $("#sent").hidden = true; form.hidden = false; $("#f-name").focus(); });
 
-/* ---------- WhatsApp buttons: the SPARK server knows the studio's number ---------- */
-fetch(API_BASE + "/api/public/info").then((r) => (r.ok ? r.json() : null)).then((info) => {
-  if (!info || !info.whatsapp) return;
-  const url = `https://wa.me/${info.whatsapp}?text=${encodeURIComponent("היי SPARK, אשמח לשמוע פרטים על פרויקט")}`;
+/* ---------- WhatsApp buttons: CONFIG.WHATSAPP right away, then the number the SPARK server is linked to ---------- */
+function showWhatsApp(number) {
+  const url = `https://wa.me/${number}?text=${encodeURIComponent("היי SPARK, אשמח לשמוע פרטים על פרויקט")}`;
   $("#waFab").href = url; $("#waFab").hidden = false;
   $("#waAlt a").href = url; $("#waAlt").hidden = false;
+}
+if (CONFIG.WHATSAPP) showWhatsApp(CONFIG.WHATSAPP);
+fetch(API_BASE + "/api/public/info").then((r) => (r.ok ? r.json() : null)).then((info) => {
+  if (info && info.whatsapp) showWhatsApp(info.whatsapp);
 }).catch(() => {});
 
 /* =====================================================================
