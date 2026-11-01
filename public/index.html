@@ -48,7 +48,8 @@
   --ease: cubic-bezier(.2, .8, .2, 1);
   color-scheme: dark;
 }
-html { background: var(--void); scroll-behavior: smooth; overflow-x: clip; }
+html { background: var(--void); scroll-behavior: smooth; overflow-x: clip; scroll-padding-top: calc(68px + env(safe-area-inset-top, 0px)); }
+#main:focus { outline: none; }
 body { background: var(--void); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.65; overflow-x: clip; -webkit-font-smoothing: antialiased; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--void); }
 ::selection { background: var(--violet); color: #fff; }
@@ -79,7 +80,16 @@ img { max-width: 100%; }
 .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
 .nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; transition: color .2s; }
 .nav ul a:hover { color: var(--ink); }
-@media (max-width: 760px) { .nav ul { display: none; } }
+.nav-end { display: flex; align-items: center; gap: 10px; }
+.nav .menu-btn { display: none; }
+@media (max-width: 760px) {
+  .nav .menu-btn { display: grid; }
+  .nav ul { display: none; position: absolute; top: 100%; inset-inline: 12px; flex-direction: column; gap: 0; padding: 8px; border-radius: 20px;
+    background: rgba(11, 1, 24, .94); box-shadow: inset 0 0 0 1px var(--line), 0 20px 40px rgba(0, 0, 0, .5); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .nav.open ul { display: flex; }
+  .nav ul a { display: block; padding: 12px 14px; border-radius: 12px; font-size: 17px; color: var(--ink); }
+  .nav ul a:hover { background: rgba(170, 70, 255, .14); }
+}
 
 /* ---------- buttons ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; padding: 14px 26px; font: 700 16px/1 var(--f-body); text-decoration: none; cursor: pointer; border: 0; color: #fff; transition: transform .25s var(--ease), box-shadow .25s, background .25s; }
@@ -226,8 +236,9 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
 .slot .btn { position: relative; }
 @media (max-width: 640px) { .card { --w: min(64vw, 300px); } .carousel { height: calc(min(64vw, 300px) * 16 / 9 + 12px); } }
 .car-ui { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 26px; }
-.dots { display: flex; gap: 8px; }
-.dots button { width: 10px; height: 10px; padding: 0; border-radius: 99px; border: 0; background: rgba(236, 170, 255, .28); cursor: pointer; transition: width .35s var(--ease), background .35s; }
+.dots { display: flex; gap: 14px; }
+.dots button { position: relative; width: 10px; height: 10px; padding: 0; border-radius: 99px; border: 0; background: rgba(236, 170, 255, .28); cursor: pointer; transition: width .35s var(--ease), background .35s; }
+.dots button::before { content: ""; position: absolute; inset: -12px -7px; } /* a 24px+ touch target around the small dot */
 .dots button[aria-current="true"] { width: 30px; background: var(--lilac); box-shadow: 0 0 10px var(--lilac); }
 .car-meta { text-align: center; margin-top: 16px; min-height: 52px; }
 .car-meta b { display: block; font: 900 28px/1.1 var(--f-cap); }
@@ -293,10 +304,15 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .socials { display: flex; gap: 10px; }
 .socials:empty { display: none; }
 
-/* ---------- WhatsApp (shown only when the site runs on the SPARK server) ---------- */
+/* ---------- WhatsApp (steps aside while the form is on screen, so it never covers the send button) ---------- */
 .wa-fab { position: fixed; z-index: 45; left: max(18px, env(safe-area-inset-left, 0px)); bottom: max(18px, env(safe-area-inset-bottom, 0px)); width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
-  background: linear-gradient(180deg, #2be37b, #12a957); box-shadow: 0 0 0 1px rgba(255, 255, 255, .25) inset, 0 10px 30px rgba(30, 200, 110, .45); transition: transform .25s var(--ease); }
+  background: linear-gradient(180deg, #2be37b, #12a957); box-shadow: 0 0 0 1px rgba(255, 255, 255, .25) inset, 0 10px 30px rgba(30, 200, 110, .45); transition: transform .25s var(--ease), opacity .25s; }
+.wa-fab.away { opacity: 0; transform: scale(.6); pointer-events: none; visibility: hidden; }
 .wa-fab:hover { transform: translateY(-3px) scale(1.04); }
+.btn-wa { background: linear-gradient(180deg, #1fbf63, #0f8f48); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22), 0 10px 30px rgba(30, 200, 110, .35); }
+.btn-wa:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 14px 40px rgba(30, 200, 110, .5); }
+.btn-wa svg { width: 20px; height: 20px; fill: #fff; }
+.wa-cta { margin-top: 24px; }
 .wa-fab svg { width: 30px; height: 30px; fill: #fff; }
 .wa-alt { margin: 4px 0 0; font-size: 14px; color: var(--muted); text-align: center; }
 .wa-alt a { color: #7dffb4; font-weight: 700; }
@@ -379,18 +395,21 @@ html.still .rv:not(.in) { transform: none; }
   <header class="nav" id="nav">
     <div class="wrap">
       <a class="brand" href="#top" aria-label="SPARK, לראש העמוד"><img src="media/spark-mark.png" alt=""><span>SPARK</span></a>
-      <ul>
+      <ul id="navLinks">
         <li><a href="#work">עבודות</a></li>
         <li><a href="#services">שירותים</a></li>
         <li><a href="#pricing">מחירים</a></li>
         <li><a href="#faq">שאלות נפוצות</a></li>
         <li><a href="#contact">צור קשר</a></li>
       </ul>
-      <a class="btn btn-primary btn-sm" href="#contact">לקבלת הצעה</a>
+      <div class="nav-end">
+        <a class="btn btn-primary btn-sm" href="#contact">לקבלת הצעה</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="פתיחת התפריט"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" id="top">
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="hero-tag" aria-hidden="true"><i></i><b>SPARK</b> סטודיו לווידאו ואתרים</div>
@@ -528,20 +547,21 @@ html.still .rv:not(.in) { transform: none; }
         <div class="contact-head rv">
           <p class="eyebrow">צור קשר</p>
           <h2 class="title" id="contact-title"><span class="cap">רוצים סרטון או אתר</span> <span class="neon tilt">ברמה הזאת?</span></h2>
-          <p class="lead">השאירו שם וטלפון, ונחזור אליכם לשיחה קצרה על הפרויקט.</p>
+          <p class="lead">השאירו שם וטלפון ונחזור אליכם לשיחה קצרה על הפרויקט, או כתבו לנו ישר בוואטסאפ.</p>
+          <a class="btn btn-wa wa-cta" id="waCta" href="#" target="_blank" rel="noopener" hidden>כתבו לנו בוואטסאפ</a>
         </div>
 
         <div class="panel rv" id="formPanel">
-          <form class="form" id="leadForm" novalidate>
+          <form class="form" id="leadForm" method="post" novalidate>
             <div class="row2">
               <div class="field">
                 <label for="f-name">שם</label>
-                <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name" placeholder="איך קוראים לך?" required>
+                <input class="input" id="f-name" name="name" autocomplete="name" maxlength="60" aria-describedby="e-name" placeholder="איך קוראים לך?" required>
                 <span class="err" id="e-name"></span>
               </div>
               <div class="field">
                 <label for="f-phone">טלפון</label>
-                <input class="input" id="f-phone" name="phone" type="tel" aria-describedby="e-phone" inputmode="tel" autocomplete="tel" placeholder="050-0000000" dir="ltr" style="text-align:right" required>
+                <input class="input" id="f-phone" name="phone" type="tel" aria-describedby="e-phone" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="050-0000000" dir="ltr" style="text-align:right" required>
                 <span class="err" id="e-phone"></span>
               </div>
             </div>
@@ -557,9 +577,9 @@ html.still .rv:not(.in) { transform: none; }
             </fieldset>
             <div class="field">
               <label for="f-msg">כמה מילים על הפרויקט <small>(לא חובה)</small></label>
-              <textarea class="input" id="f-msg" name="message" placeholder="למשל: 4 רילסים בחודש לחנות בגדים, או דף נחיתה להשקה בעוד חודש"></textarea>
+              <textarea class="input" id="f-msg" name="message" maxlength="1000" placeholder="למשל: 4 רילסים בחודש לחנות בגדים, או דף נחיתה להשקה בעוד חודש"></textarea>
             </div>
-            <div class="hp" aria-hidden="true"><label for="f-web">אתר</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+            <div class="hp" aria-hidden="true"><label for="f-hp">השאירו ריק</label><input id="f-hp" name="hp_check" tabindex="-1" autocomplete="off"></div>
             <p class="status" id="formStatus" role="alert"></p>
             <button class="btn btn-primary" id="submitBtn" type="submit">שלחו ונחזור אליכם</button>
             <p class="fine">הפרטים משמשים רק כדי לחזור אליכם לגבי הפרויקט, ואישור יישלח אליכם בוואטסאפ. <a href="privacy.html">מדיניות פרטיות</a></p>
@@ -581,7 +601,7 @@ html.still .rv:not(.in) { transform: none; }
         </div>
 
         <ol class="steps rv" aria-label="איך זה עובד">
-          <li><span class="pill"><b>01</b></span><div><h3>משאירים פרטים</h3><p>שם וטלפון, פחות מדקה.</p></div></li>
+          <li><span class="pill"><b>01</b></span><div><h3>משאירים פרטים</h3><p>בטופס או בוואטסאפ, פחות מדקה.</p></div></li>
           <li><span class="pill"><b>02</b></span><div><h3>שיחה קצרה</h3><p>מה המטרה, למי זה מיועד ומתי צריך את זה.</p></div></li>
           <li><span class="pill"><b>03</b></span><div><h3>הצעה מסודרת</h3><p>מחיר ולוח זמנים ברורים לפני שמתחילים.</p></div></li>
         </ol>
@@ -623,7 +643,7 @@ html.still .rv:not(.in) { transform: none; }
   <aside aria-label="וואטסאפ"><a class="wa-fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="שלחו לנו הודעה בוואטסאפ" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a></aside>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script>
 /* =====================================================================
    הגדרות - כאן עורכים
@@ -675,6 +695,17 @@ document.querySelectorAll(".rv").forEach((el) => io.observe(el));
 const nav = $("#nav");
 const onNav = () => nav.classList.toggle("solid", scrollY > 40);
 addEventListener("scroll", onNav, { passive: true }); onNav();
+/* phones: the section links live in a menu behind the button */
+const menuBtn = $("#menuBtn");
+const setMenu = (open) => {
+  nav.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "סגירת התפריט" : "פתיחת התפריט");
+};
+menuBtn.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+nav.querySelectorAll("ul a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+document.addEventListener("click", (e) => { if (!nav.contains(e.target)) setMenu(false); });
+addEventListener("keydown", (e) => { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
 
 /* ---------- socials ---------- */
 CONFIG.SOCIALS.forEach((s) => { const a = document.createElement("a"); a.className = "btn btn-ghost btn-sm"; a.href = s.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.label; $("#socials").appendChild(a); });
@@ -698,7 +729,11 @@ const tracks = [...document.querySelectorAll(".track")].map((t, k) => {
   t.innerHTML = seq + seq + seq;
   return { el: t, speed: +t.dataset.speed, x: 0, w: 0 };
 });
-const measureTracks = () => tracks.forEach((t) => (t.w = t.el.scrollWidth / 3));
+/* one loop = the distance from the first copy to the second (scrollWidth / 3 leaves out the gap between copies, so the band jumped) */
+const measureTracks = () => tracks.forEach((t) => {
+  const kids = t.el.children, n = kids.length / 3;
+  t.w = Math.abs(kids[n].offsetLeft - kids[0].offsetLeft) || t.el.scrollWidth / 3;
+});
 measureTracks();
 
 /* ---------- carousel ---------- */
@@ -731,11 +766,12 @@ const cards = VIDEOS.map((v, i) => {
     pp.addEventListener("click", (e) => { e.stopPropagation(); vid.paused ? play(c) : (vid.pause(), c.classList.add("is-paused")); });
     c.querySelector(".snd").addEventListener("click", (e) => { e.stopPropagation(); soundOn = !soundOn; syncSound(); if (vid.paused) play(c); });
   } else {
-    c.innerHTML = `<div class="slot"><img src="media/spark-logo-3d.png" alt=""><b>${latin(v.title)}</b><small>${esc(v.tag)}</small><a class="btn btn-primary btn-sm" href="#contact">בואו נבנה אותו</a></div>`;
+    c.innerHTML = `<div class="slot"><img src="media/spark-logo-3d.png" alt="" draggable="false"><b>${latin(v.title)}</b><small>${esc(v.tag)}</small><a class="btn btn-primary btn-sm" href="#contact">בואו נבנה אותו</a></div>`;
   }
   c.addEventListener("click", (e) => {
-    if (dragMoved) return;
-    if (i !== cur) { go(i); return; }
+    if (dragMoved) { e.preventDefault(); return; }
+    /* a side card only comes to the center; its button works once it is the active one */
+    if (i !== cur) { e.preventDefault(); go(i); return; }
     if (c._video && !e.target.closest("a")) { c._video.paused ? play(c) : (c._video.pause(), c.classList.add("is-paused")); }
   });
   car.appendChild(c);
@@ -749,7 +785,8 @@ function play(c) {
   const v = c._video; if (!v) return;
   if (v.preload !== "auto") v.preload = "auto";
   v.muted = !soundOn;
-  const p = v.play(); if (p && p.catch) p.catch(() => { v.muted = true; soundOn = false; syncSound(); v.play().catch(() => {}); });
+  /* autoplay can be refused (iOS low power mode, data saver): then show the play badge so it is clear the video can be started */
+  const p = v.play(); if (p && p.catch) p.catch(() => { v.muted = true; soundOn = false; syncSound(); v.play().catch(() => c.classList.add("is-paused")); });
   c.classList.remove("is-paused");
 }
 function syncSound() {
@@ -775,8 +812,13 @@ function layout() {
     c.style.filter = a < 0.5 ? "none" : `brightness(${a > 1.5 ? 0.35 : 0.55}) saturate(1.1)`;
     c.style.pointerEvents = a > 2.2 ? "none" : "auto";
     c.classList.toggle("active", d === 0);
+    /* the controls of side cards are hidden: keep them out of the Tab order */
+    c.querySelectorAll("a, button").forEach((el) => (el.tabIndex = d === 0 ? 0 : -1));
   });
   [...dotsEl.children].forEach((d, i) => d.setAttribute("aria-current", i === cur ? "true" : "false"));
+}
+/* the caption is a live region: update it only when the video changes, not on every resize */
+function syncMeta() {
   $("#carTitle").innerHTML = latin(VIDEOS[cur].title);
   $("#carTag").textContent = VIDEOS[cur].tag;
 }
@@ -785,7 +827,7 @@ function go(i) {
   const prev = cards[cur];
   if (prev._video) { prev._video.pause(); prev._video.muted = true; }
   cur = ((i % n) + n) % n;
-  layout(); syncSound();
+  layout(); syncMeta(); syncSound();
   if (carVisible && !still && cards[cur]._video) play(cards[cur]);
 }
 $("#nextBtn").addEventListener("click", () => go(cur + 1));
@@ -796,6 +838,9 @@ car.addEventListener("keydown", (e) => {
 });
 let dragX = null, dragMoved = false;
 car.addEventListener("pointerdown", (e) => { dragX = e.clientX; dragMoved = false; });
+/* a touch that turns into a page scroll ends in pointercancel, not pointerup: forget it, or the next tap anywhere counts as a swipe */
+addEventListener("pointercancel", () => { dragX = null; });
+car.addEventListener("dragstart", (e) => e.preventDefault());
 addEventListener("pointermove", (e) => { if (dragX !== null && Math.abs(e.clientX - dragX) > 8) dragMoved = true; });
 addEventListener("pointerup", (e) => {
   if (dragX === null) return;
@@ -809,7 +854,7 @@ new IntersectionObserver((es) => {
   if (!c._video) return;
   if (carVisible && !still && !c.classList.contains("is-paused")) play(c); else c._video.pause();
 }, { threshold: 0.35 }).observe(car);
-layout();
+layout(); syncMeta();
 addEventListener("resize", layout);
 
 /* ---------- stop all motion (accessibility; remembered on this device) ---------- */
@@ -819,7 +864,9 @@ function setStill(on, save) {
   still = on;
   document.documentElement.classList.toggle("still", on);
   document.querySelectorAll("[data-motion]").forEach((b) => { b.textContent = on ? "הפעלת אנימציות" : "עצירת אנימציות"; b.setAttribute("aria-pressed", String(on)); });
-  if (on) cards.forEach((c) => { if (c._video && !c._video.paused) { c._video.pause(); c.classList.add("is-paused"); } });
+  /* stopped: every video waits on its play badge. Back on: the visible video plays again */
+  if (on) cards.forEach((c) => { if (c._video) { c._video.pause(); c.classList.add("is-paused"); } });
+  else if (carVisible && cards[cur]._video) play(cards[cur]);
   if (save) try { localStorage.setItem("spark.still", on ? "1" : "0"); } catch (e) {}
 }
 document.querySelectorAll("[data-motion]").forEach((b) => b.addEventListener("click", () => setStill(!still, true)));
@@ -844,9 +891,14 @@ function validate(d) {
   if (firstBad) $("#f-" + firstBad).focus();
   return ok.every(Boolean);
 }
+/* a server that never answers would leave the button on "שולח..." forever: give up after 15 seconds */
+function fetchTimeout(url, opts, ms = 15000) {
+  const ac = new AbortController(), t = setTimeout(() => ac.abort(), ms);
+  return fetch(url, { ...opts, signal: ac.signal }).finally(() => clearTimeout(t));
+}
 async function sendLead(d) {
   if (CONFIG.WEB3FORMS_KEY) {
-    const r = await fetch("https://api.web3forms.com/submit", {
+    const r = await fetchTimeout("https://api.web3forms.com/submit", {
       method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({ access_key: CONFIG.WEB3FORMS_KEY, subject: CONFIG.EMAIL_SUBJECT, from_name: "SPARK · אתר",
         "שם": d.name, "טלפון": d.phone, "סוג פרויקט": d.type, "הודעה": d.message || "-" }),
@@ -856,7 +908,7 @@ async function sendLead(d) {
     throw new Error("web3forms failed");
   }
   if (CONFIG.FORM_ENDPOINT) {
-    const r = await fetch(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+    const r = await fetchTimeout(CONFIG.FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
     if (r.ok) return "endpoint";
     /* the server explains a refusal in Hebrew (too many requests, invalid phone): show it */
     const j = await r.json().catch(() => ({}));
@@ -867,16 +919,18 @@ async function sendLead(d) {
 }
 /* a plan's button picks the project type and notes the plan in the message */
 document.querySelectorAll("[data-plan-type]").forEach((a) => a.addEventListener("click", () => {
+  /* after a lead was sent the form is hidden behind the thank-you: bring it back for the new plan */
+  if (form.hidden) { $("#sent").hidden = true; form.hidden = false; }
   const radio = [...form.type].find((r) => r.value === a.dataset.planType); if (radio) radio.checked = true;
   if (!form.message.value.trim() || form.message.dataset.fromPlan) { form.message.value = a.dataset.planMsg; form.message.dataset.fromPlan = "1"; }
-  if (!form.hidden) setTimeout(() => $("#f-name").focus({ preventScroll: true }), 600);
+  setTimeout(() => $("#f-name").focus({ preventScroll: true }), 600);
 }));
 form.message.addEventListener("input", () => delete form.message.dataset.fromPlan);
 form.addEventListener("input", (e) => { if (e.target.getAttribute("aria-invalid") === "true") setErr(e.target.name, ""); });
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   statusEl.textContent = "";
-  if (form.website.value) return;
+  if (form.hp_check.value) return;
   const fd = new FormData(form);
   const d = { name: (fd.get("name") || "").trim(), phone: (fd.get("phone") || "").trim(), type: fd.get("type") || "", message: (fd.get("message") || "").trim() };
   if (!validate(d)) return;
@@ -896,9 +950,13 @@ $("#againBtn").addEventListener("click", () => { $("#sent").hidden = true; form.
 function showWhatsApp(number) {
   const url = `https://wa.me/${number}?text=${encodeURIComponent("היי SPARK, אשמח לשמוע פרטים על פרויקט")}`;
   $("#waFab").href = url; $("#waFab").hidden = false;
+  $("#waCta").href = url; $("#waCta").hidden = false;
   $("#waAlt a").href = url; $("#waAlt").hidden = false;
 }
+$("#waCta").prepend($("#waFab svg").cloneNode(true)); /* same WhatsApp logo as the floating button */
 if (CONFIG.WHATSAPP) showWhatsApp(CONFIG.WHATSAPP);
+/* the floating button sits over the form's send button on phones: hide it while the form is on screen (the form has its own WhatsApp link) */
+new IntersectionObserver((es) => $("#waFab").classList.toggle("away", es[0].isIntersecting)).observe($("#formPanel"));
 fetch(API_BASE + "/api/public/info").then((r) => (r.ok ? r.json() : null)).then((info) => {
   if (info && info.whatsapp) showWhatsApp(info.whatsapp);
 }).catch(() => {});
@@ -907,11 +965,15 @@ fetch(API_BASE + "/api/public/info").then((r) => (r.ok ? r.json() : null)).then(
    3D: the SPARK logo, orbit rings, sparkles, synthwave floor
    ===================================================================== */
 const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
-addEventListener("pointermove", (e) => { mouse.tx = e.clientX / innerWidth * 2 - 1; mouse.ty = e.clientY / innerHeight * 2 - 1; }, { passive: true });
+/* mouse only: on phones every tap and scroll gesture would otherwise jerk the camera */
+addEventListener("pointermove", (e) => { if (e.pointerType !== "mouse") return; mouse.tx = e.clientX / innerWidth * 2 - 1; mouse.ty = e.clientY / innerHeight * 2 - 1; }, { passive: true });
 
+/* three.js loads with defer, so a slow CDN no longer holds up the form, carousel and buttons above */
 let three = null;
-try { if (window.THREE) three = initThree(); } catch (e) { console.warn("WebGL unavailable", e); }
-if (!three) document.documentElement.classList.add("no-webgl");
+addEventListener("DOMContentLoaded", () => {
+  try { if (window.THREE) three = initThree(); } catch (e) { console.warn("WebGL unavailable", e); }
+  if (!three) document.documentElement.classList.add("no-webgl");
+});
 
 function initThree() {
   const canvas = $("#stage");
