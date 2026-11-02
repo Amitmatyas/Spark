@@ -4,3 +4,5 @@ Disallow: /c/
 Disallow: /api/
 Disallow: /media/v/
 Disallow: /media/t/
+
+Sitemap: __SITE_URL__/sitemap.xml
