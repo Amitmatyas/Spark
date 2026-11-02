@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # או master, תלוי בשם הבראנץ' הראשי שלך
+    branches: [main] # ודא שזה שם הבראנץ' הראשי שלך (main או master)
 
 permissions:
   contents: read
@@ -17,7 +17,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps: deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,8 +29,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # כאן אנחנו אומרים לו להעלות רק את תיקיית public!
-          path: './public'
+          path: './public' # אומר לגיטהאב לקחת רק את מה שבתוך public ולהפוך אותו לאתר הראשי!
           
       - name: Deploy to GitHub Pages
         id: deployment
