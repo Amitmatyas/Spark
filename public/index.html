@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SPARK · עריכת וידאו ובניית אתרים</title>
-<meta name="description" content="SPARK · סטודיו לעריכת וידאו ובניית אתרים. רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה ואתרי תדמית שמביאים פניות.">
+<meta name="description" content="SPARK · סטודיו לעריכת וידאו ובניית אתרים. רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה שמביאים פניות. מתחילים מדוגמה קצרה בחינם.">
 <link rel="icon" type="image/png" href="media/spark-mark.png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,7 +142,9 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
 @media (max-width: 860px) {
   .hero-grid { padding-left: max(34px, env(safe-area-inset-left, 0px)); padding-right: max(34px, env(safe-area-inset-right, 0px)); }
   .hero { align-items: end; }
-  .hero-grid { grid-template-columns: 1fr; padding-block: 50svh 96px; }
+  .hero-grid { grid-template-columns: 1fr; padding-block: 42svh 96px; }
+  .hero h1 { margin-bottom: 18px; }
+  .hero .lead { margin-bottom: 24px; }
   .hero-copy { max-width: none; }
   .scroll-cue, .hero-tag { display: none; }
 }
@@ -334,7 +336,9 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .plan li { display: flex; gap: 10px; align-items: baseline; }
 .plan li::before { content: ""; flex: none; width: 9px; height: 9px; background: var(--lilac); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
 .plan .btn { margin-top: 8px; }
-.price-note { margin: 22px 0 0; color: var(--muted); font-size: 15px; max-width: 70ch; }
+/* the 3D logo passes behind this note: a glass panel keeps it readable */
+.price-note { margin: 26px 0 0; color: var(--muted); font-size: 15px; max-width: 76ch; padding: 16px 20px; border-radius: 20px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.price-note b { color: var(--ink); }
 
 /* ---------- reviews ---------- */
 .reviews { padding-block: 60px 20px; }
@@ -347,10 +351,7 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .rev figcaption img, .rev figcaption i { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 2px var(--rim); }
 .rev figcaption i { display: grid; place-items: center; font: 900 22px/1 var(--f-cap); font-style: normal; color: #fff; background: linear-gradient(180deg, #b65cff, #7322ec); }
 
-/* ---------- still not sure + FAQ ---------- */
-.unsure { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 18px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
-.unsure b { display: block; font: 900 26px/1.1 var(--f-cap); color: #fff; }
-.unsure span { color: var(--muted); font-size: 14px; }
+/* ---------- FAQ ---------- */
 .faq { padding-block: 50px 90px; }
 .faq-list { display: grid; gap: 12px; margin-top: 30px; max-width: 880px; }
 .faq details { border-radius: 22px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transition: box-shadow .3s; }
@@ -396,14 +397,14 @@ html.still .rv:not(.in) { transform: none; }
     <div class="wrap">
       <a class="brand" href="#top" aria-label="SPARK, לראש העמוד"><img src="media/spark-mark.png" alt=""><span>SPARK</span></a>
       <ul id="navLinks">
-        <li><a href="#work">עבודות</a></li>
+        <li><a href="#work">הפרומו</a></li>
         <li><a href="#services">שירותים</a></li>
         <li><a href="#pricing">מחירים</a></li>
         <li><a href="#faq">שאלות נפוצות</a></li>
         <li><a href="#contact">צור קשר</a></li>
       </ul>
       <div class="nav-end">
-        <a class="btn btn-primary btn-sm" href="#contact">לקבלת הצעה</a>
+        <a class="btn btn-primary btn-sm" href="#contact">דוגמה חינם</a>
         <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="פתיחת התפריט"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
@@ -421,12 +422,12 @@ html.still .rv:not(.in) { transform: none; }
             <span class="cap">ואתרים שמביאים</span>
             <span class="neon tilt">לקוחות</span>
           </h1>
-          <p class="lead">עורכים רילס, טיקטוק ופרסומות, ובונים דפי נחיתה ואתרי תדמית. עם תלת מימד ותנועה שנבנים במיוחד למותג שלכם.</p>
+          <p class="lead">רילס, טיקטוק ופרסומות שעוצרים את הגלילה, ודפי נחיתה שהופכים צפיות לפניות. הכול נבנה מאפס בשביל המותג שלכם.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#contact">בואו נדבר על הפרויקט הבא שלכם</a>
-            <a class="btn btn-ghost" href="#work">לעבודות שלנו</a>
+            <a class="btn btn-primary" href="#contact">אני רוצה דוגמה חינם</a>
+            <a class="btn btn-ghost" href="#work">איך זה נראה</a>
           </div>
-          <p class="fine hero-note">שיחת היכרות קצרה, בלי התחייבות.</p>
+          <p class="fine hero-note">מכינים לכם דוגמה קצרה בסגנון שלכם, בחינם. משלמים רק אם אהבתם.</p>
         </div>
         <div aria-hidden="true"></div>
       </div>
@@ -437,10 +438,10 @@ html.still .rv:not(.in) { transform: none; }
       <div class="wrap">
         <div class="work-head">
           <div>
-            <p class="eyebrow">עבודות נבחרות</p>
+            <p class="eyebrow">הפרומו שלנו</p>
             <h2 class="title" id="work-title"><span class="cap">ככה זה נראה</span> <span class="neon tilt">בתנועה</span></h2>
           </div>
-          <p class="lead">גררו או לחצו על החיצים כדי לעבור בין הסרטונים. הרמקול מפעיל סאונד.</p>
+          <p class="lead">את הפרומו של SPARK ערכנו בדיוק כמו שנערוך את שלכם: פתיחה שתופסת, כתוביות, תלת מימד וסאונד. כדאי להפעיל סאונד.</p>
         </div>
         <div class="carousel" id="carousel" tabindex="0" role="region" aria-roledescription="קרוסלה" aria-label="סרטונים"></div>
         <div class="car-meta" aria-live="polite"><b id="carTitle"></b><span id="carTag"></span></div>
@@ -449,7 +450,7 @@ html.still .rv:not(.in) { transform: none; }
           <div class="dots" id="dots"></div>
           <button class="icon-btn" id="nextBtn" type="button" aria-label="הסרטון הבא"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
         </div>
-        <div class="mid-cta"><a class="btn btn-primary" href="#contact">רוצים סרטון כזה? דברו איתנו</a></div>
+        <div class="mid-cta"><a class="btn btn-primary" href="#contact">רוצים כזה לעסק שלכם? לדוגמה חינם</a></div>
       </div>
     </section>
 
@@ -462,7 +463,7 @@ html.still .rv:not(.in) { transform: none; }
       <div class="wrap">
         <p class="eyebrow">מה אנחנו עושים</p>
         <h2 class="title" id="svc-title"><span class="cap">וידאו ואתרים</span> <span class="neon tilt">מאותו סטודיו</span></h2>
-        <p class="lead">כל פרויקט נבנה אצלנו מאפס, בלי תבניות מוכנות. כשהסרטון והאתר יוצאים מאותו מקום, המותג שלכם נראה אותו דבר בכל מקום שבו פוגשים אותו.</p>
+        <p class="lead">כל פרויקט נבנה אצלנו מאפס, בלי תבניות מוכנות. וכשהסרטונים והאתר יוצאים מאותו סטודיו, לקוח שראה אתכם באינסטגרם מזהה אתכם מיד גם באתר.</p>
         <div class="svc-grid">
           <article class="svc rv">
             <div class="svc-vis" aria-hidden="true">
@@ -477,7 +478,7 @@ html.still .rv:not(.in) { transform: none; }
               </div>
             </div>
             <h3>עריכת וידאו</h3>
-            <p>לסרטון יש שלוש שניות לעצור את הגלילה. אנחנו בונים את הפתיחה כדי לנצל אותן, ואת ההמשך כדי שיצפו עד הסוף: כתוביות, תלת מימד, מעברים וסאונד.</p>
+            <p>לסרטון יש שלוש שניות לעצור את הגלילה. אנחנו בונים את הפתיחה כדי לנצל אותן, ואת ההמשך כדי שיצפו עד הסוף: כתוביות, תלת מימד, מעברים וסאונד. אתם מצלמים, אנחנו עורכים.</p>
             <ul class="tags"><li>רילס וטיקטוק</li><li>פרסומות למותגים</li><li>תוכן שוטף לעסק</li></ul>
           </article>
           <article class="svc rv">
@@ -526,11 +527,11 @@ html.still .rv:not(.in) { transform: none; }
           <article class="plan rv">
             <h3>אתר וסרטונים</h3>
             <p class="price"><b>1,000</b><i>₪</i></p>
-            <ul><li>אתר וסרטונים באותו סגנון</li><li>מה בדיוק נכנס לחבילה, סוגרים יחד בשיחה</li></ul>
+            <ul><li>אתר מלא ו-10 סרטונים באותו סגנון</li><li>זול יותר מלהזמין כל אחד בנפרד</li></ul>
             <a class="btn btn-ghost btn-sm" href="#contact" data-plan-type="משהו אחר" data-plan-msg="מעוניינים בחבילת אתר וסרטונים ב-1,000 ₪">אני רוצה את זה</a>
           </article>
         </div>
-        <p class="price-note">זמן אספקה: מיום ועד כשבוע עד שהתוצר הסופי אצלכם, לפי העומס. המחיר הסופי תלוי בהיקף, ותקבלו אותו בהצעה מסודרת לפני שמתחילים.</p>
+        <p class="price-note"><b>לפני שמשלמים משהו, מקבלים דוגמה קצרה בחינם.</b> אהבתם? משלמים מקדמה או את כל הסכום, בביט או בפייבוקס, ומתחילים. התוצר הסופי אצלכם תוך עד 7 ימי עסקים. המחיר הסופי תלוי בהיקף, ונסגר איתכם לפני שמתחילים.</p>
       </div>
     </section>
 
@@ -546,8 +547,8 @@ html.still .rv:not(.in) { transform: none; }
       <div class="wrap contact-grid">
         <div class="contact-head rv">
           <p class="eyebrow">צור קשר</p>
-          <h2 class="title" id="contact-title"><span class="cap">רוצים סרטון או אתר</span> <span class="neon tilt">ברמה הזאת?</span></h2>
-          <p class="lead">השאירו שם וטלפון ונחזור אליכם לשיחה קצרה על הפרויקט, או כתבו לנו ישר בוואטסאפ.</p>
+          <h2 class="title" id="contact-title"><span class="cap">בואו נראה איך זה ייראה</span> <span class="neon tilt">אצלכם</span></h2>
+          <p class="lead">ספרו לנו בכמה מילים מה אתם צריכים. נחזור אליכם בוואטסאפ ונכין לכם דוגמה קצרה בחינם, כדי שתראו את הסגנון לפני שמחליטים.</p>
           <a class="btn btn-wa wa-cta" id="waCta" href="#" target="_blank" rel="noopener" hidden>כתבו לנו בוואטסאפ</a>
         </div>
 
@@ -581,7 +582,7 @@ html.still .rv:not(.in) { transform: none; }
             </div>
             <div class="hp" aria-hidden="true"><label for="f-hp">השאירו ריק</label><input id="f-hp" name="hp_check" tabindex="-1" autocomplete="off"></div>
             <p class="status" id="formStatus" role="alert"></p>
-            <button class="btn btn-primary" id="submitBtn" type="submit">שלחו ונחזור אליכם</button>
+            <button class="btn btn-primary" id="submitBtn" type="submit">שלחו ונחזור אליכם בוואטסאפ</button>
             <p class="fine">הפרטים משמשים רק כדי לחזור אליכם לגבי הפרויקט, ואישור יישלח אליכם בוואטסאפ. <a href="privacy.html">מדיניות פרטיות</a></p>
             <p class="wa-alt" id="waAlt" hidden>מעדיפים וואטסאפ? <a href="#" target="_blank" rel="noopener">כתבו לנו ישירות</a></p>
           </form>
@@ -590,20 +591,16 @@ html.still .rv:not(.in) { transform: none; }
               <div class="notif-top"><span>הודעה חדשה</span><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i></div>
               <div class="notif-body"><em></em><span id="sentLine">היי, אני רוצה סרטון כזה!</span></div>
             </div>
-            <h3 class="cap" id="sentTitle" tabindex="-1">ההודעה התקבלה</h3>
-            <p id="sentNote">תודה! נחזור אליכם בקרוב לשיחה קצרה על הפרויקט.</p>
+            <h3 class="cap" id="sentTitle" tabindex="-1">קיבלנו, תודה!</h3>
+            <p id="sentNote">נחזור אליכם בקרוב לגבי הפרויקט והדוגמה החינמית.</p>
             <button class="btn btn-ghost btn-sm" id="againBtn" type="button">שליחת פנייה נוספת</button>
-          </div>
-          <div class="unsure">
-            <div><b>עדיין לא בטוחים?</b><span>ריכזנו תשובות לכל מה ששואלים אותנו לפני שמתחילים.</span></div>
-            <a class="btn btn-ghost btn-sm" href="#faq">לשאלות הנפוצות</a>
           </div>
         </div>
 
         <ol class="steps rv" aria-label="איך זה עובד">
-          <li><span class="pill"><b>01</b></span><div><h3>משאירים פרטים</h3><p>בטופס או בוואטסאפ, פחות מדקה.</p></div></li>
-          <li><span class="pill"><b>02</b></span><div><h3>שיחה קצרה</h3><p>מה המטרה, למי זה מיועד ומתי צריך את זה.</p></div></li>
-          <li><span class="pill"><b>03</b></span><div><h3>הצעה מסודרת</h3><p>מחיר ולוח זמנים ברורים לפני שמתחילים.</p></div></li>
+          <li><span class="pill"><b>01</b></span><div><h3>מספרים לנו על העסק</h3><p>בטופס או בוואטסאפ, פחות מדקה.</p></div></li>
+          <li><span class="pill"><b>02</b></span><div><h3>מקבלים דוגמה חינם</h3><p>סרטון קצר בסגנון שלכם, עם סימן מים, כדי לראות את האיכות לפני שמחליטים.</p></div></li>
+          <li><span class="pill"><b>03</b></span><div><h3>אהבתם? מתחילים</h3><p>משלמים מקדמה בביט או בפייבוקס, והתוצר הסופי אצלכם תוך ימים.</p></div></li>
         </ol>
       </div>
     </section>
@@ -613,16 +610,18 @@ html.still .rv:not(.in) { transform: none; }
         <p class="eyebrow">שאלות נפוצות</p>
         <h2 class="title" id="faq-title"><span class="cap">כל מה ששואלים</span> <span class="neon tilt">לפני שמתחילים</span></h2>
         <div class="faq-list">
-          <details><summary>כמה עולה סרטון או אתר?</summary><p>סרטון בודד מתחיל בכ-50 ₪, ואתר או דף נחיתה בכ-650 ₪. יש גם חבילות: 10 סרטונים ב-450 ₪, או אתר וסרטונים ב-1,000 ₪. המחיר הסופי תלוי בהיקף, ותקבלו אותו בהצעה מסודרת לפני שמתחילים.</p></details>
-          <details><summary>כמה זמן זה לוקח?</summary><p>בין יום לכשבוע עד שהתוצר הסופי אצלכם, לפי העומס באותו זמן. אם יש לכם תאריך יעד, כמו השקה, אירוע או קמפיין, ספרו לנו עליו כבר בשיחה הראשונה.</p></details>
+          <details><summary>כמה עולה סרטון או אתר?</summary><p>סרטון בודד מתחיל ב-50 ₪, ואתר או דף נחיתה ב-650 ₪. יש גם חבילות: 10 סרטונים ב-450 ₪, או אתר מלא ו-10 סרטונים ב-1,000 ₪. המחיר הסופי תלוי בהיקף, ונסגר איתכם לפני שמתחילים.</p></details>
+          <details><summary>מה זאת הדוגמה החינמית?</summary><p>לפני שמשלמים משהו, אנחנו מכינים סרטון קצר מאוד מהחומרים שלכם, בסגנון שמתאים לעסק. הוא מגיע עם סימן מים ולא מחייב אתכם בכלום. אהבתם? ממשיכים. לא התחברתם? לא שילמתם כלום.</p></details>
+          <details><summary>איך משלמים?</summary><p>רק אחרי שראיתם את הדוגמה והחלטתם להמשיך. אפשר לשלם מקדמה ואת היתרה בהמשך, או את כל הסכום מראש, בביט או בפייבוקס. החומרים עוברים לבעלותכם המלאה עם סיום התשלום.</p></details>
+          <details><summary>כמה זמן זה לוקח?</summary><p>עד 7 ימי עסקים עד שהתוצר הסופי אצלכם, ולפעמים הרבה פחות, לפי העומס. אם יש לכם תאריך יעד, כמו השקה, אירוע או קמפיין, ספרו לנו עליו כבר בהודעה הראשונה.</p></details>
           <details><summary>מה אתם צריכים מאיתנו כדי להתחיל?</summary><p>לסרטונים: את החומרים שצילמתם, הלוגו וכל דוגמה שאהבתם. לאתר: מה העסק מציע ולמי, ותמונות או סרטונים אם יש. מה שחסר, נעבור עליו יחד בשיחה.</p></details>
           <details><summary>איך מקבלים את הסרטונים?</summary><p>כל לקוח מקבל אזור אישי באתר. כל סרטון שמוכן עולה לשם, ותקבלו על זה הודעה בוואטסאפ. צופים ומורידים מכל מכשיר, בלי סיסמה: הכניסה היא עם קוד שנשלח אליכם בוואטסאפ.</p></details>
-          <details><summary>אפשר לבקש שינויים?</summary><p>כן. כל סרטון כולל עד 3 תיקונים. באתר כלולים בכל חודש עד 10 תיקונים קטנים, 2 בינוניים ותיקון גדול אחד. כותבים לנו בוואטסאפ מה לשנות, ואנחנו מעדכנים.</p></details>
+          <details><summary>אפשר לבקש שינויים?</summary><p>כן. כל סרטון כולל עד 3 תיקונים. באתר כלולים בכל חודש עד 10 תיקונים קטנים (טקסט או תמונות), 2 בינוניים (למשל אזור חדש בדף) ותיקון גדול אחד (פונקציה חדשה). כותבים לנו בוואטסאפ מה לשנות, ואנחנו מעדכנים.</p></details>
           <details><summary>האתר יעבוד טוב בנייד?</summary><p>כן. כל אתר נבנה קודם כול לנייד, כי שם רוב הלקוחות שלכם נמצאים, ומתחבר לכלים שלכם, כמו טופס פניות ווואטסאפ.</p></details>
           <details><summary>אפשר להזמין רק וידאו או רק אתר?</summary><p>בטח. כל שירות עומד בפני עצמו. כשעושים את שניהם אצלנו, הסרטונים והאתר נראים אותו דבר, והמותג מרגיש אחיד בכל מקום.</p></details>
-          <details><summary>מה קורה אחרי שמשאירים פרטים?</summary><p>מיד מגיע אליכם אישור בוואטסאפ, ואנחנו חוזרים אליכם לשיחת היכרות קצרה, בלי התחייבות. משם ממשיכים להצעה מסודרת.</p></details>
+          <details><summary>מה קורה אחרי שמשאירים פרטים?</summary><p>מיד מגיעה אליכם הודעה בוואטסאפ. עונים לה ישר שם, מספרים קצת על העסק ושולחים חומרים, ואנחנו מכינים את הדוגמה החינמית. בלי שיחות ארוכות ובלי התחייבות.</p></details>
         </div>
-        <div class="mid-cta"><a class="btn btn-primary" href="#contact">בואו נדבר על הפרויקט הבא שלכם</a></div>
+        <div class="mid-cta"><a class="btn btn-primary" href="#contact">אני רוצה דוגמה חינם</a></div>
       </div>
     </section>
   </main>
@@ -653,8 +652,7 @@ html.still .rv:not(.in) { transform: none; }
    poster = תמונת תצוגה (לא חובה). פריט עם src ריק מוצג ככרטיס "הסרטון הבא שלך". */
 const VIDEOS = [
   { src: "media/spark-promo.mp4", poster: "media/spark-promo.jpg", title: "פרומו SPARK", tag: "רגעים נבחרים · תלת מימד · ניאון · סאונד" },
-  { src: "", poster: "", title: "הסרטון הבא", tag: "המקום הזה שמור לסרטון שלך" },
-  { src: "", poster: "", title: "הסרטון הבא", tag: "המקום הזה שמור לסרטון שלך" },
+  { src: "", poster: "", title: "הסרטון שלכם", tag: "מתחילים מדוגמה קצרה, בחינם" },
 ];
 
 /* ביקורות: רק ביקורות אמיתיות של לקוחות, ובאישור שלהם להציג אותן.
@@ -766,7 +764,7 @@ const cards = VIDEOS.map((v, i) => {
     pp.addEventListener("click", (e) => { e.stopPropagation(); vid.paused ? play(c) : (vid.pause(), c.classList.add("is-paused")); });
     c.querySelector(".snd").addEventListener("click", (e) => { e.stopPropagation(); soundOn = !soundOn; syncSound(); if (vid.paused) play(c); });
   } else {
-    c.innerHTML = `<div class="slot"><img src="media/spark-logo-3d.png" alt="" draggable="false"><b>${latin(v.title)}</b><small>${esc(v.tag)}</small><a class="btn btn-primary btn-sm" href="#contact">בואו נבנה אותו</a></div>`;
+    c.innerHTML = `<div class="slot"><img src="media/spark-logo-3d.png" alt="" draggable="false"><b>${latin(v.title)}</b><small>${esc(v.tag)}</small><a class="btn btn-primary btn-sm" href="#contact">לדוגמה חינם</a></div>`;
   }
   c.addEventListener("click", (e) => {
     if (dragMoved) { e.preventDefault(); return; }
@@ -881,11 +879,19 @@ function setErr(id, msg) {
   if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
   return !msg;
 }
+/* an Israeli mobile has exactly 10 digits (05X-XXXXXXX): one missing digit used to pass, and the confirmation never arrived */
+function phoneError(phone) {
+  const digits = phone.replace(/[^\d]/g, "");
+  if (!digits) return "כתבו מספר טלפון, כדי שנוכל לחזור אליכם.";
+  const local = digits.startsWith("972") ? "0" + digits.slice(3) : digits;
+  if (local.startsWith("05") ? local.length !== 10 : local.startsWith("0") ? local.length < 9 || local.length > 10 : digits.length < 10 || digits.length > 15)
+    return "המספר לא נראה תקין. מספר נייד הוא 10 ספרות, למשל 050-1234567";
+  return "";
+}
 function validate(d) {
-  const digits = d.phone.replace(/[^\d]/g, "");
   const ok = [
     setErr("name", d.name.length < 2 ? "כתבו שם, כדי שנדע איך לפנות אליכם." : ""),
-    setErr("phone", digits.length < 9 || digits.length > 13 ? "מספר הטלפון לא נראה תקין. לדוגמה: 050-1234567" : ""),
+    setErr("phone", phoneError(d.phone)),
   ];
   const firstBad = ["name", "phone"][ok.indexOf(false)];
   if (firstBad) $("#f-" + firstBad).focus();
@@ -937,12 +943,12 @@ form.addEventListener("submit", async (e) => {
   btn.disabled = true; btn.textContent = "שולח...";
   try {
     const via = await sendLead(d);
-    if (via === "endpoint" && CONFIG.FORM_ENDPOINT === API_BASE + "/api/leads") $("#sentNote").textContent = "תודה! אישור יגיע אליכם עכשיו בוואטסאפ, ונחזור אליכם בקרוב לשיחה קצרה.";
+    if (via === "endpoint" && CONFIG.FORM_ENDPOINT === API_BASE + "/api/leads") $("#sentNote").textContent = "הודעה מאיתנו כבר בדרך אליכם בוואטסאפ. אפשר לענות לה ישר שם ולספר קצת על העסק, וככה נכין את הדוגמה מהר יותר.";
     $("#sentLine").textContent = `היי, זה ${d.name.split(" ")[0]}. אני רוצה ${d.type.includes("אתר") ? "אתר" : "סרטון"} כזה!`;
     form.hidden = true; $("#sent").hidden = false; form.reset(); $("#sentTitle").focus();
   } catch (err) {
     statusEl.textContent = err.userMsg || ($("#waAlt").hidden ? "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב." : "השליחה לא הצליחה. נסו שוב, או כתבו לנו ישירות בוואטסאפ.");
-  } finally { btn.disabled = false; btn.textContent = "שלחו ונחזור אליכם"; }
+  } finally { btn.disabled = false; btn.textContent = "שלחו ונחזור אליכם בוואטסאפ"; }
 });
 $("#againBtn").addEventListener("click", () => { $("#sent").hidden = true; form.hidden = false; $("#f-name").focus(); });
 
@@ -1114,7 +1120,7 @@ function initThree() {
       { at: "#contact", edge: "center", x: -0.4, y: 0.05, z: -5, s: 1.4 },
     ],
     narrow: [
-      { at: "#top", edge: "center", x: 0, y: 0.47, z: -0.6, s: 0.64 },
+      { at: "#top", edge: "center", x: 0, y: 0.52, z: -0.6, s: 0.56 },
       { at: "#work", edge: "top", x: 0, y: 0.05, z: 2.5, s: 1.0 },
       { at: "#work", edge: "center", x: 0, y: 0.0, z: -10, s: 1.5 },
       { at: "#services", edge: "center", x: 0, y: 0.0, z: -10, s: 1.4 },

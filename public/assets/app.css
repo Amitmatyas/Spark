@@ -131,6 +131,9 @@ h1, h2, h3 { margin: 0; }
 .task .due.late { color: #ff8db4; }
 .task .x { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 4px; border-radius: 8px; }
 .task .x:hover { color: #ff8db4; }
+.danger-zone { box-shadow: inset 0 0 0 1.5px rgba(255, 46, 126, .45), 0 18px 50px rgba(0, 0, 0, .25); }
+.danger-zone .purge-sub { margin: 18px 0 10px; font-size: 15px; color: #ffc2d6; }
+.danger-zone .task .btn { flex: none; }
 .add-task { display: flex; gap: 8px; margin-top: 12px; }
 .add-task .input { flex: 1; }
 .add-task input[type="date"] { flex: 0 0 150px; }
