@@ -123,10 +123,6 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
   border: 2px solid rgba(170, 70, 255, .9);
   box-shadow: 0 0 26px 3px var(--glow), inset 0 0 36px rgba(130, 20, 230, .32), inset 0 0 0 1px rgba(236, 170, 255, .12); }
 .hero-frame::after { content: ""; position: absolute; inset: auto 8% -3px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--lilac), transparent); filter: blur(2px); opacity: .9; }
-.hero-tag { position: absolute; top: 98px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(11, 1, 24, .55); box-shadow: inset 0 0 0 1px var(--line); font-size: 13px; color: var(--muted); white-space: nowrap; }
-.hero-tag b { color: #fff; font-family: var(--f-lat); font-weight: 900; letter-spacing: .08em; font-size: 14px; }
-.hero-tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 10px var(--pink); animation: rec 1.6s infinite; }
-@keyframes rec { 50% { opacity: .25 } }
 .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; padding-block: 150px 90px; }
 .hero-copy { max-width: 600px; }
 .hero h1 { margin: 0 0 26px; display: flex; flex-direction: column; align-items: flex-start; line-height: .9; }
@@ -146,11 +142,11 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
   .hero h1 { margin-bottom: 18px; }
   .hero .lead { margin-bottom: 24px; }
   .hero-copy { max-width: none; }
-  .scroll-cue, .hero-tag { display: none; }
+  .scroll-cue { display: none; }
 }
 
 /* ---------- services ---------- */
-.services { padding-block: 40px 40px; }
+.services { padding-block: 90px 40px; }
 .services .lead { margin-bottom: 40px; }
 .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 .svc { display: grid; align-content: start; gap: 14px; padding: 22px 22px 28px; border-radius: 30px; background: var(--panel); min-width: 0;
@@ -158,8 +154,6 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .svc h3 { margin: 10px 0 0; font: 900 clamp(38px, 4.2vw, 58px)/1 var(--f-cap); color: #fff; }
 .svc p { margin: 0; color: var(--muted); max-width: 48ch; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
-.tags li { padding: 7px 14px; border-radius: 999px; font-size: 14px; background: rgba(8, 0, 20, .5); box-shadow: inset 0 0 0 1px var(--line); }
 .meta-note { display: inline-flex; align-items: center; gap: 8px; color: var(--lilac) !important; font-weight: 700; font-size: 15px; }
 .meta-note::before { content: ""; width: 12px; height: 12px; background: var(--lilac); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
 .svc-vis { position: relative; height: 230px; border-radius: 20px; overflow: hidden; display: flex; justify-content: center; align-items: center; gap: 18px;
@@ -186,31 +180,21 @@ h2.title { margin: 0 0 18px; line-height: .95; font-size: clamp(44px, 6.4vw, 92p
 .mini-lines b { display: block; height: 12px; width: 120px; border-radius: 6px; background: rgba(255, 255, 255, .85); }
 .mini-lines b:nth-child(2) { width: 150px; height: 18px; background: linear-gradient(180deg, var(--lilac), var(--violet)); box-shadow: 0 0 12px rgba(170, 70, 255, .7); }
 .mini-lines b:nth-child(3) { width: 70px; height: 16px; border-radius: 99px; background: linear-gradient(180deg, #b65cff, #7322ec); }
-@media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } .svc-vis { height: 170px; } .mini-phone { height: 140px; } .mini-phone.side { height: 110px; } .mini-browser { height: 140px; } }
 @media (max-width: 420px) { .mini-lines b { width: 80px; } .mini-lines b:nth-child(2) { width: 100px; } .mini-page img { width: 70px; height: 70px; } }
 
 .pill { display: inline-flex; align-items: baseline; gap: 4px; padding: 8px 14px 6px; border-radius: 999px; background: rgba(8, 0, 20, .7); box-shadow: inset 0 0 0 1.5px var(--rim), 0 0 16px rgba(170, 70, 255, .45); direction: ltr; white-space: nowrap; }
 .pill b { font: 900 30px/1 var(--f-cap); color: #fff; }
 .pill small { font: 800 14px/1 var(--f-lat); color: var(--lilac); letter-spacing: .04em; }
 
-/* ---------- marquee bands ---------- */
-.bands { overflow: hidden; padding-block: 70px; }
-.band { width: 110%; margin-inline-start: -5%; overflow: hidden; }
-.band-a { transform: rotate(-3deg); background: linear-gradient(90deg, #5b17c9, #a33cff 45%, #ff2e7e); box-shadow: 0 0 40px rgba(170, 70, 255, .5); padding-block: 14px 8px; position: relative; z-index: 1; }
-.band-b { transform: rotate(2deg); margin-top: -10px; background: rgba(11, 1, 24, .85); box-shadow: inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line); padding-block: 12px 6px; }
-.track { display: flex; width: max-content; gap: 34px; align-items: center; will-change: transform; direction: ltr; }
-.track span { font: 900 clamp(34px, 4.4vw, 58px)/1.1 var(--f-cap); color: #fff; white-space: nowrap; direction: rtl; }
-.band-b .track span { color: transparent; -webkit-text-stroke: 1.5px var(--lilac); }
-.track svg { width: 26px; height: 26px; flex: none; fill: #fff; }
-.band-b .track svg { fill: var(--lilac); }
 
 /* ---------- work / carousel ---------- */
 .work { padding-block: 100px 30px; }
 .work-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 40px; margin-bottom: 30px; }
 .work-head .lead { max-width: 40ch; }
-/* the 3D logo flies through right behind this heading: a soft shade keeps the text readable */
-.work-head { position: relative; isolation: isolate; }
-.work-head::before { content: ""; position: absolute; inset: -28px -20px; z-index: -1; pointer-events: none; background: radial-gradient(closest-side, rgba(11, 1, 24, .78), rgba(11, 1, 24, .5) 60%, rgba(11, 1, 24, 0)); }
+/* the 3D logo flies through right behind these headings: a soft shade keeps the text readable */
+.work-head, .sec-head, .contact-head { position: relative; isolation: isolate; }
+.work-head::before, .sec-head::before, .contact-head::before { content: ""; position: absolute; inset: -28px -20px; z-index: -1; pointer-events: none; background: radial-gradient(closest-side, rgba(11, 1, 24, .78), rgba(11, 1, 24, .5) 60%, rgba(11, 1, 24, 0)); }
 .carousel { position: relative; height: clamp(480px, 70svh, 660px); perspective: 1600px; touch-action: pan-y; user-select: none; -webkit-user-select: none; outline: none; }
 .card { --w: clamp(220px, 25vw, 320px); position: absolute; top: 0; left: 50%; width: var(--w); aspect-ratio: 9 / 16; max-height: 100%; border-radius: 28px; overflow: hidden; cursor: pointer;
   background: #12032a; border: 2px solid rgba(170, 70, 255, .85);
@@ -316,14 +300,12 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .btn-wa svg { width: 20px; height: 20px; fill: #fff; }
 .wa-cta { margin-top: 24px; }
 .wa-fab svg { width: 30px; height: 30px; fill: #fff; }
-.wa-alt { margin: 4px 0 0; font-size: 14px; color: var(--muted); text-align: center; }
-.wa-alt a { color: #7dffb4; font-weight: 700; }
 
 /* ---------- pricing ---------- */
 .pricing { padding-block: 60px 20px; }
 .plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 18px; margin-top: 34px; }
 @media (max-width: 1100px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .plans { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .plans { grid-template-columns: 1fr; gap: 16px; } .plan { padding: 20px 18px 18px; gap: 8px; } .price b { font-size: 46px; } }
 .plan { position: relative; display: grid; gap: 12px; align-content: start; padding: 26px 22px 24px; border-radius: 28px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line), 0 0 26px rgba(130, 20, 230, .18); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .plan.hot { box-shadow: inset 0 0 0 2px var(--rim), 0 0 34px rgba(150, 40, 255, .45); }
 .plan .badge { position: absolute; top: -13px; inset-inline-start: 22px; padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: #fff; background: linear-gradient(180deg, #ff5fa0, var(--pink)); box-shadow: 0 0 16px rgba(255, 46, 126, .55); }
@@ -380,7 +362,7 @@ html.still .rv:not(.in) { transform: none; }
   html { scroll-behavior: auto; }
   .rv, .card { transition-duration: .01s; }
   .js .rv:not(.in) { transform: none; }
-  .mini-floor, .mini-page img, .notif, .scroll-cue span, .hero-tag i { animation: none; }
+  .mini-floor, .mini-page img, .notif, .scroll-cue span { animation: none; }
 }
 </style>
 
@@ -413,7 +395,6 @@ html.still .rv:not(.in) { transform: none; }
   <main id="main" tabindex="-1">
     <section class="hero" id="top">
       <div class="hero-frame" aria-hidden="true"></div>
-      <div class="hero-tag" aria-hidden="true"><i></i><b>SPARK</b> סטודיו לווידאו ואתרים</div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">סטודיו לעריכת וידאו ובניית אתרים</p>
@@ -441,7 +422,7 @@ html.still .rv:not(.in) { transform: none; }
             <p class="eyebrow">הפרומו שלנו</p>
             <h2 class="title" id="work-title"><span class="cap">ככה זה נראה</span> <span class="neon tilt">בתנועה</span></h2>
           </div>
-          <p class="lead">את הפרומו של SPARK ערכנו בדיוק כמו שנערוך את שלכם: פתיחה שתופסת, כתוביות, תלת מימד וסאונד. כדאי להפעיל סאונד.</p>
+          <p class="lead">ערכנו אותו בדיוק כמו שנערוך את שלכם. כדאי להפעיל סאונד.</p>
         </div>
         <div class="carousel" id="carousel" tabindex="0" role="region" aria-roledescription="קרוסלה" aria-label="סרטונים"></div>
         <div class="car-meta" aria-live="polite"><b id="carTitle"></b><span id="carTag"></span></div>
@@ -450,20 +431,17 @@ html.still .rv:not(.in) { transform: none; }
           <div class="dots" id="dots"></div>
           <button class="icon-btn" id="nextBtn" type="button" aria-label="הסרטון הבא"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
         </div>
-        <div class="mid-cta"><a class="btn btn-primary" href="#contact">רוצים כזה לעסק שלכם? לדוגמה חינם</a></div>
+        <div class="mid-cta"><a class="btn btn-primary" href="#contact">רוצים כזה לעסק שלכם?</a></div>
       </div>
     </section>
 
-    <div class="bands" aria-hidden="true">
-      <div class="band band-a"><div class="track" data-speed="60"></div></div>
-      <div class="band band-b"><div class="track" data-speed="-42"></div></div>
-    </div>
-
     <section class="services" id="services" aria-labelledby="svc-title">
       <div class="wrap">
-        <p class="eyebrow">מה אנחנו עושים</p>
-        <h2 class="title" id="svc-title"><span class="cap">וידאו ואתרים</span> <span class="neon tilt">מאותו סטודיו</span></h2>
-        <p class="lead">כל פרויקט נבנה אצלנו מאפס, בלי תבניות מוכנות. וכשהסרטונים והאתר יוצאים מאותו סטודיו, לקוח שראה אתכם באינסטגרם מזהה אתכם מיד גם באתר.</p>
+        <div class="sec-head">
+          <p class="eyebrow">מה אנחנו עושים</p>
+          <h2 class="title" id="svc-title"><span class="cap">וידאו ואתרים</span> <span class="neon tilt">מאותו סטודיו</span></h2>
+          <p class="lead">בלי תבניות מוכנות. ומאחר שהכול יוצא מאותו סטודיו, מי שראה אתכם באינסטגרם יזהה אתכם מיד גם באתר.</p>
+        </div>
         <div class="svc-grid">
           <article class="svc rv">
             <div class="svc-vis" aria-hidden="true">
@@ -478,8 +456,7 @@ html.still .rv:not(.in) { transform: none; }
               </div>
             </div>
             <h3>עריכת וידאו</h3>
-            <p>לסרטון יש שלוש שניות לעצור את הגלילה. אנחנו בונים את הפתיחה כדי לנצל אותן, ואת ההמשך כדי שיצפו עד הסוף: כתוביות, תלת מימד, מעברים וסאונד. אתם מצלמים, אנחנו עורכים.</p>
-            <ul class="tags"><li>רילס וטיקטוק</li><li>פרסומות למותגים</li><li>תוכן שוטף לעסק</li></ul>
+            <p>רילס, טיקטוק ופרסומות. אתם מצלמים, אנחנו עורכים: פתיחה שעוצרת את הגלילה בשלוש השניות הראשונות, כתוביות, תלת מימד וסאונד.</p>
           </article>
           <article class="svc rv">
             <div class="svc-vis" aria-hidden="true">
@@ -493,8 +470,7 @@ html.still .rv:not(.in) { transform: none; }
               </div>
             </div>
             <h3>בניית אתרים</h3>
-            <p>דפי נחיתה ואתרי תדמית שבנויים להביא פניות: מסר שמובן מהשנייה הראשונה, דרך קצרה לטופס, ותנועה שגורמת להמשיך לגלול. מותאמים לנייד ומחוברים למערכות שלכם.</p>
-            <ul class="tags"><li>דפי נחיתה</li><li>אתרי תדמית</li><li>תלת מימד ואנימציה</li></ul>
+            <p>דפי נחיתה ואתרי תדמית שבנויים להביא פניות: מסר ברור מהשנייה הראשונה ודרך קצרה ליצירת קשר. מותאמים לנייד ומחוברים לוואטסאפ.</p>
             <p class="meta-note">האתר שאתם נמצאים בו עכשיו? גם אותו בנינו.</p>
           </article>
         </div>
@@ -531,7 +507,7 @@ html.still .rv:not(.in) { transform: none; }
             <a class="btn btn-ghost btn-sm" href="#contact" data-plan-type="משהו אחר" data-plan-msg="מעוניינים בחבילת אתר וסרטונים ב-1,000 ₪">אני רוצה את זה</a>
           </article>
         </div>
-        <p class="price-note"><b>לפני שמשלמים משהו, מקבלים דוגמה קצרה בחינם.</b> אהבתם? משלמים מקדמה או את כל הסכום, בביט או בפייבוקס, ומתחילים. התוצר הסופי אצלכם תוך עד 7 ימי עסקים. המחיר הסופי תלוי בהיקף, ונסגר איתכם לפני שמתחילים.</p>
+        <p class="price-note"><b>קודם דוגמה חינם, ורק אם אהבתם משלמים.</b> התוצר הסופי אצלכם תוך עד 7 ימי עסקים.</p>
       </div>
     </section>
 
@@ -548,7 +524,7 @@ html.still .rv:not(.in) { transform: none; }
         <div class="contact-head rv">
           <p class="eyebrow">צור קשר</p>
           <h2 class="title" id="contact-title"><span class="cap">בואו נראה איך זה ייראה</span> <span class="neon tilt">אצלכם</span></h2>
-          <p class="lead">ספרו לנו בכמה מילים מה אתם צריכים. נחזור אליכם בוואטסאפ ונכין לכם דוגמה קצרה בחינם, כדי שתראו את הסגנון לפני שמחליטים.</p>
+          <p class="lead">ספרו לנו בכמה מילים מה אתם צריכים, ונחזור אליכם בוואטסאפ.</p>
           <a class="btn btn-wa wa-cta" id="waCta" href="#" target="_blank" rel="noopener" hidden>כתבו לנו בוואטסאפ</a>
         </div>
 
@@ -583,8 +559,7 @@ html.still .rv:not(.in) { transform: none; }
             <div class="hp" aria-hidden="true"><label for="f-hp">השאירו ריק</label><input id="f-hp" name="hp_check" tabindex="-1" autocomplete="off"></div>
             <p class="status" id="formStatus" role="alert"></p>
             <button class="btn btn-primary" id="submitBtn" type="submit">שלחו ונחזור אליכם בוואטסאפ</button>
-            <p class="fine">הפרטים משמשים רק כדי לחזור אליכם לגבי הפרויקט, ואישור יישלח אליכם בוואטסאפ. <a href="privacy.html">מדיניות פרטיות</a></p>
-            <p class="wa-alt" id="waAlt" hidden>מעדיפים וואטסאפ? <a href="#" target="_blank" rel="noopener">כתבו לנו ישירות</a></p>
+            <p class="fine">נשתמש בפרטים רק כדי לחזור אליכם. <a href="privacy.html">מדיניות פרטיות</a></p>
           </form>
           <div class="sent" id="sent" hidden>
             <div class="notif">
@@ -599,8 +574,8 @@ html.still .rv:not(.in) { transform: none; }
 
         <ol class="steps rv" aria-label="איך זה עובד">
           <li><span class="pill"><b>01</b></span><div><h3>מספרים לנו על העסק</h3><p>בטופס או בוואטסאפ, פחות מדקה.</p></div></li>
-          <li><span class="pill"><b>02</b></span><div><h3>מקבלים דוגמה חינם</h3><p>סרטון קצר בסגנון שלכם, עם סימן מים, כדי לראות את האיכות לפני שמחליטים.</p></div></li>
-          <li><span class="pill"><b>03</b></span><div><h3>אהבתם? מתחילים</h3><p>משלמים מקדמה בביט או בפייבוקס, והתוצר הסופי אצלכם תוך ימים.</p></div></li>
+          <li><span class="pill"><b>02</b></span><div><h3>מקבלים דוגמה חינם</h3><p>קצרה, בסגנון שלכם, בלי התחייבות.</p></div></li>
+          <li><span class="pill"><b>03</b></span><div><h3>אהבתם? מתחילים</h3><p>מקדמה בביט או בפייבוקס, ויוצאים לדרך.</p></div></li>
         </ol>
       </div>
     </section>
@@ -610,16 +585,12 @@ html.still .rv:not(.in) { transform: none; }
         <p class="eyebrow">שאלות נפוצות</p>
         <h2 class="title" id="faq-title"><span class="cap">כל מה ששואלים</span> <span class="neon tilt">לפני שמתחילים</span></h2>
         <div class="faq-list">
-          <details><summary>כמה עולה סרטון או אתר?</summary><p>סרטון בודד מתחיל ב-50 ₪, ואתר או דף נחיתה ב-650 ₪. יש גם חבילות: 10 סרטונים ב-450 ₪, או אתר מלא ו-10 סרטונים ב-1,000 ₪. המחיר הסופי תלוי בהיקף, ונסגר איתכם לפני שמתחילים.</p></details>
-          <details><summary>מה זאת הדוגמה החינמית?</summary><p>לפני שמשלמים משהו, אנחנו מכינים סרטון קצר מאוד מהחומרים שלכם, בסגנון שמתאים לעסק. הוא מגיע עם סימן מים ולא מחייב אתכם בכלום. אהבתם? ממשיכים. לא התחברתם? לא שילמתם כלום.</p></details>
-          <details><summary>איך משלמים?</summary><p>רק אחרי שראיתם את הדוגמה והחלטתם להמשיך. אפשר לשלם מקדמה ואת היתרה בהמשך, או את כל הסכום מראש, בביט או בפייבוקס. החומרים עוברים לבעלותכם המלאה עם סיום התשלום.</p></details>
-          <details><summary>כמה זמן זה לוקח?</summary><p>עד 7 ימי עסקים עד שהתוצר הסופי אצלכם, ולפעמים הרבה פחות, לפי העומס. אם יש לכם תאריך יעד, כמו השקה, אירוע או קמפיין, ספרו לנו עליו כבר בהודעה הראשונה.</p></details>
-          <details><summary>מה אתם צריכים מאיתנו כדי להתחיל?</summary><p>לסרטונים: את החומרים שצילמתם, הלוגו וכל דוגמה שאהבתם. לאתר: מה העסק מציע ולמי, ותמונות או סרטונים אם יש. מה שחסר, נעבור עליו יחד בשיחה.</p></details>
-          <details><summary>איך מקבלים את הסרטונים?</summary><p>כל לקוח מקבל אזור אישי באתר. כל סרטון שמוכן עולה לשם, ותקבלו על זה הודעה בוואטסאפ. צופים ומורידים מכל מכשיר, בלי סיסמה: הכניסה היא עם קוד שנשלח אליכם בוואטסאפ.</p></details>
-          <details><summary>אפשר לבקש שינויים?</summary><p>כן. כל סרטון כולל עד 3 תיקונים. באתר כלולים בכל חודש עד 10 תיקונים קטנים (טקסט או תמונות), 2 בינוניים (למשל אזור חדש בדף) ותיקון גדול אחד (פונקציה חדשה). כותבים לנו בוואטסאפ מה לשנות, ואנחנו מעדכנים.</p></details>
-          <details><summary>האתר יעבוד טוב בנייד?</summary><p>כן. כל אתר נבנה קודם כול לנייד, כי שם רוב הלקוחות שלכם נמצאים, ומתחבר לכלים שלכם, כמו טופס פניות ווואטסאפ.</p></details>
-          <details><summary>אפשר להזמין רק וידאו או רק אתר?</summary><p>בטח. כל שירות עומד בפני עצמו. כשעושים את שניהם אצלנו, הסרטונים והאתר נראים אותו דבר, והמותג מרגיש אחיד בכל מקום.</p></details>
-          <details><summary>מה קורה אחרי שמשאירים פרטים?</summary><p>מיד מגיעה אליכם הודעה בוואטסאפ. עונים לה ישר שם, מספרים קצת על העסק ושולחים חומרים, ואנחנו מכינים את הדוגמה החינמית. בלי שיחות ארוכות ובלי התחייבות.</p></details>
+          <details><summary>כמה עולה סרטון או אתר?</summary><p>סרטון מ-50 ₪, אתר או דף נחיתה מ-650 ₪, 10 סרטונים ב-450 ₪, ואתר עם 10 סרטונים ב-1,000 ₪. המחיר הסופי נסגר איתכם לפני שמתחילים.</p></details>
+          <details><summary>מה זאת הדוגמה החינמית?</summary><p>סרטון קצר מאוד מהחומרים שלכם, עם סימן מים, כדי שתראו את הסגנון לפני שמשלמים. אהבתם? ממשיכים. לא? לא שילמתם כלום.</p></details>
+          <details><summary>איך משלמים?</summary><p>בביט או בפייבוקס, רק אחרי שראיתם את הדוגמה. אפשר מקדמה ואת היתרה בהמשך, או הכול מראש.</p></details>
+          <details><summary>כמה זמן זה לוקח?</summary><p>עד 7 ימי עסקים, ולפעמים הרבה פחות. יש לכם תאריך יעד? ספרו לנו כבר בהודעה הראשונה.</p></details>
+          <details><summary>מה אתם צריכים מאיתנו כדי להתחיל?</summary><p>לסרטונים: מה שצילמתם והלוגו. לאתר: מה העסק מציע ולמי, ותמונות אם יש.</p></details>
+          <details><summary>אפשר לבקש שינויים?</summary><p>כן. כל סרטון כולל עד 3 תיקונים. באתר כלולים בכל חודש עד 10 תיקונים קטנים (טקסט או תמונות), 2 בינוניים (אזור חדש בדף) וגדול אחד (פונקציה חדשה).</p></details>
         </div>
         <div class="mid-cta"><a class="btn btn-primary" href="#contact">אני רוצה דוגמה חינם</a></div>
       </div>
@@ -718,21 +689,6 @@ if (REVIEWS.length) {
   $("#reviews").hidden = false;
   document.querySelectorAll("#revGrid .rv").forEach((el) => io.observe(el));
 }
-
-/* ---------- marquee bands (speed reacts to scroll velocity) ---------- */
-const STAR = '<svg viewBox="0 0 24 24"><path d="M12 0c.8 6.4 4.8 10.6 12 12-7.2 1.4-11.2 5.6-12 12-.8-6.4-4.8-10.6-12-12C7.2 10.6 11.2 6.4 12 0z"/></svg>';
-const words = ["עריכת וידאו", "בניית אתרים", "תלת מימד", "אפקטים", "אנימציות גלילה", "מעברים", "סאונד", "דפי נחיתה", "מילים בניאון"];
-const tracks = [...document.querySelectorAll(".track")].map((t, k) => {
-  const seq = (k ? [...words].reverse() : words).map((w) => `<span>${w}</span>${STAR}`).join("");
-  t.innerHTML = seq + seq + seq;
-  return { el: t, speed: +t.dataset.speed, x: 0, w: 0 };
-});
-/* one loop = the distance from the first copy to the second (scrollWidth / 3 leaves out the gap between copies, so the band jumped) */
-const measureTracks = () => tracks.forEach((t) => {
-  const kids = t.el.children, n = kids.length / 3;
-  t.w = Math.abs(kids[n].offsetLeft - kids[0].offsetLeft) || t.el.scrollWidth / 3;
-});
-measureTracks();
 
 /* ---------- carousel ---------- */
 /* the caption face has no Latin letters: wrap them in the Latin display face */
@@ -947,7 +903,7 @@ form.addEventListener("submit", async (e) => {
     $("#sentLine").textContent = `היי, זה ${d.name.split(" ")[0]}. אני רוצה ${d.type.includes("אתר") ? "אתר" : "סרטון"} כזה!`;
     form.hidden = true; $("#sent").hidden = false; form.reset(); $("#sentTitle").focus();
   } catch (err) {
-    statusEl.textContent = err.userMsg || ($("#waAlt").hidden ? "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב." : "השליחה לא הצליחה. נסו שוב, או כתבו לנו ישירות בוואטסאפ.");
+    statusEl.textContent = err.userMsg || ($("#waCta").hidden ? "השליחה לא הצליחה. בדקו את החיבור לאינטרנט ונסו שוב." : "השליחה לא הצליחה. נסו שוב, או כתבו לנו ישירות בוואטסאפ.");
   } finally { btn.disabled = false; btn.textContent = "שלחו ונחזור אליכם בוואטסאפ"; }
 });
 $("#againBtn").addEventListener("click", () => { $("#sent").hidden = true; form.hidden = false; $("#f-name").focus(); });
@@ -957,7 +913,6 @@ function showWhatsApp(number) {
   const url = `https://wa.me/${number}?text=${encodeURIComponent("היי SPARK, אשמח לשמוע פרטים על פרויקט")}`;
   $("#waFab").href = url; $("#waFab").hidden = false;
   $("#waCta").href = url; $("#waCta").hidden = false;
-  $("#waAlt a").href = url; $("#waAlt").hidden = false;
 }
 $("#waCta").prepend($("#waFab svg").cloneNode(true)); /* same WhatsApp logo as the floating button */
 if (CONFIG.WHATSAPP) showWhatsApp(CONFIG.WHATSAPP);
@@ -1165,13 +1120,6 @@ function frame(now) {
   const sy = scrollY;
   vel += ((sy - lastY) / Math.max(dt, 0.001) - vel) * 0.12; lastY = sy;
 
-  // marquee
-  tracks.forEach((t) => {
-    const sp = still ? 0 : t.speed * (1 + Math.min(Math.abs(vel) / 400, 5));
-    t.x = (t.x + sp * dt) % t.w; if (t.x > 0) t.x -= t.w;
-    t.el.style.transform = `translate3d(${t.x}px,0,0)`;
-  });
-
   if (three && !document.hidden) {
     const T = three, k = 1 - Math.exp(-dt * 4.5), time = now / 1000;
     const tg = T.target(sy), st = T.st;
@@ -1201,9 +1149,9 @@ function frame(now) {
 requestAnimationFrame(frame);
 
 let rT;
-addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(() => { measureTracks(); if (three) three.resize(); }, 120); });
-addEventListener("load", () => { measureTracks(); if (three) three.computeAnchors(); });
-if (document.fonts) document.fonts.ready.then(() => { measureTracks(); if (three) three.computeAnchors(); });
+addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(() => { if (three) three.resize(); }, 120); });
+addEventListener("load", () => { if (three) three.computeAnchors(); });
+if (document.fonts) document.fonts.ready.then(() => { if (three) three.computeAnchors(); });
 </script>
 </body>
 </html>
