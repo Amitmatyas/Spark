@@ -13,8 +13,8 @@
 </p>
 
 <p align="center">
-  <a href="https://spark-studio-pi.vercel.app"><b>לאתר שלנו</b></a> ·
-  <a href="https://spark-studio-pi.vercel.app/#contact"><b>לדוגמה חינם</b></a>
+  <a href="https://sparks.qd.je"><b>לאתר שלנו</b></a> ·
+  <a href="https://sparks.qd.je/#contact"><b>לדוגמה חינם</b></a>
 </p>
 
 ---
@@ -60,7 +60,7 @@
 <p align="center">
   <b>רוצים לראות איך זה ייראה אצלכם?</b>
   <br>
-  <a href="https://spark-studio-pi.vercel.app/#contact">השאירו פרטים באתר</a> ונחזור אליכם בוואטסאפ.
+  <a href="https://sparks.qd.je/#contact">השאירו פרטים באתר</a> ונחזור אליכם בוואטסאפ.
 </p>
 
 </div>
