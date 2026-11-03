@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # ודא שזה שם הבראנץ' הראשי שלך (main או master)
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -10,8 +11,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
+
+env:
+  SITE_URL: https://sparks.qd.je
 
 jobs:
   deploy:
@@ -22,15 +26,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
+      # Same substitution Vercel does in vercel.json, with the custom domain
+      - name: Fill in the site URL
+        run: sed -i "s|__SITE_URL__|${SITE_URL}|g" public/index.html public/sitemap.xml public/robots.txt
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
+      # Only public/ is published; public/CNAME carries the custom domain
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './public' # אומר לגיטהאב לקחת רק את מה שבתוך public ולהפוך אותו לאתר הראשי!
-          
+          path: ./public
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

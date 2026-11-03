@@ -1,13 +1,15 @@
-# GitHub (and Vercel) get only the public landing page and its legal pages.
+# GitHub (Pages and Vercel) get only the public landing page and its legal pages.
 # The system itself (server, admin, client area, WhatsApp, AI) runs from the NAS and stays there.
 /*
 !/.gitignore
+!/.github/
 !/README.md
 !/vercel.json
 !/public/
 
 /public/*
 !/public/index.html
+!/public/CNAME
 !/public/404.html
 !/public/privacy.html
 !/public/terms.html
