@@ -19,6 +19,7 @@
 !/public/favicon.ico
 !/public/media/
 !/public/assets/
+!/public/proposals/
 
 /public/assets/*
 !/public/assets/base.css
