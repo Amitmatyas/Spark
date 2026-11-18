@@ -247,6 +247,10 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
   .steps { grid-template-columns: 1fr; }
   .vs { grid-template-columns: 1fr; gap: 6px; }
 }
+@media (max-width: 640px) {
+  .incl { grid-template-columns: 1fr 1fr; }
+  .incl div:last-child { grid-column: 1 / -1; }
+}
 @media (max-width: 520px) {
   .final .cd-row span { min-width: 62px; }
   .final .cd-row b { font-size: 32px; }
@@ -297,7 +301,7 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
       <aside class="pick" aria-label="ההמלצה שלנו">
         <p class="pick-k">ההמלצה שלנו בשבילכם</p>
         <div class="pick-name">BLAZE</div>
-        <div class="pick-sub">12 סרטונים ערוכים · מסגרת ממותגת · סאונד · תלת מימד</div>
+        <div class="pick-sub">12 סרטונים ערוכים · מסגרת ממותגת · סאונד · תלת מימד מתקדם</div>
         <div class="pick-price"><s class="num if-live">450 ₪</s><span><b class="num"><span class="if-live">350</span><span class="if-exp">450</span></b> ₪</span></div>
         <span class="chip"><span class="if-live">כ־29</span><span class="if-exp">כ־38</span> ₪ לסרטון</span>
         <div class="cd if-live" role="timer">
@@ -319,6 +323,7 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 12h5M7 15.5h9M15 12h2"/></svg>כתוביות בעברית</div>
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2.5L5 13.5h6l-1 8 8-11h-6z"/></svg>פתיח שבנוי לעצור גלילה</div>
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h3l2-5 3 10 3-7 2 2h3"/></svg>מעברים, זומים ותנועה</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg>אלמנטים בתלת מימד, ללא הגבלה</div>
       </div>
       <p class="incl-note">כל סרטון יוצא מוכן להעלאה לאינסטגרם, טיקטוק ויוטיוב שורטס.</p>
     </section>
@@ -379,8 +384,8 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
             <li>סגנון עריכה אחיד לכל הסדרה</li>
             <li class="plus">מסגרת ממותגת קבועה בצבעים ובלוגו שלכם</li>
             <li class="plus">סאונד ומוזיקת רקע מותאמים לכל סרטון</li>
-            <li class="plus">אלמנטים בתלת מימד בעד 3 סרטונים</li>
-            <li class="plus">2 סבבי תיקונים לכל סרטון</li>
+            <li class="plus">תלת מימד ברמה מתקדמת בכל סרטון</li>
+            <li class="plus">5 סבבי תיקונים לכל סרטון</li>
           </ul>
           <a class="btn btn-primary" data-plan="BLAZE (12 סרטונים, 350 ₪)" data-plan-exp="BLAZE (12 סרטונים, 450 ₪)" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>אני רוצה את BLAZE</a>
           <p class="valid if-live">המחיר המיוחד נגמר בעוד <b class="num" data-cd-inline>—</b></p>
@@ -390,7 +395,7 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
 
       <div class="vs">
         <div class="delta" dir="ltr"><span class="if-live">+130 ₪</span><span class="if-exp">+230 ₪</span></div>
-        <p>זה כל ההפרש בין <b>FLARE</b> ל־<b>BLAZE</b>. בתמורה מקבלים <b>עוד 6 סרטונים</b> (<span class="if-live">כ־22</span><span class="if-exp">כ־38</span> ₪ לסרטון), <b>מסגרת ממותגת</b>, <b>סאונד מותאם</b> ו<b>תלת מימד</b>. מי שצריך יותר מ־4 סרטונים, משתלם לו לקחת את BLAZE.</p>
+        <p>זה כל ההפרש בין <b>FLARE</b> ל־<b>BLAZE</b>. בתמורה מקבלים <b>עוד 6 סרטונים</b> (<span class="if-live">כ־22</span><span class="if-exp">כ־38</span> ₪ לסרטון), <b>מסגרת ממותגת</b>, <b>סאונד מותאם</b>, <b>תלת מימד ברמה מתקדמת</b> ו־<b>5 סבבי תיקונים</b> לכל סרטון. מי שצריך יותר מ־4 סרטונים, משתלם לו לקחת את BLAZE.</p>
       </div>
 
       <!-- NONSTOP -->
@@ -408,7 +413,7 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
         <div>
           <ul class="feat">
             <li class="base">כל מה שיש ב־BLAZE</li>
-            <li class="plus">אלמנטים בתלת מימד בעד 4 סרטונים בחודש</li>
+            <li class="plus">תלת מימד ברמה מתקדמת ו־5 סבבי תיקונים לכל סרטון</li>
             <li class="plus">עדיפות בתור העריכה</li>
             <li class="plus">שיחת תכנון קצרה בתחילת כל חודש</li>
             <li class="plus">מחיר קבוע לסרטון, בלי הפתעות</li>
@@ -449,8 +454,8 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
             <tr><th scope="row">סגנון אחיד לכל הסדרה</th><td><span class="n">—</span></td><td><span class="y">✓</span></td><td class="rec"><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
             <tr><th scope="row">מסגרת ממותגת קבועה</th><td><span class="n">—</span></td><td><span class="n">—</span></td><td class="rec"><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
             <tr><th scope="row">סאונד ומוזיקת רקע מותאמים</th><td><span class="n">—</span></td><td><span class="n">—</span></td><td class="rec"><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
-            <tr><th scope="row">אלמנטים בתלת מימד</th><td><span class="n">—</span></td><td><span class="n">—</span></td><td class="rec">עד 3 סרטונים</td><td>עד 4 בחודש</td></tr>
-            <tr><th scope="row">סבבי תיקונים לכל סרטון</th><td>1</td><td>1</td><td class="rec">2</td><td>2</td></tr>
+            <tr><th scope="row">אלמנטים בתלת מימד</th><td>ללא הגבלה</td><td>ללא הגבלה</td><td class="rec"><span class="y">רמה מתקדמת</span></td><td><span class="y">רמה מתקדמת</span></td></tr>
+            <tr><th scope="row">סבבי תיקונים לכל סרטון</th><td>1</td><td>1</td><td class="rec"><span class="y">5</span></td><td><span class="y">5</span></td></tr>
             <tr><th scope="row">עדיפות בתור העריכה</th><td><span class="n">—</span></td><td><span class="n">—</span></td><td class="rec"><span class="n">—</span></td><td><span class="y">✓</span></td></tr>
             <tr><th scope="row">שיחת תכנון חודשית</th><td><span class="n">—</span></td><td><span class="n">—</span></td><td class="rec"><span class="n">—</span></td><td><span class="y">✓</span></td></tr>
           </tbody>
@@ -471,7 +476,7 @@ footer { padding-block: 34px 44px; display: flex; flex-wrap: wrap; justify-conte
       <div class="sec-head"><h2 id="faq-h">שאלות שעולות לפני שמתחילים</h2></div>
       <div class="faq">
         <details open><summary>אפשר להתחיל קטן ולשדרג אחר כך?</summary><p>כן. התחלתם ב־FLARE ורוצים לעבור ל־BLAZE? תוך 30 יום מהרכישה משלמים רק את ההפרש, <span class="if-live">130 ₪</span><span class="if-exp">230 ₪</span>, ומקבלים את כל מה ש־BLAZE כולל.</p></details>
-        <details><summary>מה אם סרטון לא יוצא כמו שרציתם?</summary><p>לכל סרטון יש סבב תיקונים (ב־BLAZE וב־NONSTOP שניים). אנחנו מתקנים עד שהסרטון מוכן להעלאה.</p></details>
+        <details><summary>מה אם סרטון לא יוצא כמו שרציתם?</summary><p>לכל סרטון יש סבב תיקונים, וב־BLAZE וב־NONSTOP חמישה סבבים לכל סרטון. אנחנו מתקנים עד שהסרטון מוכן להעלאה.</p></details>
         <details><summary>מה ההבדל בין BLAZE לבין המסלול החודשי?</summary><p>BLAZE היא חבילה חד־פעמית של 12 סרטונים. NONSTOP מתאים לעסק שמעלה תוכן כל שבוע: 20 סרטונים בכל חודש, במחיר הנמוך ביותר לסרטון, עם עדיפות בתור ושיחת תכנון.</p></details>
         <details><summary>מה הכוונה במסגרת ממותגת?</summary><p>מסגרת קבועה בצבעים ובלוגו של העסק שלכם, שמופיעה בכל הסרטונים. כך כל סרטון בפיד מזוהה איתכם מהשנייה הראשונה.</p></details>
       </div>
